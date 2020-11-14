@@ -1,2 +1,2 @@
-import Header from '.';
+import Header from './Header';
 export default Header;
