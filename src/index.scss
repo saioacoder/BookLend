@@ -1,11 +1,45 @@
-body {
+@import './variables';
+
+/* Reset */
+* {
+	box-sizing: border-box;
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+	padding: 0;
 	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+   -moz-osx-font-smoothing: grayscale
+}
+a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, li, ol, p, select, span, table, textarea, ul {
+	background-color: transparent;
+	border: 0;
+	color: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	outline: 0;
+	vertical-align: baseline;
+}
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+button, input, select, textarea {
+	appearance: none;
 }
 
-code {
-	font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-		monospace;
+
+/* Basic */
+html {
+	font-size: 62.5%;
+	min-height: 100%;
+}
+body {
+	color: $color_base;
+	font-family: $font_family;
+	font-size: 14px;
+	font-size: $font_size_base;
+}
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 1024px; // ?? Cambiar
 }

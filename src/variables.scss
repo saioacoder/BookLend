@@ -1,0 +1,17 @@
+/* Colors */
+$color_base: black;
+$color_base_light: lighten($color_base, 90%);
+$color_brand: coral;
+
+/* Fonts */
+$font_family: Arial, sans-serif;
+$font_size_base: 1.4rem;
+
+/* Spacing */
+$margin: 30px;
+$padding: 30px;
+
+/* Breakpoints */
+$width_desktop: 1024;
+$width_tablet: 768;
+$width_mobile: 480;

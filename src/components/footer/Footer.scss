@@ -1,0 +1,13 @@
+@import '../../variables';
+
+.footer {
+   .container {
+      align-items: center;
+      border-top: 1px solid $color_base_light;
+      display: flex;
+      justify-content: space-between;
+      margin-top: $margin;
+      padding-bottom: $padding;
+      padding-top: $padding;
+   }
+}

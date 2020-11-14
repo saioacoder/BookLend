@@ -1,0 +1,20 @@
+@import '../../variables';
+
+.header {
+   .container {
+      align-items: center;
+      border-bottom: 1px solid $color_base_light;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: $margin;
+      padding-bottom: $padding;
+      padding-top: $padding;
+   }
+   &_nav {
+      &_item {
+         cursor: pointer;
+         margin-left: 20px;
+         padding: 10px 0;
+      }
+   }
+}
