@@ -1,0 +1,27 @@
+{
+  "name": "booklend",
+  "version": "1.0.0",
+  "description": "Proyecto para ayudar en la gestión de bibliotecas pequeñas que no se pueden permitir el desarrollo de una web propia con sistema de préstamos online. Tendrá un completo sistema de reservas, préstamos y catálogo de libros.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saioacoder/booklend.git"
+  },
+  "author": "SaioaCoder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saioacoder/booklend/issues"
+  },
+  "homepage": "https://github.com/saioacoder/booklend#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  },
+  "dependencies": {
+    "firebase": "^8.0.2",
+    "react-redux": "^7.2.2",
+    "sass": "^1.29.0"
+  }
+}
