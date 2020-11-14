@@ -1,7 +1,10 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import firebase from 'firebase/app';
 
-import Footer from './components/footer/Footer';
-import Header from './components/header/Header';
+import firebaseConfig from './config';
+
+import Footer from './components/footer';
+import Header from './components/header';
 
 import Book from './pages/book';
 import Collection from './pages/collection';
@@ -10,35 +13,37 @@ import Home from './pages/home';
 import Landing from './pages/landing';
 import MyBooks from './pages/myBooks';
 
+firebase.initializeApp(firebaseConfig);
+
 function App() {
 	return (
-		<>
-			<Router>
-				<Header />
+		<Router>
+			<Header />
+			<main className="container">
 				<Switch>
 					<Route exact path="/">
 						<Landing />
 					</Route>
-					<Route exact path="/admin/inicio/">
+					<Route exact path="/:libraryId/admin/inicio/">
 						<Dashboard />
 					</Route>
-					<Route exact path="/admin/coleccion/">
+					<Route exact path="/:libraryId/admin/coleccion/">
 						<Collection />
 					</Route>
-					<Route exact path="/inicio/">
+					<Route exact path="/:libraryId/inicio/">
 						<Home />
 					</Route>
-					<Route exact path="/libro/">
+					<Route exact path="/:libraryId/libro/:bookId">
 						<Book />
 					</Route>
-					<Route exact path="/mis-prestamos/">
+					<Route exact path="/:libraryId/mis-prestamos/">
 						<MyBooks />
 					</Route>
 				</Switch>
-				<Footer />
-			</Router>
-		</>
+			</main>
+			<Footer />
+		</Router>
 	);
-}
+};
 
 export default App;
