@@ -39,27 +39,29 @@ const Signup = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="loginForm">
-      <Input
-        id="login_email"
-        label="GENERIC_EMAIL"
-        value={email}
-        hasError={emailError}
-        errorMessage="ERROR_REQUIRED"
-        onChange={({target: { value }}) => setEmail(value)}
-      />
-      <Input
-        id="login_password"
-        label="GENERIC_PASSWORD"
-        type="password"
-        value={password}
-        hasError={passwordError}
-        errorMessage="ERROR_REQUIRED"
-        onChange={({target: { value }}) => setPassword(value)}
-      />
-      {signupError && <p className="signupForm_error">{signupError}</p>}
-      <Button>Enviar</Button>
-    </form>
+    <>
+      <form onSubmit={handleSubmit} className="loginForm">
+        <Input
+          id="login_email"
+          label="Email"
+          value={email}
+          hasError={emailError}
+          errorMessage="Campo obligatorio"
+          onChange={({target: { value }}) => setEmail(value)}
+        />
+        <Input
+          id="login_password"
+          label="Contraseña"
+          type="password"
+          value={password}
+          hasError={passwordError}
+          errorMessage="Campo obligatorio"
+          onChange={({target: { value }}) => setPassword(value)}
+        />
+        {signupError && <p className="signupForm_error">{signupError}</p>}
+        <Button>Enviar</Button>
+      </form>
+    </>
   );
 };
 
