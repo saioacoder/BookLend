@@ -1,11 +1,27 @@
 /* Colors */
 $color_base: black;
+$color_base_medium: lighten($color_base, 65%);
 $color_base_light: lighten($color_base, 90%);
-$color_brand: coral;
+$color_base_extraLight: lighten($color_base, 96%);
+$color_highlight: dodgerblue;
+$color_highlight_dark: darken($color_highlight, 20%);
+$color_background: white;
+$color_error: crimson;
+$color_error_light: lighten($color_error, 48%);
 
 /* Fonts */
-$font_family: Arial, sans-serif;
+$font_family: 'Montserrat', Arial, sans-serif;
 $font_size_base: 1.4rem;
+$font_size_xl: 2rem;
+$font_size_l: 1.8rem;
+$font_size_m: 1.6rem;
+$font_size_s: 1.3rem;
+$font_size_xs: 1.24rem;
+$font_size_xxs: 1.15rem;
+
+/* Radius */
+$radius_base: 5px;
+$radius_s: 4px;
 
 /* Spacing */
 $margin: 30px;

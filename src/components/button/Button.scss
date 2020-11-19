@@ -1,15 +1,39 @@
-.button {
-  background: rgb(214,65,115);
-  border: 0;
-  border-radius: 4px;
-  color: white;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: bold;
-  padding: 11px 15px;
-  text-transform: uppercase;
-  transition: all 0.3s;
-  &:hover {
-      background: darken(rgb(214,65,115), 15%);
-  }
+@import '../../variables';
+
+.button, .button_inverse, .button_transparent {
+	background-color: $color_highlight;
+	border: 1px solid $color_highlight;
+	border-radius: $radius_s;
+	color: $color_background;
+	cursor: pointer;
+	font-size: $font_size_s;
+	font-weight: bold;
+	letter-spacing: 1px;
+	margin-top: 20px;
+	padding: 10px 17px;
+	text-transform: uppercase;
+	transition: all 0.3s;
+	&:hover {
+		background-color: $color_highlight_dark;
+		border-color: $color_highlight_dark;
+	}
+	&_inverse {
+		background-color: $color_background;
+		color: $color_highlight;
+		&:hover {
+			color: $color_background;
+		}
+	}
+	&_transparent {
+		color: $color_highlight;
+		padding-left: 14px;
+		padding-right: 14px;
+		&, &:hover {
+			background-color: $color_background;
+			border-color: $color_background;
+		}
+		&:hover {
+			color: $color_highlight_dark;
+		}
+	}
 }

@@ -1,0 +1,11 @@
+@import './variables';
+
+@mixin formErrorMessage {
+   background-color: $color_error_light;
+   border-radius: $radius_base;
+   color: $color_error;
+   margin-top: 20px;
+   padding: 15px;
+   text-align: center;
+   width: 100%;
+}

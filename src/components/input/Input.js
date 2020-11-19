@@ -1,31 +1,33 @@
-import { useSelector } from 'react-redux';
-
 import './Input.scss';
 
 const Input = ({
-  type='text',
-  label,
-  value,
-  id,
-  placeholder,
-  hasError,
-  errorMessage,
-  onChange
+	id,
+	label,
+	value,
+	placeholder,
+	hasError,
+	errorMessage,
+	onChange,
+	className,
+	type='text'
 }) => {
-  return (
-    <div className={hasError ? 'fieldInput fieldInput_error' : 'fieldInput'}>
-      <label>{label}</label>
-      <input
-        type={type}
-        id={id}
-        name={id}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-      {!hasError || <p className="fieldInput_errorMessage">{errorMessage}</p>}
-    </div>
-  )
-}
+	className = className ? ` ${className}` : '';
+	return (
+		<div className={hasError ? `input input_error${className}` : `input${className}`}>
+			<div className="input_field">
+				<label>{label}</label>
+				<input
+					type={type}
+					id={id}
+					name={id}
+					placeholder={placeholder}
+					value={value}
+					onChange={onChange}
+				/>
+			</div>
+			{(hasError && errorMessage) && <p className="input_errorMessage">{errorMessage}</p>}
+		</div>
+	);
+};
 
 export default Input;

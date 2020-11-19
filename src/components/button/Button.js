@@ -1,9 +1,15 @@
 import './Button.scss';
 
-const Button = ({ children, active, onClick }) => {
-  return (
-    <button onClick={onClick} className={active ? 'button is-active' : 'button'}>{children}</button>
-  )
-}
+const Button = ({ className, active, onClick, children }) => {
+	className = className ? ` ${className}` : '';
+	return (
+		<button
+			className={active ? `button is-active${className}` : `button${className}`}
+			onClick={onClick}
+		>
+			{children}
+		</button>
+	);
+};
 
 export default Button;

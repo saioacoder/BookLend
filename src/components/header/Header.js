@@ -3,52 +3,82 @@ import { Link } from "react-router-dom";
 
 import Login from '../login';
 import Modal from '../modal';
-import Signup from '../signup';
 import SignupLibrary from '../signupLibrary';
+import SignupUser from '../signupUser';
 
 import './Header.scss';
 
-// const onClick = "foo";
-// const func = new Function(
-//      "return function " + onClick + "(){ console.log('sweet!')}"
-// )();
-
-// //call it, to test it
-// func();
-
 const Header = () => {
+
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
 	const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
+	const [signupSuccess, setSignupSuccess] = useState(false);
 
 	const menus = {
 		default: [
-			{ title: 'Crear biblioteca', onClick: setModalSignupLibraryIsOpen },
-			{ title: 'Regístrate', onClick: setModalSignupIsOpen },
-			{ title: 'Iniciar sesión', onClick: setModalLoginIsOpen }
+			{
+				title: 'Crear biblioteca',
+				action: setModalSignupLibraryIsOpen,
+				actionType: 'function'
+			},
+			{
+				title: 'Regístrate',
+				action: setModalSignupIsOpen,
+				actionType: 'function'
+			},
+			{
+				title: 'Iniciar sesión',
+				action: setModalLoginIsOpen,
+				actionType: 'function'
+			}
 		],
 		user: [
-			{ title: 'Mis préstamos', onClick: '' },
-			{ title: 'Mi perfil', onClick: '' },
-			{ title: 'Salir', onClick: '' }
+			{
+				title: 'Mis préstamos',
+				action: '/:libraryId/mis-prestamos/',
+				actionType: 'url'
+			},
+			{
+				title: 'Mi perfil',
+				action: '',
+				actionType: 'function'
+			},
+			{
+				title: 'Salir',
+				action: '',
+				actionType: 'function'
+			}
 		],
 		admin: [
-			{ title: 'Colección', onClick: '' },
-			{ title: 'Configuración', onClick: '' },
-			{ title: 'Salir', onClick: '' }
+			{
+				title: 'Colección',
+				action: '/:libraryId/admin/coleccion/',
+				actionType: 'url'
+			},
+			{
+				title: 'Configuración',
+				action: '',
+				actionType: 'function'
+			},
+			{
+				title: 'Salir',
+				action: '',
+				actionType: 'function'
+			}
 		]
 	};
 
 	function getMenu(menuName) {
 		const menuItems = menus[menuName];
 		return (
-			menuItems.map(({ title, onClick }, i) =>
-				<button
-					key={i}
-					onClick={() => onClick(true)}
-					className="header_nav_item"
-				>{title}</button>
-			)
+			menuItems.map(({ title, action, actionType }, i) => {
+				if(actionType === 'function'){
+					return (<button key={i} onClick={() => action(true)} className="header_nav_item">{title}</button>);
+				} else {
+					return (<Link to={action} className="header_nav_item">{title}</Link>);
+				}
+			})
 		);
 	}
 
@@ -70,14 +100,22 @@ const Header = () => {
 				isOpen={modalSignupLibraryIsOpen}
 				onClose={() => setModalSignupLibraryIsOpen(false)}
 			>
-				<SignupLibrary />
+				<SignupLibrary
+					isModalClosed={modalSignupLibraryIsOpen}
+					onCancel={() => setModalSignupLibraryIsOpen(false)}
+					onSuccess={() => setSignupSuccess(true)}
+				/>
 			</Modal>
 			<Modal
 				title="Regístrate"
 				isOpen={modalSignupIsOpen}
 				onClose={() => setModalSignupIsOpen(false)}
 			>
-				<Signup />
+				{/* <SignupUser
+					isModalClosed={modalSignupIsOpen}
+					onCancel={() => setModalSignupIsOpen(false)}
+					onSuccess={() => setSignupSuccess(true)}
+				/> */}
 			</Modal>
 			<Modal
 				title="Iniciar sesión"

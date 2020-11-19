@@ -1,3 +1,5 @@
+@import '../../variables';
+
 .modal {
 	align-items: center;
 	background-color: rgba(0, 0, 0, 0.6);
@@ -13,23 +15,32 @@
 	&_content {
 		background-color: white;
 		border-radius: 5px;
-		padding: 30px;
+		padding-bottom: 30px;
 		position: relative;
 		width: 60%;
 	}
+	&_scrollBox {
+		max-height: 75vh;
+		overflow-y: auto;
+		padding-left: 30px;
+		padding-right: 30px;
+	}
 	&_title {
-		font-size: 1.3em;
+		border-bottom: 1px solid $color_base_light;
+		font-size: $font_size_l;
+		font-weight: 600;
 		margin: 0 0 20px;
+		padding: 20px 30px;
 	}
 	&_closeButton {
 		background: none;
 		border: 0;
 		cursor: pointer;
-		font-size: 30px;
+		font-size: 36px;
 		line-height: 0;
 		position: absolute;
-		right: 10px;
-		top: 25px;
+		right: 26px;
+		top: 30px;
 		transition: all 0.2s;
 		&:hover {
 			transform: rotate(90deg);
