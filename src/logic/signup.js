@@ -1,4 +1,4 @@
-import { signup } from '../services/auth';
+import { signup, login } from '../services/auth';
 import { addObjectWithId } from '../services/data';
 
 export async function userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary) {
@@ -22,6 +22,15 @@ export async function adminSignup(name, lastname, email, password, idLibrary) {
 	return { success: false, error };
 }
 
-export async function librarySignup(idLibrary, name, address, postalCode, city, province) {
-	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province });
+export async function librarySignup(idLibrary, name, address, postalCode, city, province, categories) {
+	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province, categories });
+}
+
+export async function userLogin(email, password) {
+	const { success, error, id } = await login(email, password);
+	if(success) {
+
+		return { success: true };
+	}
+	return { success: false, error };
 }

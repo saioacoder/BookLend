@@ -19,7 +19,7 @@ const Header = () => {
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
 	const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
-	const [signupSuccess, setSignupSuccess] = useState('');
+	const [formSuccess, setFormSuccess] = useState('');
 
 	const history = useHistory();
 
@@ -91,14 +91,14 @@ const Header = () => {
 	}
 
 	useEffect(() => {
-		if(signupSuccess === 'admin'){
+		if(formSuccess === 'admin'){
 			history.push(`/${idLibrary}/admin/inicio/`);
-			setSignupSuccess('');
-		} else if(signupSuccess === 'user'){
+			setFormSuccess('');
+		} else if(formSuccess === 'user'){
 			history.push(`/${idLibrary}/inicio/`);
-			setSignupSuccess('');
+			setFormSuccess('');
 		}
-	}, [history, signupSuccess]);
+	}, [history, formSuccess]);
 
 	return (
 		<>
@@ -118,7 +118,7 @@ const Header = () => {
 				<SignupLibrary
 					isModalClosed={modalSignupLibraryIsOpen}
 					onCancel={() => setModalSignupLibraryIsOpen(false)}
-					onSuccess={() => setSignupSuccess('admin')}
+					onSuccess={() => setFormSuccess('admin')}
 				/>
 			</Modal>
 			<Modal
@@ -129,7 +129,7 @@ const Header = () => {
 				<SignupUser
 					isModalClosed={modalSignupIsOpen}
 					onCancel={() => setModalSignupIsOpen(false)}
-					onSuccess={() => setSignupSuccess('user')}
+					onSuccess={() => setFormSuccess('user')}
 				/>
 			</Modal>
 			<Modal
@@ -137,7 +137,11 @@ const Header = () => {
 				isOpen={modalLoginIsOpen}
 				onClose={() => setModalLoginIsOpen(false)}
 			>
-				<Login />
+				<Login
+					isModalClosed={modalLoginIsOpen}
+					onCancel={() => setModalLoginIsOpen(false)}
+					onSuccess={() => setFormSuccess('login')}
+				/>
 			</Modal>
 		</>
 	);

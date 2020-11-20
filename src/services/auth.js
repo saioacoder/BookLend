@@ -18,5 +18,19 @@ export async function signup(email, password) {
 	}
 }
 
-// 1. Add auth login function
-//firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+export async function login(email, password) {
+	try {
+		const result = await firebase.auth().signInWithEmailAndPassword(email, password);
+		return {
+			success: true,
+			id: result.user.uid
+		};
+
+	} catch (error) {
+		console.log("Signup Error:", error);
+		return {
+			success: false,
+			error: error.code
+		};
+	}
+}
