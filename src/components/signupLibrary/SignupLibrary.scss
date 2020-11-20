@@ -14,12 +14,6 @@
          margin-top: 30px;
       }
    }
-   &_field_full {
-      width: 100%;
-   }
-   &_field_half {
-      width: 49%;
-   }
    &_error {
       @include formErrorMessage;
    }
