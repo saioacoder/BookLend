@@ -6,8 +6,8 @@
       border-top: 1px solid $color_base_light;
       display: flex;
       justify-content: space-between;
-      margin-top: $margin;
-      padding-bottom: $padding;
-      padding-top: $padding;
+      margin-top: $spacing_base;
+      padding-bottom: $spacing_base;
+      padding-top: $spacing_base;
    }
 }

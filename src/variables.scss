@@ -11,10 +11,11 @@ $color_error_light: lighten($color_error, 48%);
 
 /* Fonts */
 $font_family: 'Montserrat', Arial, sans-serif;
-$font_size_base: 1.5rem;
+
 $font_size_xl: 2rem;
 $font_size_l: 1.8rem;
 $font_size_m: 1.6rem;
+$font_size_base: 1.5rem;
 $font_size_s: 1.3rem;
 $font_size_xs: 1.24rem;
 $font_size_xxs: 1.15rem;
@@ -24,8 +25,14 @@ $radius_base: 5px;
 $radius_s: 4px;
 
 /* Spacing */
-$margin: 30px;
-$padding: 30px;
+$spacing_xl: 35px;
+$spacing_l: 30px;
+$spacing_m: 25px;
+$spacing_base: 20px;
+$spacing_s: 15px;
+$spacing_xs: 10px;
+$spacing_xxs: 5px;
+
 
 /* Breakpoints */
 $width_desktop: 1024;
