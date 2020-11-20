@@ -5,6 +5,7 @@ import InputUrl from '../inputUrl';
 import Button from '../button';
 import { adminSignup, librarySignup } from '../../logic/signup';
 import { checkLibraryExists, validateUrl } from '../../logic/library';
+import getLiteral from '../literals';
 
 import './SignupLibrary.scss';
 
@@ -19,6 +20,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [postalCode, setPostalCode] = useState('');
 	const [city, setCity] = useState('');
 	const [province, setProvince] = useState('');
+	const [categories, setCategories] = useState('');
 
 	const [nameError, setNameError] = useState(false);
 	const [lastnameError, setLastnameError] = useState(false);
@@ -30,6 +32,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [postalCodeError, setPostalCodeError] = useState(false);
 	const [cityError, setCityError] = useState(false);
 	const [provinceError, setProvinceError] = useState(false);
+	const [categoriesError, setCategoriesError] = useState(false);
 	const [signupError, setSignupError] = useState('');
 
 	const handleSubmit = async (event) => {
@@ -45,6 +48,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		setPostalCodeError(false);
 		setCityError(false);
 		setProvinceError(false);
+		setCategoriesError(false);
 		setSignupError('');
 
 		let error = false;
@@ -71,7 +75,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 			const libraryFound = await checkLibraryExists(idLibrary);
 			if(libraryFound !== null) {
 				error = true;
-				setSignupError('¡La biblioteca ya existe! Prueba con otra Url.');
+				setSignupError(getLiteral('error-library-exists'));
 			}
 		}
 		if(!nameLibrary) {
@@ -94,26 +98,19 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setProvinceError(true);
 		}
+		if(!categories) {
+			error = true;
+			setCategoriesError(true);
+		}
 		if(!error) {
 			setSignupError('');
 
 			const { success, error } = await adminSignup(name, lastname, email, password, idLibrary);
 			if(!success) {
-				let errorMessage = error;
-				switch(error) {
-					case 'auth/invalid-email':
-						errorMessage = '¡El email no tiene el formato correcto! Revísalo.';
-						break;
-					case 'auth/email-already-in-use':
-						errorMessage = '¡El email ya existe! Prueba con otro diferente.';
-						break;
-					case 'auth/weak-password':
-						errorMessage = '¡La contraseña es muy débil! Prueba con otra diferente.';
-						break;
-				}
-				setSignupError(errorMessage);
+				setSignupError(getLiteral(error));
 			} else {
-				await librarySignup(idLibrary, nameLibrary, address, postalCode, city, province);
+				const splitCategories = categories.split(',');
+				await librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, splitCategories);
 				handleReset();
 				onSuccess();
 			}
@@ -133,6 +130,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		setPostalCode('');
 		setCity('');
 		setProvince('');
+		setCategories('');
 
 		setNameError(false);
 		setLastnameError(false);
@@ -144,6 +142,8 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		setPostalCodeError(false);
 		setCityError(false);
 		setProvinceError(false);
+		setCategoriesError(false);
+		setSignupError('');
 
 		onCancel();
 	};
@@ -161,36 +161,36 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				label="Nombre"
 				value={name}
 				hasError={nameError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setName(value)}
-				className="signup_field_half"
+				className="wHalf"
 			/>
 			<Input
 				id="lastnameAdmin"
 				label="Apellido"
 				value={lastname}
 				hasError={lastnameError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setLastname(value)}
-				className="signup_field_half"
+				className="wHalf"
 			/>
 			<Input
 				id="emailAdmin"
 				label="Email"
 				value={email}
 				hasError={emailError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setEmail(value)}
-				className="signup_field_full"
+				className="wFull"
 			/>
 			<Input
 				id="passwordAdmin"
 				label="Contraseña"
 				value={password}
 				hasError={passwordError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setPassword(value)}
-				className="signup_field_full"
+				className="wFull"
 				type="password"
 			/>
 			<h2>Datos de la biblioteca</h2>
@@ -199,54 +199,63 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				label="Nombre biblioteca"
 				value={nameLibrary}
 				hasError={nameLibraryError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setNameLibrary(value)}
-				className="signup_field_full"
+				className="wFull"
 			/>
 			<InputUrl
 				id="idLibrary"
 				label="URL biblioteca"
 				value={idLibrary}
 				hasError={idLibraryError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setIdLibrary(validateUrl(value))}
-				className="signup_field_full"
+				className="wFull"
 			/>
 			<Input
 				id="addressLibrary"
 				label="Dirección"
 				value={address}
 				hasError={addressError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setAddress(value)}
-				className="signup_field_half"
+				className="wHalf"
 			/>
 			<Input
 				id="postalCodeLibrary"
 				label="Código postal"
 				value={postalCode}
 				hasError={postalCodeError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setPostalCode(value)}
-				className="signup_field_half"
+				className="wHalf"
 			/>
 			<Input
 				id="cityLibrary"
 				label="Ciudad"
 				value={city}
 				hasError={cityError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setCity(value)}
-				className="signup_field_half"
+				className="wHalf"
 			/>
 			<Input
 				id="provinceLibrary"
 				label="Provincia"
 				value={province}
 				hasError={provinceError}
-				errorMessage="Campo obligatorio"
+				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setProvince(value)}
-				className="signup_field_half"
+				className="wHalf"
+			/>
+			<Input
+				id="categories"
+				label="Categorías"
+				value={categories}
+				hasError={categoriesError}
+				errorMessage={getLiteral('error-required-field')}
+				onChange={({target: { value }}) => setCategories(value)}
+				className="wFull"
 			/>
 
 			{signupError && <p className="signup_error">{signupError}</p>}
