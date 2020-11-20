@@ -1,12 +1,12 @@
 import { signup } from '../services/auth';
 import { addObjectWithId } from '../services/data';
 
-export async function userSignup(name, lastname, email, password, birthdate, address, postalCode, city, province, idLibrary) {
+export async function userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary) {
 	const { success, error, id } = await signup(email, password);
 	const warningNum = 0;
 	const isAdmin = false;
 	if(success) {
-		await addObjectWithId('users', id, { name, lastname, email, birthdate, address, postalCode, city, province, warningNum, idLibrary, isAdmin });
+		await addObjectWithId('users', id, { name, lastname, email, address, postalCode, city, province, warningNum, idLibrary, isAdmin });
 		return { success: true };
 	}
 	return { success: false, error };

@@ -19,6 +19,7 @@
 		}
 		input {
 			font-size: $font_size_base;
+			flex-grow: 1;
 			padding: 15px 15px 15px 5px;
 		}
 		::placeholder {

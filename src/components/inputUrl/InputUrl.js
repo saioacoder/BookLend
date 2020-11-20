@@ -13,7 +13,7 @@ const InputUrl = ({
 }) => {
 	className = className ? ` ${className}` : '';
 	return (
-		<div className={hasError ? `inputUrl input_error${className}` : `inputUrl${className}`}>
+		<div className={hasError ? `inputUrl inputUrl_error${className}` : `inputUrl${className}`}>
 			<div className="inputUrl_field">
 				<label>{label}</label>
 				<span className="inputUrl_start">https://www.booklet.com/</span>

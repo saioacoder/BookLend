@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+import { Link, useHistory } from "react-router-dom";
 
 import Login from '../login';
 import Modal from '../modal';
@@ -10,10 +10,18 @@ import './Header.scss';
 
 const Header = () => {
 
+	// Quitar estos ??
+	const isAdmin = true;
+	const isLogged = false;
+	const idLibrary = 'saibiblio';
+	const menuName = isLogged ? isAdmin ? 'admin' : 'user' : 'default';
+
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
 	const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
-	const [signupSuccess, setSignupSuccess] = useState(false);
+	const [signupSuccess, setSignupSuccess] = useState('');
+
+	const history = useHistory();
 
 	const menus = {
 		default: [
@@ -36,7 +44,7 @@ const Header = () => {
 		user: [
 			{
 				title: 'Mis préstamos',
-				action: '/:libraryId/mis-prestamos/',
+				action: '/:idLibrary/mis-prestamos/',
 				actionType: 'url'
 			},
 			{
@@ -53,7 +61,7 @@ const Header = () => {
 		admin: [
 			{
 				title: 'Colección',
-				action: '/:libraryId/admin/coleccion/',
+				action: '/:idLibrary/admin/coleccion/',
 				actionType: 'url'
 			},
 			{
@@ -82,14 +90,21 @@ const Header = () => {
 		);
 	}
 
-	const isAdmin = true;
-	const isLogged = false;
-	const menuName = isLogged ? isAdmin ? 'admin' : 'user' : 'default';
+	useEffect(() => {
+		if(signupSuccess === 'admin'){
+			history.push(`/${idLibrary}/admin/inicio/`);
+			setSignupSuccess('');
+		} else if(signupSuccess === 'user'){
+			history.push(`/${idLibrary}/inicio/`);
+			setSignupSuccess('');
+		}
+	}, [history, signupSuccess]);
+
 	return (
 		<>
 			<header className="header">
 				<div className="container">
-					<Link to="/"><img src="" alt="BookLet" /></Link>
+					<Link to="/" className="header_logo">Book<span>Lend</span></Link>
 					<nav className="header_nav">
 						{getMenu(menuName)}
 					</nav>
@@ -103,7 +118,7 @@ const Header = () => {
 				<SignupLibrary
 					isModalClosed={modalSignupLibraryIsOpen}
 					onCancel={() => setModalSignupLibraryIsOpen(false)}
-					onSuccess={() => setSignupSuccess(true)}
+					onSuccess={() => setSignupSuccess('admin')}
 				/>
 			</Modal>
 			<Modal
@@ -111,11 +126,11 @@ const Header = () => {
 				isOpen={modalSignupIsOpen}
 				onClose={() => setModalSignupIsOpen(false)}
 			>
-				{/* <SignupUser
+				<SignupUser
 					isModalClosed={modalSignupIsOpen}
 					onCancel={() => setModalSignupIsOpen(false)}
-					onSuccess={() => setSignupSuccess(true)}
-				/> */}
+					onSuccess={() => setSignupSuccess('user')}
+				/>
 			</Modal>
 			<Modal
 				title="Iniciar sesión"

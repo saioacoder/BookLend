@@ -24,19 +24,19 @@ function App() {
 					<Route exact path="/">
 						<Landing />
 					</Route>
-					<Route exact path="/:libraryId/admin/inicio/">
+					<Route exact path="/:idLibrary/admin/inicio/">
 						<Dashboard />
 					</Route>
-					<Route exact path="/:libraryId/admin/coleccion/">
+					<Route exact path="/:idLibrary/admin/coleccion/">
 						<Collection />
 					</Route>
-					<Route exact path="/:libraryId/inicio/">
+					<Route exact path="/:idLibrary/inicio/">
 						<Home />
 					</Route>
-					<Route exact path="/:libraryId/libro/:bookId">
+					<Route exact path="/:idLibrary/libro/:bookId">
 						<Book />
 					</Route>
-					<Route exact path="/:libraryId/mis-prestamos/">
+					<Route exact path="/:idLibrary/mis-prestamos/">
 						<MyBooks />
 					</Route>
 				</Switch>

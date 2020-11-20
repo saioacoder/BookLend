@@ -10,6 +10,14 @@
       padding-bottom: $padding;
       padding-top: $padding;
    }
+   &_logo {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      span {
+         font-weight: 500;
+      }
+   }
    &_nav {
       &_item {
          cursor: pointer;

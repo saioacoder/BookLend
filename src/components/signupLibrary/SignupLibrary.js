@@ -4,7 +4,7 @@ import Input from '../input';
 import InputUrl from '../inputUrl';
 import Button from '../button';
 import { adminSignup, librarySignup } from '../../logic/signup';
-import { checkLibraryExists } from '../../logic/library';
+import { checkLibraryExists, validateUrl } from '../../logic/library';
 
 import './SignupLibrary.scss';
 
@@ -68,8 +68,8 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setIdLibraryError(true);
 		} else {
-			const isFound = await checkLibraryExists(idLibrary);
-			if(isFound) {
+			const libraryFound = await checkLibraryExists(idLibrary);
+			if(libraryFound !== null) {
 				error = true;
 				setSignupError('¡La biblioteca ya existe! Prueba con otra Url.');
 			}
@@ -209,7 +209,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				value={idLibrary}
 				hasError={idLibraryError}
 				errorMessage="Campo obligatorio"
-				onChange={({target: { value }}) => setIdLibrary(value)}
+				onChange={({target: { value }}) => setIdLibrary(validateUrl(value))}
 				className="signup_field_full"
 			/>
 			<Input

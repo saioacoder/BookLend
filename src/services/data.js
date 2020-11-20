@@ -26,7 +26,17 @@ export async function removeObjectWithId(collection, id) {
 		await firebase.firestore().collection(collection).doc(id).remove();
 		return true;
 	} catch (error) {
-		console.log("removeObject Error:", error);
+		console.log("removeObjectWithId Error:", error);
+		return null;
+	}
+}
+
+export async function getObjectById(collection, id) {
+	try {
+		const doc = await firebase.firestore().collection(collection).doc(id).get();
+		return doc.exists ? doc.data() : null;
+	} catch (error) {
+		console.log("getObjectById Error: ", error);
 		return null;
 	}
 }
@@ -47,19 +57,6 @@ export async function getDataByCondition(collection, field, condition, value) {
 	try {
 		const allDocs = await firebase.firestore().collection(collection).where(field, condition, value).get();
 		return allDocs.docs.map(doc => doc.data());
-	} catch (error) {
-		console.log("getDataByCondition Error: ", error);
-		return null;
-	}
-}
-
-export async function getObjectById(collection, id) {
-	try {
-		const doc = await firebase.firestore().collection(collection).doc(id).get();
-		if(doc.exists) {
-			return doc.data();
-	  	}
-		return null;
 	} catch (error) {
 		console.log("getDataByCondition Error: ", error);
 		return null;
