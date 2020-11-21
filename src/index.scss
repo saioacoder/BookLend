@@ -41,14 +41,15 @@ html {
 body {
 	color: $color_base;
 	font-family: $font_family;
-	font-size: 14px;
+	font-size: $font_size_base_px;
 	font-size: $font_size_base;
+	font-weight: $font_weight_base;
 }
 .container {
 	margin-left: auto;
 	margin-right: auto;
-	padding: 0 20px;
-	width: 1000px; // ?? Cambiar
+	padding: 0 $spacing_base;
+	width: $width_desktop;
 }
 
 

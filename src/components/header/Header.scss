@@ -15,7 +15,7 @@
       font-weight: 700;
       text-transform: uppercase;
       span {
-         font-weight: 500;
+         font-weight: $font_weight_bold;
       }
    }
    &_nav {

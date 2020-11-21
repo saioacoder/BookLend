@@ -9,28 +9,28 @@
 	left: 0;
 	position: fixed;
 	top: 100vh;
-	transition: opacity 0.2s;
+	transition: opacity $transition_duration;
 	width: 100vw;
 	z-index: 10;
 	&_content {
 		background-color: white;
-		border-radius: 5px;
-		padding-bottom: 30px;
+		border-radius: $radius_base;
+		padding-bottom: $spacing_l;
 		position: relative;
 		width: 60%;
 	}
 	&_scrollBox {
 		max-height: 75vh;
 		overflow-y: auto;
-		padding-left: 30px;
-		padding-right: 30px;
+		padding-left: $spacing_l;
+		padding-right: $spacing_l;
 	}
 	&_title {
 		border-bottom: 1px solid $color_base_light;
 		font-size: $font_size_l;
-		font-weight: 600;
-		margin: 0 0 20px;
-		padding: 20px 30px;
+		font-weight: $font_weight_extrabold;
+		margin: 0 0 $spacing_base;
+		padding: $spacing_base $spacing_l;
 	}
 	&_closeButton {
 		background: none;
@@ -41,7 +41,7 @@
 		position: absolute;
 		right: 26px;
 		top: 30px;
-		transition: all 0.2s;
+		transition: all $transition_duration;
 		&:hover {
 			transform: rotate(90deg);
 		}

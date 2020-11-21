@@ -9,6 +9,7 @@ $color_background: white;
 $color_error: crimson;
 $color_error_light: lighten($color_error, 48%);
 
+
 /* Fonts */
 $font_family: 'Montserrat', Arial, sans-serif;
 
@@ -16,13 +17,22 @@ $font_size_xl: 2rem;
 $font_size_l: 1.8rem;
 $font_size_m: 1.6rem;
 $font_size_base: 1.5rem;
+$font_size_base_px: 15px;
 $font_size_s: 1.3rem;
 $font_size_xs: 1.24rem;
 $font_size_xxs: 1.15rem;
 
+$font_weight_extrabold: 600;
+$font_weight_bold: 500;
+$font_weight_base: 400;
+$font_weight_light: 300;
+$font_weight_extralight: 200;
+
+
 /* Radius */
 $radius_base: 5px;
 $radius_s: 4px;
+
 
 /* Spacing */
 $spacing_xl: 35px;
@@ -38,3 +48,7 @@ $spacing_xxs: 5px;
 $width_desktop: 1024;
 $width_tablet: 768;
 $width_mobile: 480;
+
+
+/* Transition */
+$transition_duration: 0.2s;

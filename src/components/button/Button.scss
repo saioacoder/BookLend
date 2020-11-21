@@ -12,7 +12,7 @@
 	margin-top: $spacing_base;
 	padding: $spacing_xs 17px;
 	text-transform: uppercase;
-	transition: all 0.3s;
+	transition: all $transition_duration;
 	&:hover {
 		background-color: $color_highlight_dark;
 		border-color: $color_highlight_dark;
