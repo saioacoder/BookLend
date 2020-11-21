@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import Input from '../input';
 import Button from '../button';
-import { userSignup } from '../../logic/signup';
+import { userSignup } from '../../logic/user';
 import { checkLibraryExists } from '../../logic/library';
 import getLiteral from '../literals';
 

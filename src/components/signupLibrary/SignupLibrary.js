@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import Input from '../input';
 import InputUrl from '../inputUrl';
 import Button from '../button';
-import { adminSignup, librarySignup } from '../../logic/signup';
+import { adminSignup, librarySignup } from '../../logic/user';
 import { checkLibraryExists, validateUrl } from '../../logic/library';
 import getLiteral from '../literals';
 
