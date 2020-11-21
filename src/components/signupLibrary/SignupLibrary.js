@@ -1,15 +1,19 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Input from '../input';
 import InputUrl from '../inputUrl';
 import Button from '../button';
+import getLiteral from '../literals';
 import { adminSignup } from '../../logic/user';
 import { librarySignup, checkLibraryExists, validateUrl } from '../../logic/library';
-import getLiteral from '../literals';
+import { setUser } from '../../redux/actions/userActions';
 
 import './SignupLibrary.scss';
 
 const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
+	const dispatch = useDispatch();
+
 	const [name, setName] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [email, setEmail] = useState('');
@@ -105,12 +109,18 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		if(!error) {
 			setSignupError('');
 
-			const { success, error } = await adminSignup(name, lastname, email, password, idLibrary);
+			const { success, error, id, user } = await adminSignup(name, lastname, email, password, idLibrary);
 			if(!success) {
 				setSignupError(getLiteral(error));
 			} else {
 				const splitCategories = categories.split(',');
 				await librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, splitCategories);
+				dispatch(setUser({
+					idUser: id,
+					name: user.name,
+					isAdmin: user.isAdmin,
+					idLibrary: user.idLibrary
+				}));
 				handleReset();
 				onSuccess();
 			}

@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 import Input from '../input';
 import Button from '../button';
+import getLiteral from '../literals';
 import { userSignup } from '../../logic/user';
 import { checkLibraryExists } from '../../logic/library';
-import getLiteral from '../literals';
+import { setUser } from '../../redux/actions/userActions';
 
 import './SignupUser.scss';
 
 const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
+	const dispatch = useDispatch();
+
 	const [idLibrary, setIdLibrary] = useState('');
 	const [name, setName] = useState('');
 	const [lastname, setLastname] = useState('');
@@ -96,10 +100,16 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 		if(!error) {
 			setSignupError('');
 
-			const { success, error } = await userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary);
+			const { success, error, id, user } = await userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary);
 			if(!success) {
 				setSignupError(getLiteral(error));
 			} else {
+				dispatch(setUser({
+					idUser: id,
+					name: user.name,
+					isAdmin: user.isAdmin,
+					idLibrary: user.idLibrary
+				}));
 				handleReset();
 				onSuccess();
 			}

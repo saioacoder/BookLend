@@ -7,7 +7,8 @@ export async function userSignup(name, lastname, email, password, address, posta
 	const isAdmin = false;
 	if(success) {
 		await addObjectWithId('users', id, { name, lastname, email, address, postalCode, city, province, warningNum, idLibrary, isAdmin });
-		return { success: true };
+		const user = await getObjectById('users', id);
+		return { success: true, id, user };
 	}
 	return { success: false, error };
 }
@@ -17,7 +18,8 @@ export async function adminSignup(name, lastname, email, password, idLibrary) {
 	const isAdmin = true;
 	if(success) {
 		await addObjectWithId('users', id, { name, lastname, email, idLibrary, isAdmin });
-		return { success: true };
+		const user = await getObjectById('users', id);
+		return { success: true, id, user };
 	}
 	return { success: false, error };
 }
