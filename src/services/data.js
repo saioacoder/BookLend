@@ -1,6 +1,13 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+function parseDocument(doc) {
+	return {
+		id: doc.id,
+		...doc.data()
+	}
+}
+
 export async function addObjectWithId(collection, id, obj) {
 	try {
 		await firebase.firestore().collection(collection).doc(id).set(obj);
@@ -34,7 +41,7 @@ export async function removeObjectWithId(collection, id) {
 export async function getObjectById(collection, id) {
 	try {
 		const doc = await firebase.firestore().collection(collection).doc(id).get();
-		return doc.exists ? doc.data() : null;
+		return doc.exists ? parseDocument(doc) : null;
 	} catch (error) {
 		console.log("getObjectById Error: ", error);
 		return null;
@@ -45,7 +52,7 @@ export async function getObjectById(collection, id) {
 export async function getAllData(collection) {
 	try {
 		const allDocs = await firebase.firestore().collection(collection).get();
-    	return allDocs.docs.map(doc => doc.data());
+    	return allDocs.docs.map(doc => parseDocument(doc));
 	} catch (error) {
 		console.log("getAllData Error:", error);
 		return null;
@@ -56,7 +63,7 @@ export async function getAllData(collection) {
 export async function getDataByCondition(collection, field, condition, value) {
 	try {
 		const allDocs = await firebase.firestore().collection(collection).where(field, condition, value).get();
-		return allDocs.docs.map(doc => doc.data());
+		return allDocs.docs.map(doc => parseDocument(doc));
 	} catch (error) {
 		console.log("getDataByCondition Error: ", error);
 		return null;

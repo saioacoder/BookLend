@@ -1,20 +1,19 @@
 import { useState, useEffect } from 'react';
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Login from '../login';
 import Modal from '../modal';
 import SignupLibrary from '../signupLibrary';
 import SignupUser from '../signupUser';
+import { userLogout } from '../../logic/user';
 
 import './Header.scss';
 
 const Header = () => {
-
-	// Quitar estos ??
-	const isAdmin = true;
-	const isLogged = false;
-	const idLibrary = 'saibiblio';
-	const menuName = isLogged ? isAdmin ? 'admin' : 'user' : 'default';
+	const user = useSelector(state => state.user);
+	const { idUser, name, isAdmin, idLibrary } = user;
+	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
@@ -54,7 +53,7 @@ const Header = () => {
 			},
 			{
 				title: 'Salir',
-				action: '',
+				action: userLogout,
 				actionType: 'function'
 			}
 		],
@@ -71,7 +70,7 @@ const Header = () => {
 			},
 			{
 				title: 'Salir',
-				action: '',
+				action: userLogout,
 				actionType: 'function'
 			}
 		]
@@ -84,7 +83,7 @@ const Header = () => {
 				if(actionType === 'function'){
 					return (<button key={i} onClick={() => action(true)} className="header_nav_item">{title}</button>);
 				} else {
-					return (<Link to={action} className="header_nav_item">{title}</Link>);
+					return (<Link key={i} to={action} className="header_nav_item">{title}</Link>);
 				}
 			})
 		);
@@ -98,13 +97,14 @@ const Header = () => {
 			history.push(`/${idLibrary}/inicio/`);
 			setFormSuccess('');
 		}
-	}, [history, formSuccess]);
+	}, [history, formSuccess, idLibrary]);
 
 	return (
 		<>
 			<header className="header">
 				<div className="container">
 					<Link to="/" className="header_logo">Book<span>Lend</span></Link>
+					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}
 					</nav>

@@ -23,9 +23,8 @@ export async function login(email, password) {
 		const result = await firebase.auth().signInWithEmailAndPassword(email, password);
 		return {
 			success: true,
-			id: result.user.uid
+			id: result.user.uid,
 		};
-
 	} catch (error) {
 		console.log("Signup Error:", error);
 		return {
@@ -33,4 +32,16 @@ export async function login(email, password) {
 			error: error.code
 		};
 	}
+}
+
+export function logout() {
+	try {
+		firebase.auth().signOut();
+	} catch(error) {
+		console.log("logout Error:", error)
+	}
+}
+
+export function registerAuthObserver(callback) {
+	firebase.auth().onAuthStateChanged(callback);
 }

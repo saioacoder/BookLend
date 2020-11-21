@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from 'firebase/app';
 
 import firebaseConfig from './config';
+import { setUser } from './redux/actions/userActions';
+import { registerAuthStateChangeHandler, getUserById } from './logic/user';
 
 import Footer from './components/footer';
 import Header from './components/header';
@@ -16,6 +20,20 @@ import MyBooks from './pages/myBooks';
 firebase.initializeApp(firebaseConfig);
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+		registerAuthStateChangeHandler(async (user) => {
+		  	if(user) {
+				//console.log(user.uid);
+				const userData = await getUserById(user.uid);
+			 	dispatch(setUser(userData));
+			} else {
+			 	dispatch(setUser(null));
+		  }
+		})
+	}, [dispatch]);
+
 	return (
 		<Router>
 			<Header />

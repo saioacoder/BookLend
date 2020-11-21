@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
+import { userLogin } from '../../logic/user';
+import { setUser } from '../../redux/actions/userActions';
 import Input from '../input';
 import Button from '../button';
-import { userLogin } from '../../logic/signup';
 import getLiteral from '../literals';
 
 import './Login.scss';
 
 const Login = ({ isModalClosed, onCancel, onSuccess }) => {
+	const dispatch = useDispatch();
+
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState(false);
@@ -31,10 +35,16 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 		}
 		if(!error) {
 			setLoginError('');
-			const { success, error } = await userLogin(email, password);
+			const { success, error, id, user } = await userLogin(email, password);
 			if(!success) {
 				setLoginError(getLiteral(error));
 			} else {
+				dispatch(setUser({
+					idUser: id,
+					name: user.name,
+					isAdmin: user.isAdmin,
+					idLibrary: user.idLibrary
+				}));
 				handleReset();
 				onSuccess();
 			}
