@@ -25,7 +25,6 @@ function App() {
 	useEffect(() => {
 		registerAuthStateChangeHandler(async (user) => {
 		  	if(user) {
-				//console.log(user.uid);
 				const userData = await getUserById(user.uid);
 			 	dispatch(setUser(userData));
 			} else {
