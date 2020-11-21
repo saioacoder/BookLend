@@ -13,16 +13,39 @@
    &_logo {
       font-size: 2.2rem;
       font-weight: 700;
+      margin-right: auto;
       text-transform: uppercase;
       span {
          font-weight: $font_weight_bold;
       }
+   }
+   &_user {
+      cursor: pointer;
+      &_icon {
+         display: inline-block;
+         font-size: 2.5rem;
+         font-weight: $font_weight_bold;
+         line-height: 0;
+         margin-left: $spacing_xxs;
+         transform: rotate(90deg);
+         transition: all $transition_duration;
+         vertical-align: middle;
+      }
+      &:hover {
+         color: $color_highlight_dark;
+      }
+      // &:hover &_icon {
+      //    transform: rotate(-90deg);
+      // }
    }
    &_nav {
       &_item {
          cursor: pointer;
          margin-left: $spacing_base;
          padding: $spacing_xs 0;
+         &:hover {
+            color: $color_highlight_dark;
+         }
       }
    }
 }
