@@ -22,10 +22,6 @@ export async function adminSignup(name, lastname, email, password, idLibrary) {
 	return { success: false, error };
 }
 
-export async function librarySignup(idLibrary, name, address, postalCode, city, province, categories) {
-	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province, categories });
-}
-
 export async function userLogin(email, password) {
 	const { success, error, id } = await login(email, password);
 	if(success) {
