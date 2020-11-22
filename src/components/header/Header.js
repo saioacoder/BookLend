@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import logoImg from '../../img/logo.svg';
 import Login from '../login';
 import Modal from '../modal';
 import SignupLibrary from '../signupLibrary';
@@ -103,7 +104,10 @@ const Header = () => {
 		<>
 			<header className="header">
 				<div className="container">
-					<Link to="/" className="header_logo">Book<span>Lend</span></Link>
+					<Link to="/" className="header_logo">
+						<img src={logoImg} alt="" />
+						<span>Book<span>Lend</span></span>
+					</Link>
 					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}

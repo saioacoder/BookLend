@@ -5,17 +5,24 @@
       align-items: center;
       display: flex;
       justify-content: space-between;
-      margin-bottom: $spacing_base;
+      margin-bottom: $spacing_xl;
       padding-bottom: $spacing_base;
       padding-top: $spacing_base;
    }
    &_logo {
-      font-size: 2.2rem;
-      font-weight: $font_weight_extrabold;
       margin-right: auto;
-      text-transform: uppercase;
-      span {
-         font-weight: 500;
+      img {
+         height: 28px;
+         margin-right: 8px;
+         vertical-align: baseline;
+      }
+      > span {
+         font-size: 2.2rem;
+         font-weight: $font_weight_extrabold;
+         text-transform: uppercase;
+         span {
+            font-weight: 500;
+         }
       }
    }
    &_user {
