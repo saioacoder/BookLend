@@ -4,9 +4,9 @@ export async function librarySignup(idLibrary, name, address, postalCode, city, 
 	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province, categories });
 }
 
-export async function checkLibraryExists(id) {
-	const result = await getObjectById('libraries', id);
-	return result ? result : null;
+export async function getLibraryById(id) {
+	const library = await getObjectById('libraries', id);
+	return library ? library : null;
 }
 
 export function validateUrl(url) {

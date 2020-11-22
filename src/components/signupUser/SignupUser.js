@@ -5,7 +5,7 @@ import Input from '../input';
 import Button from '../button';
 import getLiteral from '../literals';
 import { userSignup } from '../../logic/user';
-import { checkLibraryExists } from '../../logic/library';
+import { getLibraryById } from '../../logic/library';
 import { setUser } from '../../redux/actions/userActions';
 
 import './SignupUser.scss';
@@ -53,7 +53,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setIdLibraryError(true);
 		} else {
-			const libraryFound = await checkLibraryExists(idLibrary);
+			const libraryFound = await getLibraryById(idLibrary);
 			if(libraryFound === null) {
 				error = true;
 				setSignupError(getLiteral('error-library-not-found'));
@@ -87,7 +87,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setCityError(true);
 		} else {
-			const libraryFound = await checkLibraryExists(idLibrary);
+			const libraryFound = await getLibraryById(idLibrary);
 			if(libraryFound !== null && libraryFound.city !== city) {
 				error = true;
 				setSignupError(getLiteral('error-library-not-on-your-city'));

@@ -43,7 +43,7 @@ export async function getObjectById(collection, id) {
 		const doc = await firebase.firestore().collection(collection).doc(id).get();
 		return doc.exists ? parseDocument(doc) : null;
 	} catch (error) {
-		console.log("getObjectById Error: ", error);
+		//console.log("getObjectById Error: ", error);
 		return null;
 	}
 }

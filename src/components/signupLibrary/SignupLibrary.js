@@ -6,7 +6,7 @@ import InputUrl from '../inputUrl';
 import Button from '../button';
 import getLiteral from '../literals';
 import { adminSignup } from '../../logic/user';
-import { librarySignup, checkLibraryExists, validateUrl } from '../../logic/library';
+import { librarySignup, getLibraryById, validateUrl } from '../../logic/library';
 import { setUser } from '../../redux/actions/userActions';
 
 import './SignupLibrary.scss';
@@ -76,7 +76,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setIdLibraryError(true);
 		} else {
-			const libraryFound = await checkLibraryExists(idLibrary);
+			const libraryFound = await getLibraryById(idLibrary);
 			if(libraryFound !== null) {
 				error = true;
 				setSignupError(getLiteral('error-library-exists'));
