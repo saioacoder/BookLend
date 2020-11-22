@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.button, .button_inverse, .button_transparent {
+.button, .button_inverse, .button_neutral, .button_transparent {
 	background-color: $color_highlight;
 	border: 1px solid $color_highlight;
 	border-radius: $radius_s;
@@ -22,6 +22,14 @@
 		color: $color_highlight;
 		&:hover {
 			color: $color_background;
+		}
+	}
+	&_neutral {
+		background-color: $color_base_medium;
+		border-color: $color_base_medium;
+		&:hover {
+			background-color: $color_base_extramedium;
+			border-color: $color_base_extramedium;
 		}
 	}
 	&_transparent {
