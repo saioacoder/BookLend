@@ -43,7 +43,7 @@ const Header = () => {
 		user: [
 			{
 				title: 'Mis préstamos',
-				action: '/:idLibrary/mis-prestamos/',
+				action: `/${idLibrary}/mis-prestamos/`,
 				actionType: 'url'
 			},
 			{
@@ -60,7 +60,7 @@ const Header = () => {
 		admin: [
 			{
 				title: 'Colección',
-				action: '/:idLibrary/admin/coleccion/',
+				action: `/${idLibrary}/admin/coleccion/`,
 				actionType: 'url'
 			},
 			{
