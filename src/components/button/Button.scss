@@ -1,6 +1,6 @@
 @import '../../variables';
 
-.button, .button_inverse, .button_neutral, .button_transparent {
+.button, .button_inverse, .button_neutral, .button_transparent, .button_small {
 	background-color: $color_highlight;
 	border: 1px solid $color_highlight;
 	border-radius: $radius_s;
@@ -34,8 +34,8 @@
 	}
 	&_transparent {
 		color: $color_highlight;
-		padding-left: 14px;
-		padding-right: 14px;
+		padding-left: $spacing_s;
+		padding-right: $spacing_s;
 		&, &:hover {
 			background-color: $color_background;
 			border-color: $color_background;
@@ -43,5 +43,9 @@
 		&:hover {
 			color: $color_highlight_dark;
 		}
+	}
+	&_small {
+		font-size: $font_size_xs;
+		padding: $spacing_xs $spacing_s;
 	}
 }

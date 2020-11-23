@@ -52,6 +52,7 @@ body {
 	width: $width_desktop;
 }
 .page_header {
+	align-items: center;
 	display: flex;
 	margin-bottom: $spacing_xxl;
 	&_title {

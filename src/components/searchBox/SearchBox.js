@@ -8,7 +8,7 @@ const SearchBox = () => {
 		<div className="searchBox">
 			<Input
 				id="search"
-				placeholder="Busca libros en la colección"
+				label="Busca libros en la colección"
 			/>
 			<Button className="button_neutral">Buscar</Button>
 		</div>

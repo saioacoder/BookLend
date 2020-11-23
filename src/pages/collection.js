@@ -29,7 +29,7 @@ const Collection = () => {
 					<h1 className="page_header_title">Colección de libros</h1>
 					<h2 className="page_header_subtitle">Biblioteca: <strong>{name}</strong></h2>
 				</div>
-				<Button>Nuevo libro</Button>
+				<Button className="button_small">Nuevo libro</Button>
 			</header>
 			<SearchBox />
 			<CollectionList />
