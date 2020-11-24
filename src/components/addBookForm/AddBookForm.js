@@ -5,26 +5,28 @@ import Input from '../input';
 import InputSearch from '../inputSearch';
 import Button from '../button';
 import ListBooks from '../listBooks';
+import BookCard from '../bookCard';
 import getLiteral from '../literals';
-import { getBooksByTitle } from '../../logic/book';
+import { getBooksByTitle, getBookById, formatData } from '../../logic/book';
 
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [books, setBooks] = useState([]);
 	const [bookSelId, setBookSelId] = useState('');
-	const [isbn, setIsbn] = useState('');
-	const [title, setTitle] = useState('');
-	const [author, setAuthor] = useState('');
-	const [editorial, setEditorial] = useState('');
-	const [publishDate, setPublishDate] = useState('');
+	const [bookSel, setBookSel] = useState(null);
+
+	const [idBookCustom, setIdBookCustom] = useState('');
+	const [units, setUnits] = useState(1);
+	const [unitsNow, setUnitsNow] = useState(1);
+	const [purchaseDate, setPurchaseDate] = useState('');
 
 	const [searchTermError, setSearchTermError] = useState(false);
 	const [searchSubmitError, setSearchSubmitError] = useState(false);
-	const [isbnError, setIsbnError] = useState(false);
-	const [titleError, setTitleError] = useState(false);
-	const [authorError, setAuthorError] = useState(false);
-	const [editorialError, setEditorialError] = useState(false);
-	const [publishDateError, setPublishDateError] = useState(false);
+
+	const [idBookCustomError, setIdBookCustomError] = useState(false);
+	const [unitsError, setUnitsError] = useState(false);
+	const [unitsNowError, setUnitsNowError] = useState(false);
+	const [purchaseDateError, setPurchaseDateError] = useState(false);
 
 	const handleSubmitSearch = async (e) => {
 		e.preventDefault();
@@ -49,8 +51,14 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const handleSubmitBookSel = async (e) => {
 		e.preventDefault();
 		if(bookSelId) {
-			console.log(bookSelId);
-			// Mostrar 3º parte formulario
+			const bookResult = await getBookById(bookSelId);
+			if(bookResult !== null) {
+				setBookSel(bookResult);
+				setPurchaseDate(formatData(Date.now()));
+				document.getElementById('addBookForm').classList.remove('hide');
+				document.getElementById('searchForm').classList.add('hide');
+				document.getElementById('bookSelForm').classList.add('hide');
+			}
 		}
 	}
 
@@ -62,17 +70,15 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const handleReset = (e) => {
 		e && e.preventDefault();
 
-		setIsbn('');
-		setTitle('');
-		setAuthor('');
-		setEditorial('');
-		setPublishDate('');
+		setIdBookCustom('');
+		setUnits(1);
+		setUnitsNow(1);
+		setPurchaseDate('');
 
-		setIsbnError(false);
-		setTitleError(false);
-		setAuthorError(false);
-		setEditorialError(false);
-		setPublishDateError(false);
+		setIdBookCustomError(false);
+		setUnitsError(false);
+		setUnitsNowError(false);
+		setPurchaseDateError(false);
 
 		onCancel();
 	};
@@ -84,7 +90,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmitSearch}>
+			<form onSubmit={handleSubmitSearch} id="searchForm">
 				<p>Busca el libro que quieras en la base de datos de <strong>Google Book</strong>, selecciona el correcto y después añade sus datos a tu colección.</p>
 				<InputSearch
 					id="searchTerm"
@@ -95,7 +101,8 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					onChange={({target: { value }}) => setSearchTerm(value)}
 				/>
 			</form>
-			<form onSubmit={handleSubmitBookSel}>
+
+			<form onSubmit={handleSubmitBookSel} id="bookSelForm">
 				<ListBooks list={books} updateBookSel={setBookSelId} noResults={searchSubmitError} />
 				{(books.length > 0 && !searchSubmitError) &&
 					<div className="actionButtons">
@@ -104,52 +111,48 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					</div>
 				}
 			</form>
-			<form onSubmit={handleSubmitAddBook} className="form hide">
-				<p>Revisa que todos los datos del libro sean correctos y añade el libro a tu colección.</p>
+
+			<form onSubmit={handleSubmitAddBook} id="addBookForm" className="form hide">
+				<p>Rellena el resto de datos del libro que has seleccionado antes de añadirlo a tu colección.</p>
+				{bookSel !== null && <BookCard book={bookSel} />}
+				<p>Category</p>
 				<Input
-					id="isbn"
-					label="ISBN"
-					value={isbn}
-					hasError={isbnError}
+					id="idBookCustom"
+					label="Identificativo libro en tu biblioteca"
+					value={idBookCustom}
+					hasError={idBookCustomError}
 					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setIsbn(value)}
+					onChange={({target: { value }}) => setIdBookCustom(value)}
 					className="wFull"
 				/>
 				<Input
-					id="title"
-					label="Título"
-					value={title}
-					hasError={titleError}
+					id="units"
+					label="Unidades disponibles"
+					value={units}
+					hasError={unitsError}
 					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setTitle(value)}
-					className="wFull"
-				/>
-				<Input
-					id="author"
-					label="Autor"
-					value={author}
-					hasError={authorError}
-					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setAuthor(value)}
-					className="wFull"
-				/>
-				<Input
-					id="editorial"
-					label="Editorial"
-					value={editorial}
-					hasError={editorialError}
-					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setEditorial(value)}
+					onChange={({target: { value }}) => setUnits(value)}
 					className="wHalf"
+					type="number"
 				/>
 				<Input
-					id="publishDate"
-					label="Fecha de publicación"
-					value={publishDate}
-					hasError={publishDateError}
+					id="unitsNow"
+					label="Uds. disponibles actualmente"
+					value={unitsNow}
+					hasError={unitsNowError}
 					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setPublishDate(value)}
+					onChange={({target: { value }}) => setUnitsNow(value)}
 					className="wHalf"
+					type="number"
+				/>
+				<Input
+					id="purchaseDate"
+					label="Fecha adquisición"
+					value={purchaseDate}
+					hasError={purchaseDateError}
+					errorMessage={getLiteral('error-required-field')}
+					onChange={({target: { value }}) => setPurchaseDate(value)}
+					className="wFull"
 				/>
 				<div className="actionButtons">
 					<Button onClick={handleReset} className="button_transparent">Cancelar</Button>

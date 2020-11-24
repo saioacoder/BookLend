@@ -36,11 +36,12 @@
 		line-height: $line_height_xs;
 		margin-top: 3px;
 	}
-	&_publishDate {
+	&_other {
 		color: $color_highlight_dark;
 		font-size: $font_size_xxs;
 		font-weight: 500;
 		line-height: $line_height_xs;
 		margin-top: 3px;
+		text-transform: uppercase;
 	}
 }

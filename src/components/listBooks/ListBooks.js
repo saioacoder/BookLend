@@ -1,21 +1,9 @@
 import getLiteral from '../literals';
+import { getAuthors } from '../../logic/book';
 
 import './ListBooks.scss';
 
 const ListBooks = ({ list, updateBookSel, noResults }) => {
-
-	function getAuthors(authors) {
-		if(authors) {
-			return authors.map((item, i) => {
-				if(i !== authors.length - 1 && authors.length > 1) {
-					return `${item}, `;
-				}
-				return item;
-			});
-		} else {
-			return '';
-		}
-	}
 
 	const selectBook = e => {
 		const allItems = document.querySelectorAll('.listBooks_item');
@@ -34,7 +22,7 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 			{!noResults ?
 				<div className="listBooks">
 					{list.map(({ volumeInfo }) => {
-						const { title, imageLinks, authors, publishedDate, industryIdentifiers } = volumeInfo;
+						const { title, imageLinks, authors, publishedDate, industryIdentifiers, language } = volumeInfo;
 						const smallThumbnail = imageLinks ? imageLinks.smallThumbnail : '';
 						const cleanTitle = title.replace(/\u00a0/g, ' ');
 						const authorsList = getAuthors(authors);
@@ -52,7 +40,7 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 								<div>
 									<h3 className="listBooks_title">{cleanTitle}</h3>
 									<p className="listBooks_author">{authorsList}</p>
-									<p className="listBooks_publishDate">{publishedYear}</p>
+									<p className="listBooks_other">{publishedYear} / {language}</p>
 								</div>
 							</div>
 						);

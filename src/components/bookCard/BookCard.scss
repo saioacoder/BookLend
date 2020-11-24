@@ -1,0 +1,29 @@
+@import '../../styles/variables';
+
+.bookCard {
+	align-items: flex-start;
+	display: flex;
+	margin-bottom: $spacing_base;
+	margin-top: $spacing_base;
+	width: 100%;
+	&_image {
+		border: 1px solid $color_base_extraLight;
+		border-radius: $radius_base;
+		margin-right: $spacing_base;
+		width: 150px;
+	}
+	&_title {
+		font-size: $font_size_l;
+		font-weight: $font_weight_bold;
+		line-height: $line_height_xs;
+		margin-bottom: $spacing_xs;
+	}
+	&_data {
+		font-size: $font_size_s;
+	}
+	&_description {
+		font-size: $font_size_s;
+		font-style: italic;
+		margin-top: $spacing_s;
+	}
+}
