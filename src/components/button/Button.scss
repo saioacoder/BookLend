@@ -6,11 +6,11 @@
 	border-radius: $radius_s;
 	color: $color_background;
 	cursor: pointer;
-	font-size: $font_size_s;
+	font-size: $font_size_xs;
 	font-weight: $font_weight_bold;
 	letter-spacing: 1px;
 	margin-top: $spacing_base;
-	padding: $spacing_xs 17px;
+	padding: 11px 17px;
 	text-transform: uppercase;
 	transition: all $transition_duration;
 	&:hover {
@@ -43,9 +43,5 @@
 		&:hover {
 			color: $color_highlight_dark;
 		}
-	}
-	&_small {
-		font-size: $font_size_xs;
-		padding: $spacing_xs $spacing_s;
 	}
 }

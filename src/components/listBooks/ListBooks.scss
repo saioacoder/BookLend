@@ -1,0 +1,46 @@
+@import '../../variables';
+
+.listBooks {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-column-gap: $spacing_s;
+	grid-row-gap: $spacing_xs;
+	margin-top: $spacing_base;
+	&_item {
+		align-items: flex-start;
+		border-right: 5px solid transparent;
+		border-radius: $radius_s;
+		cursor: pointer;
+		display: flex;
+		padding: $spacing_xs;
+		&:hover, &__sel {
+			background-color: $color_highlight_extraLight;
+			border-color: $color_highlight;
+		}
+	}
+	&_image {
+		border: 1px solid $color_base_extraLight;
+		border-radius: $radius_s;
+		margin-right: $spacing_xs;
+		width: 40px;
+	}
+	&_title {
+		font-size: $font_size_s;
+		font-weight: $font_weight_bold;
+		line-height: $line_height_xs;
+	}
+	&_author {
+		color: $color_base_medium;
+		font-size: $font_size_xxs;
+		font-style: italic;
+		line-height: $line_height_xs;
+		margin-top: 3px;
+	}
+	&_publishDate {
+		color: $color_highlight_dark;
+		font-size: $font_size_xxs;
+		font-weight: 500;
+		line-height: $line_height_xs;
+		margin-top: 3px;
+	}
+}

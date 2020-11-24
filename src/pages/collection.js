@@ -3,11 +3,13 @@ import { useSelector } from 'react-redux';
 import { getLibraryById } from '../logic/library';
 
 import Button from '../components/button';
-import SearchBox from '../components/searchBox';
+import InputSearch from '../components/inputSearch';
 import CollectionList from '../components/collectionList';
+import AddBookForm from '../components/addBookForm';
 import Modal from '../components/modal';
 
 const Collection = () => {
+	const [modalAddBookIsOpen, setModalAddBookIsOpen] = useState(false);
 	const [library, setLibrary] = useState({});
 	const idLibrary = useSelector(state => state.user.idLibrary);
 	const {name} = library;
@@ -29,15 +31,25 @@ const Collection = () => {
 					<h1 className="page_header_title">Colección de libros</h1>
 					<h2 className="page_header_subtitle">Biblioteca: <strong>{name}</strong></h2>
 				</div>
-				<Button className="button_small">Nuevo libro</Button>
+				<Button onClick={() => setModalAddBookIsOpen(true)}>Añadir libro</Button>
 			</header>
-			<SearchBox />
+			{/* <InputSearch
+				id="search"
+				label="Busca libros en la colección"
+				value=""
+				hasError=""
+				onChange=""
+			/> */}
 			<CollectionList />
 			<Modal
-				title="Nuevo libro"
-				isOpen={false}
+				title="Añadir libro a la colección"
+				isOpen={modalAddBookIsOpen}
+				onClose={() => setModalAddBookIsOpen(false)}
 			>
-				Formulario nuevo libro
+				<AddBookForm
+					isModalClosed={modalAddBookIsOpen}
+					onCancel={() => setModalAddBookIsOpen(false)}
+				/>
 			</Modal>
 		</>
 	);

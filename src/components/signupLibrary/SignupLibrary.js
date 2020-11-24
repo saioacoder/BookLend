@@ -39,8 +39,8 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [categoriesError, setCategoriesError] = useState(false);
 	const [signupError, setSignupError] = useState('');
 
-	const handleSubmit = async (event) => {
-		event.preventDefault();
+	const handleSubmit = async (e) => {
+		e.preventDefault();
 
 		setNameError(false);
 		setLastnameError(false);
@@ -127,8 +127,8 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		}
 	};
 
-	const handleReset = (event) => {
-		event && event.preventDefault();
+	const handleReset = (e) => {
+		e && e.preventDefault();
 
 		setName('');
 		setLastname('');
@@ -221,6 +221,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setIdLibrary(validateUrl(value))}
 				className="wFull"
+				url="https://www.booklet.com/"
 			/>
 			<Input
 				id="addressLibrary"
