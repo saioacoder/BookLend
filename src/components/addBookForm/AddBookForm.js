@@ -8,8 +8,6 @@ import ListBooks from '../listBooks';
 import getLiteral from '../literals';
 import { getBooksByTitle } from '../../logic/book';
 
-import './AddBookForm.scss';
-
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [searchTerm, setSearchTerm] = useState('');
 	const [searchTermError, setSearchTermError] = useState(false);
@@ -47,7 +45,13 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 		e.preventDefault();
 		if(bookSelId) {
 			console.log(bookSelId);
+			// Mostrar 3º parte formulario
 		}
+	}
+
+	const handleSubmitAddBook = async (e) => {
+		e.preventDefault();
+
 	}
 
 	const handleReset = (e) => {
@@ -94,7 +98,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					</div>
 				}
 			</form>
-			<form>
+			<form onSubmit={handleSubmitAddBook} className="form">
 				<p>Revisa que todos los datos del libro sean correctos y añade el libro a tu colección.</p>
 				<Input
 					id="isbn"

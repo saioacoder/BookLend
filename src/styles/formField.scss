@@ -1,6 +1,4 @@
-@import '../../variables';
-
-.input {
+.formField {
 	margin-top: $spacing_m;
 	&_field {
 		border: 1px solid $color_base_light;
@@ -25,8 +23,8 @@
 			color: $color_base_medium;
 		}
 	}
-	&.input_error {
-		.input_field {
+	&_error {
+		.formField_field {
 			border-color: $color_error;
 			label {
 				color: $color_error;

@@ -8,8 +8,6 @@ import { userSignup } from '../../logic/user';
 import { getLibraryById } from '../../logic/library';
 import { setUser } from '../../redux/actions/userActions';
 
-import './SignupUser.scss';
-
 const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
 
@@ -149,7 +147,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 	});
 
 	return (
-		<form onSubmit={handleSubmit} className="signup">
+		<form onSubmit={handleSubmit} className="form">
 			<Input
 				id="idLibraryUser"
 				label="Id biblioteca"
@@ -233,10 +231,12 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 				className="wHalf"
 			/>
 
-			{signupError && <p className="signup_error">{signupError}</p>}
-
-			<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
-			<Button>Enviar</Button>
+			{signupError && <p className="form_error">{signupError}</p>}
+			
+			<div className="actionButtons">
+				<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
+				<Button>Enviar</Button>
+			</div>
 		</form>
 	);
 };

@@ -1,4 +1,4 @@
-@import '../../variables';
+@import '../../styles/variables';
 
 .header {
    .container {
@@ -40,9 +40,6 @@
       &:hover {
          color: $color_highlight_dark;
       }
-      // &:hover &_icon {
-      //    transform: rotate(-90deg);
-      // }
    }
    &_nav {
       &_item {

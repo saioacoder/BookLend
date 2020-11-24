@@ -1,10 +1,8 @@
-@import '../../mixins';
-
-.signup {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: space-between;
-   h2 {
+.form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	h2 {
       font-size: $font_size_base;
       font-weight: $font_weight_bold;
       margin-bottom: $spacing_xxs;
@@ -14,16 +12,16 @@
          margin-top: $spacing_l;
       }
    }
-   &_error {
+	&_error {
       @include formErrorMessage;
    }
-   .button {
-      margin-left: $spacing_xs;
-      &:first-of-type {
-         margin-left: auto;
-      }
-   }
-   .button_inverse {
+}
+.actionButtons {
+	display: flex;
+   justify-content: flex-end;
+   margin-top: $spacing_base;
+	width: 100%;
+	.button_inverse {
       margin-left: initial !important;
       margin-right: auto;
    }

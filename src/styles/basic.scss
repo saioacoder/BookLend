@@ -1,0 +1,21 @@
+html {
+	font-size: 62.5%;
+	min-height: 100%;
+}
+body {
+	color: $color_base;
+	font-family: $font_family;
+	font-size: $font_size_base_px;
+	font-size: $font_size_base;
+	font-weight: $font_weight_base;
+	line-height: $line_height_base;
+}
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 $spacing_base;
+	width: $width_desktop;
+}
+strong {
+	font-weight: $font_weight_bold;
+}

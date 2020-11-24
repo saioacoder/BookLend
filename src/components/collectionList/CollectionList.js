@@ -1,5 +1,3 @@
-import './CollectionList.scss';
-
 const CollectionList = () => {
 	return (
 		<div className="CollectionList">

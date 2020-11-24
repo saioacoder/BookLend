@@ -1,93 +1,12 @@
-@import './variables';
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600&display=swap');
 
+@import './styles/variables';
+@import './styles/mixins';
 
-/* Reset */
-* {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	-webkit-font-smoothing: antialiased;
-   -moz-osx-font-smoothing: grayscale
-}
-a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, li, ol, p, select, span, table, textarea, ul {
-	background-color: transparent;
-	border: 0;
-	color: inherit;
-	font-size: 100%;
-	font-style: inherit;
-	font-weight: inherit;
-	outline: 0;
-	vertical-align: baseline;
-}
-html {
-	-webkit-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%
-}
-a {
-	text-decoration: none;
-}
-button, input, select, textarea {
-	appearance: none;
-	font-family: $font_family;
-}
+@import './styles/reset.scss';
 
-
-/* Basic */
-html {
-	font-size: 62.5%;
-	min-height: 100%;
-}
-body {
-	color: $color_base;
-	font-family: $font_family;
-	font-size: $font_size_base_px;
-	font-size: $font_size_base;
-	font-weight: $font_weight_base;
-	line-height: $line_height_base;
-}
-strong {
-	font-weight: $font_weight_bold;
-}
-.container {
-	margin-left: auto;
-	margin-right: auto;
-	padding: 0 $spacing_base;
-	width: $width_desktop;
-}
-.page_header {
-	align-items: center;
-	display: flex;
-	margin-bottom: $spacing_xxl;
-	&_title {
-		font-size: $font_size_xl;
-		margin-bottom: $spacing_xxs;
-		text-transform: uppercase;
-	}
-	&_subtitle {
-		color: $color_base_medium;
-		font-size: $font_size_s;
-		font-style: italic;
-	}
-	.button {
-		margin-left: auto;
-		margin-top: 0;
-	}
-}
-.actionButtons {
-	display: flex;
-	justify-content: flex-end;
-}
-
-
-
-/* Reusable clases on HTML */
-.hide {
-	display: none !important;
-}
-.wHalf {
-	width: 49%;
-}
-.wFull {
-	width: 100%;
-}
+@import './styles/basic.scss';
+@import './styles/form.scss';
+@import './styles/formField.scss';
+@import './styles/pageHeader.scss';
+@import './styles/reusableClases.scss';

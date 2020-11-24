@@ -1,5 +1,3 @@
-import './Input.scss';
-
 const Input = ({
 	id,
 	label,
@@ -13,8 +11,8 @@ const Input = ({
 }) => {
 	className = className ? ` ${className}` : '';
 	return (
-		<div className={hasError ? `input input_error${className}` : `input${className}`}>
-			<div className="input_field">
+		<div className={hasError ? `formField formField_error${className}` : `formField${className}`}>
+			<div className="formField_field">
 				<label>{label}</label>
 				<input
 					type={type}
@@ -25,7 +23,7 @@ const Input = ({
 					onChange={onChange}
 				/>
 			</div>
-			{(hasError && errorMessage) && <p className="input_errorMessage">{errorMessage}</p>}
+			{(hasError && errorMessage) && <p className="formField_errorMessage">{errorMessage}</p>}
 		</div>
 	);
 };

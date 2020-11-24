@@ -1,4 +1,4 @@
-@import '../../variables';
+@import '../../styles/variables';
 
 .button, .button_inverse, .button_neutral, .button_transparent, .button_small {
 	background-color: $color_highlight;
@@ -9,7 +9,6 @@
 	font-size: $font_size_xs;
 	font-weight: $font_weight_bold;
 	letter-spacing: 1px;
-	margin-top: $spacing_base;
 	padding: 11px 17px;
 	text-transform: uppercase;
 	transition: all $transition_duration;

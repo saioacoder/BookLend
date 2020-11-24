@@ -14,8 +14,8 @@ const InputUrl = ({
 }) => {
 	className = className ? ` ${className}` : '';
 	return (
-		<div className={hasError ? `inputUrl inputUrl_error${className}` : `inputUrl${className}`}>
-			<div className="inputUrl_field">
+		<div className={hasError ? `inputUrl formField formField_error${className}` : `inputUrl formField${className}`}>
+			<div className="formField_field">
 				<label>{label}</label>
 				<span className="inputUrl_start">{url}</span>
 				<input
@@ -27,7 +27,7 @@ const InputUrl = ({
 					onChange={onChange}
 				/>
 			</div>
-			{(hasError && errorMessage) && <p className="inputUrl_errorMessage">{errorMessage}</p>}
+			{(hasError && errorMessage) && <p className="formField_errorMessage">{errorMessage}</p>}
 		</div>
 	);
 };

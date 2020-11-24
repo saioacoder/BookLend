@@ -7,8 +7,6 @@ import Input from '../input';
 import Button from '../button';
 import getLiteral from '../literals';
 
-import './Login.scss';
-
 const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
 
@@ -69,7 +67,7 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 	});
 
 	return (
-		<form onSubmit={handleSubmit} className="signup">
+		<form onSubmit={handleSubmit} className="form">
 			<Input
 				id="emailUserLogin"
 				label="Email"
@@ -90,10 +88,12 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 				type="password"
 			/>
 
-			{loginError && <p className="signup_error">{loginError}</p>}
+			{loginError && <p className="form_error">{loginError}</p>}
 
-			<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
-			<Button>Entrar</Button>
+			<div className="actionButtons">
+				<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
+				<Button>Entrar</Button>
+			</div>
 		</form>
 	)
 }

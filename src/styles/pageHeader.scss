@@ -1,0 +1,19 @@
+.page_header {
+	align-items: center;
+	display: flex;
+	margin-bottom: $spacing_xxl;
+	&_title {
+		font-size: $font_size_xl;
+		margin-bottom: $spacing_xxs;
+		text-transform: uppercase;
+	}
+	&_subtitle {
+		color: $color_base_medium;
+		font-size: $font_size_s;
+		font-style: italic;
+	}
+	.button {
+		margin-left: auto;
+		margin-top: 0;
+	}
+}

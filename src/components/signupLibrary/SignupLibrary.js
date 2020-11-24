@@ -9,8 +9,6 @@ import { adminSignup } from '../../logic/user';
 import { librarySignup, getLibraryById, validateUrl } from '../../logic/library';
 import { setUser } from '../../redux/actions/userActions';
 
-import './SignupLibrary.scss';
-
 const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
 
@@ -164,7 +162,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	});
 
 	return (
-		<form onSubmit={handleSubmit} className="signup">
+		<form onSubmit={handleSubmit} className="form signup">
 			<h2>Datos del administrador</h2>
 			<Input
 				id="nameAdmin"
@@ -269,9 +267,12 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				className="wFull"
 			/>
 
-			{signupError && <p className="signup_error">{signupError}</p>}
-			<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
-			<Button>Enviar</Button>
+			{signupError && <p className="form_error">{signupError}</p>}
+
+			<div className="actionButtons">
+				<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
+				<Button>Enviar</Button>
+			</div>
 		</form>
 	);
 };
