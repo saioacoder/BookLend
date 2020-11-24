@@ -1,14 +1,20 @@
+import getLiteral from '../literals';
+
 import './ListBooks.scss';
 
-const ListBooks = ({ list, updateBookSel }) => {
+const ListBooks = ({ list, updateBookSel, noResults }) => {
 
 	function getAuthors(authors) {
-		return authors.map((item, i) => {
-			if(i !== authors.length - 1 && authors.length > 1) {
-				return `${item}, `;
-			}
-			return item;
-		});
+		if(authors) {
+			return authors.map((item, i) => {
+				if(i !== authors.length - 1 && authors.length > 1) {
+					return `${item}, `;
+				}
+				return item;
+			});
+		} else {
+			return '';
+		}
 	}
 
 	const selectBook = e => {
@@ -24,30 +30,38 @@ const ListBooks = ({ list, updateBookSel }) => {
 	}
 
 	return (
-		<div className="listBooks">
-			{list.map(({ id, volumeInfo }) => {
-				const { title, imageLinks, authors, publishedDate } = volumeInfo;
-				const { smallThumbnail } = imageLinks;
-				const cleanTitle = title.replace(/\u00a0/g, ' ');
-				const authorsList = getAuthors(authors);
-				const publishYear = publishedDate.slice(0, 4);
-				return (
-					<div
-						key={id}
-						id={id}
-						onClick={selectBook}
-						className="listBooks_item"
-					>
-						<img src={smallThumbnail} className="listBooks_image" alt="" />
-						<div>
-							<h3 className="listBooks_title">{cleanTitle}</h3>
-							<p className="listBooks_author">{authorsList}</p>
-							<p className="listBooks_publishDate">{publishYear}</p>
-						</div>
-					</div>
-				);
-			})}
-		</div>
+		<>
+			{!noResults ?
+				<div className="listBooks">
+					{list.map(({ volumeInfo }) => {
+						const { title, imageLinks, authors, publishedDate, industryIdentifiers } = volumeInfo;
+						const smallThumbnail = imageLinks ? imageLinks.smallThumbnail : '';
+						const cleanTitle = title.replace(/\u00a0/g, ' ');
+						const authorsList = getAuthors(authors);
+						const publishedYear = publishedDate ? publishedDate.slice(0, 4) : '';
+						const isbn = industryIdentifiers ? industryIdentifiers[0].identifier : '';
+
+						return (
+							<div
+								key={isbn}
+								id={isbn}
+								onClick={selectBook}
+								className="listBooks_item"
+							>
+								<img src={smallThumbnail} className="listBooks_image" alt="" />
+								<div>
+									<h3 className="listBooks_title">{cleanTitle}</h3>
+									<p className="listBooks_author">{authorsList}</p>
+									<p className="listBooks_publishDate">{publishedYear}</p>
+								</div>
+							</div>
+						);
+					})}
+				</div>
+			:
+				<div class="form_error">{getLiteral('error-no-results')}</div>
+			}
+		</>
 	);
 
 };

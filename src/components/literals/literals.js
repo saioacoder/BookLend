@@ -4,6 +4,7 @@ const LITERALS = {
 	'error-library-not-found': '¡La biblioteca no existe! Prueba de nuevo.',
 	'error-library-not-on-your-city': '¡No puedes registrarte en esa biblioteca! No está en tu misma ciudad.',
 	'error-library-exists': '¡La biblioteca ya existe! Prueba con otra Url.',
+	'error-no-results': '¡La búsqueda no ha dado resultados! Vuelve a intentarlo.',
 
 	'auth/invalid-email': '¡El email no tiene el formato correcto! Revísalo.',
 	'auth/email-already-in-use': '¡El email ya existe! Prueba con otro diferente.',

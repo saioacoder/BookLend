@@ -10,7 +10,6 @@ import { getBooksByTitle } from '../../logic/book';
 
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [searchTermError, setSearchTermError] = useState(false);
 	const [books, setBooks] = useState([]);
 	const [bookSelId, setBookSelId] = useState('');
 	const [isbn, setIsbn] = useState('');
@@ -19,6 +18,8 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [editorial, setEditorial] = useState('');
 	const [publishDate, setPublishDate] = useState('');
 
+	const [searchTermError, setSearchTermError] = useState(false);
+	const [searchSubmitError, setSearchSubmitError] = useState(false);
 	const [isbnError, setIsbnError] = useState(false);
 	const [titleError, setTitleError] = useState(false);
 	const [authorError, setAuthorError] = useState(false);
@@ -32,11 +33,15 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 		if(!searchTerm) {
 			setSearchTermError(true);
 		} else {
-			const booksResult = await getBooksByTitle(searchTerm, 40);
-			if(booksResult !== null) {
+			const optimizedSearchTerm = searchTerm.replace(' ', '+');
+			const booksResult = await getBooksByTitle(optimizedSearchTerm, 40);
+			if(booksResult !== null && booksResult !== undefined) {
 				setBooks(booksResult);
 				setSearchTerm('');
 				setSearchTermError(false);
+				setSearchSubmitError(false);
+			} else {
+				setSearchSubmitError(true);
 			}
 		}
 	}
@@ -80,25 +85,26 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	return (
 		<>
 			<form onSubmit={handleSubmitSearch}>
-				<p>Busca un libro en la base de datos de <strong>Google Book</strong> y después añade sus datos a tu colección.</p>
+				<p>Busca el libro que quieras en la base de datos de <strong>Google Book</strong>, selecciona el correcto y después añade sus datos a tu colección.</p>
 				<InputSearch
-					id="search-google-api"
+					id="searchTerm"
 					label="Busca por título"
 					value={searchTerm}
 					hasError={searchTermError}
+					errorMessage={getLiteral('error-required-field')}
 					onChange={({target: { value }}) => setSearchTerm(value)}
 				/>
 			</form>
 			<form onSubmit={handleSubmitBookSel}>
-				<ListBooks list={books} updateBookSel={setBookSelId} />
-				{books.length > 0 &&
+				<ListBooks list={books} updateBookSel={setBookSelId} noResults={searchSubmitError} />
+				{(books.length > 0 && !searchSubmitError) &&
 					<div className="actionButtons">
 						<Button className="button_transparent">Cancelar</Button>
-						<Button>Seleccionar libro</Button>
+						<Button>Importar datos libro</Button>
 					</div>
 				}
 			</form>
-			<form onSubmit={handleSubmitAddBook} className="form">
+			<form onSubmit={handleSubmitAddBook} className="form hide">
 				<p>Revisa que todos los datos del libro sean correctos y añade el libro a tu colección.</p>
 				<Input
 					id="isbn"
