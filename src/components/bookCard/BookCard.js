@@ -1,30 +1,25 @@
-import { getAuthors } from '../../logic/book';
+import { getBookFormated } from '../../logic/book';
 
 import './BookCard.scss';
 
 const BookCard = ({ book }) => {
-	console.log(book);
-	const { title, imageLinks, authors, publishedDate, industryIdentifiers, language, pageCount, description, publisher } = book.volumeInfo;
-	const thumbnail = imageLinks ? imageLinks.thumbnail : '';
-	const cleanTitle = title.replace(/\u00a0/g, ' ');
-	const authorsList = getAuthors(authors);
-	const publishedYear = publishedDate ? publishedDate.slice(0, 4) : '';
-	const isbn = industryIdentifiers ? industryIdentifiers[0].identifier : '';
-	const shortDescription = `${description.slice(0, 300)}...`;
+	const { idBook, title, author, editorial, publishDate, language, synopsis, cover, pageNum } = getBookFormated(book);
+	const shortSynopis = synopsis ? `${synopsis.slice(0, 300)}...` : '';
+
 	return (
 		<div className="bookCard">
-			<img src={thumbnail} className="bookCard_image" alt="" />
+			<img src={cover} className="bookCard_image" alt="" />
 			<div>
-				<h3 className="bookCard_title">{cleanTitle}</h3>
+				<h3 className="bookCard_title">{title}</h3>
 				<ul className="bookCard_data">
-					<p><strong>Autores ›</strong> {authorsList}</p>
-					<p><strong>Editorial ›</strong> {publisher}</p>
+					<p><strong>Autores ›</strong> {author}</p>
+					<p><strong>Editorial ›</strong> {editorial}</p>
 					<p><strong>Idioma ›</strong> {language}</p>
-					<p><strong>Páginas ›</strong> {pageCount}</p>
-					<p><strong>Fecha de publicación ›</strong> {publishedYear}</p>
-					<p><strong>ISBN ›</strong> {isbn}</p>
+					<p><strong>Páginas ›</strong> {pageNum}</p>
+					<p><strong>Fecha de publicación ›</strong> {publishDate}</p>
+					<p><strong>ISBN ›</strong> {idBook}</p>
 				</ul>
-				<div className="bookCard_description">{shortDescription}</div>
+				<div className="bookCard_description">{shortSynopis}</div>
 			</div>
 		</div>
 	);

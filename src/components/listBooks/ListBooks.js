@@ -27,23 +27,27 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 						const cleanTitle = title.replace(/\u00a0/g, ' ');
 						const authorsList = getAuthors(authors);
 						const publishedYear = publishedDate ? publishedDate.slice(0, 4) : '';
-						const isbn = industryIdentifiers ? industryIdentifiers[0].identifier : '';
-
-						return (
-							<div
-								key={isbn}
-								id={isbn}
-								onClick={selectBook}
-								className="listBooks_item"
-							>
-								<img src={smallThumbnail} className="listBooks_image" alt="" />
-								<div>
-									<h3 className="listBooks_title">{cleanTitle}</h3>
-									<p className="listBooks_author">{authorsList}</p>
-									<p className="listBooks_other">{publishedYear} / {language}</p>
+						const isbn13Item = industryIdentifiers ? industryIdentifiers.filter(item => item.type === 'ISBN_13') : [];
+						const isbn = isbn13Item.length > 0 ? isbn13Item[0].identifier : '';
+						if(isbn !== '') {
+							return (
+								<div
+									key={isbn}
+									id={isbn}
+									onClick={selectBook}
+									className="listBooks_item"
+								>
+									<img src={smallThumbnail} className="listBooks_image" alt="" />
+									<div>
+										<h3 className="listBooks_title">{cleanTitle}</h3>
+										<p className="listBooks_author">{authorsList}</p>
+										<p className="listBooks_other">{publishedYear} / {language}</p>
+									</div>
 								</div>
-							</div>
-						);
+							);
+						} else {
+							return;
+						}
 					})}
 				</div>
 			:

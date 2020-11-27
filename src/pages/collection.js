@@ -49,6 +49,7 @@ const Collection = () => {
 				<AddBookForm
 					isModalClosed={modalAddBookIsOpen}
 					onCancel={() => setModalAddBookIsOpen(false)}
+					onSuccess={() => setModalAddBookIsOpen(false)}
 				/>
 			</Modal>
 		</>

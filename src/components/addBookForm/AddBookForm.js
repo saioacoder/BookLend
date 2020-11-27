@@ -1,15 +1,21 @@
 import { useState, useEffect } from 'react';
-//import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 import Input from '../input';
 import InputSearch from '../inputSearch';
+import Select from '../select';
 import Button from '../button';
 import ListBooks from '../listBooks';
 import BookCard from '../bookCard';
 import getLiteral from '../literals';
-import { getBooksByTitle, getBookById, formatData } from '../../logic/book';
+import { getLibraryById, addBookToLibrary } from '../../logic/library';
+import { getBooksByTitle, getBookById, getBookFormated, addBookById, formatData } from '../../logic/book';
 
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
+	const user = useSelector(state => state.user);
+	const { idLibrary } = user;
+	const [categories, setCategories] = useState([]);
+
 	const [searchTerm, setSearchTerm] = useState('');
 	const [books, setBooks] = useState([]);
 	const [bookSelId, setBookSelId] = useState('');
@@ -17,16 +23,17 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	const [idBookCustom, setIdBookCustom] = useState('');
 	const [units, setUnits] = useState(1);
-	const [unitsNow, setUnitsNow] = useState(1);
+	const [categoryId, setCategoryId] = useState(0);
 	const [purchaseDate, setPurchaseDate] = useState('');
-
-	const [searchTermError, setSearchTermError] = useState(false);
-	const [searchSubmitError, setSearchSubmitError] = useState(false);
 
 	const [idBookCustomError, setIdBookCustomError] = useState(false);
 	const [unitsError, setUnitsError] = useState(false);
-	const [unitsNowError, setUnitsNowError] = useState(false);
+	const [categoryIdError, setCategoryIdError] = useState(false);
 	const [purchaseDateError, setPurchaseDateError] = useState(false);
+
+	const [searchTermError, setSearchTermError] = useState(false);
+	const [searchSubmitError, setSearchSubmitError] = useState(false);
+	const [submitAddBookError, setSubmitAddBookError] = useState(false);
 
 	const handleSubmitSearch = async (e) => {
 		e.preventDefault();
@@ -49,15 +56,22 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	}
 
 	const handleSubmitBookSel = async (e) => {
+		console.log(books);
 		e.preventDefault();
 		if(bookSelId) {
 			const bookResult = await getBookById(bookSelId);
 			if(bookResult !== null) {
 				setBookSel(bookResult);
 				setPurchaseDate(formatData(Date.now()));
-				document.getElementById('addBookForm').classList.remove('hide');
+
 				document.getElementById('searchForm').classList.add('hide');
 				document.getElementById('bookSelForm').classList.add('hide');
+				document.getElementById('addBookForm').classList.remove('hide');
+
+				const libraryFound = await getLibraryById(idLibrary);
+				if(libraryFound !== null) {
+					setCategories(libraryFound.categories);
+				}
 			}
 		}
 	}
@@ -65,28 +79,86 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const handleSubmitAddBook = async (e) => {
 		e.preventDefault();
 
+		let error = false;
+		if(!idBookCustom) {
+			error = true;
+			setIdBookCustomError(true);
+		}
+		if(!units) {
+			error = true;
+			setUnitsError(true);
+		}
+		if(!categoryId) {
+			error = true;
+			setCategoryIdError(true);
+		}
+		if(!purchaseDate) {
+			error = true;
+			setPurchaseDateError(true);
+		}
+		if(!error) {
+			const addBookToBooksObj = getBookFormated(bookSel);
+			const { idBook } = addBookToBooksObj;
+			delete addBookToBooksObj.idBook;
+			const resultBooks = await addBookById(idBook, addBookToBooksObj);
+			if(!resultBooks) {
+				setSubmitAddBookError(true);
+			} else {
+				const { title } = getBookFormated(bookSel);
+				const addBookToLibraryObj = {
+					categoryId,
+					idBookCustom,
+					title,
+					units,
+					unitsNow: units,
+					purchaseDate
+				};
+				const resultLibrary = await addBookToLibrary(idLibrary, idBook, addBookToLibraryObj);
+				if(!resultLibrary) {
+					setSubmitAddBookError(true);
+				} else {
+					setSubmitAddBookError(false);
+					handleReset();
+					onSuccess();
+				}
+			}
+		} else {
+			setSubmitAddBookError(true);
+		}
 	}
 
 	const handleReset = (e) => {
 		e && e.preventDefault();
 
+		setSearchTerm('');
+		setBooks([]);
+		setBookSelId('');
+		setBookSel(null);
 		setIdBookCustom('');
 		setUnits(1);
-		setUnitsNow(1);
+		setCategoryId(0);
 		setPurchaseDate('');
 
 		setIdBookCustomError(false);
 		setUnitsError(false);
-		setUnitsNowError(false);
+		setCategoryIdError(false);
 		setPurchaseDateError(false);
+		setSearchTermError(false);
+		setSearchSubmitError(false);
+		setSubmitAddBookError(false);
+
+		document.getElementById('searchForm').classList.remove('hide');
+		document.getElementById('bookSelForm').classList.remove('hide');
+		document.getElementById('addBookForm').classList.add('hide');
 
 		onCancel();
 	};
 
 	useEffect(() => {
-		if(!isModalClosed)
+		if(!isModalClosed){
 			handleReset();
-	});
+		}
+	}, [isModalClosed]);
 
 	return (
 		<>
@@ -106,7 +178,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 				<ListBooks list={books} updateBookSel={setBookSelId} noResults={searchSubmitError} />
 				{(books.length > 0 && !searchSubmitError) &&
 					<div className="actionButtons">
-						<Button className="button_transparent">Cancelar</Button>
+						<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
 						<Button>Importar datos libro</Button>
 					</div>
 				}
@@ -115,7 +187,6 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			<form onSubmit={handleSubmitAddBook} id="addBookForm" className="form hide">
 				<p>Rellena el resto de datos del libro que has seleccionado antes de añadirlo a tu colección.</p>
 				{bookSel !== null && <BookCard book={bookSel} />}
-				<p>Category</p>
 				<Input
 					id="idBookCustom"
 					label="Identificativo libro en tu biblioteca"
@@ -123,7 +194,17 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					hasError={idBookCustomError}
 					errorMessage={getLiteral('error-required-field')}
 					onChange={({target: { value }}) => setIdBookCustom(value)}
-					className="wFull"
+					className="wHalf"
+				/>
+				<Select
+					id="categoriesLibrary"
+					label="Categorías"
+					placeholder="Elige una categoría"
+					hasError={categoryIdError}
+					errorMessage={getLiteral('error-required-field')}
+					onChange={({target: { value }}) => setCategoryId(value)}
+					options={categories}
+					className="wHalf"
 				/>
 				<Input
 					id="units"
@@ -136,23 +217,13 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					type="number"
 				/>
 				<Input
-					id="unitsNow"
-					label="Uds. disponibles actualmente"
-					value={unitsNow}
-					hasError={unitsNowError}
-					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setUnitsNow(value)}
-					className="wHalf"
-					type="number"
-				/>
-				<Input
 					id="purchaseDate"
 					label="Fecha adquisición"
 					value={purchaseDate}
 					hasError={purchaseDateError}
 					errorMessage={getLiteral('error-required-field')}
 					onChange={({target: { value }}) => setPurchaseDate(value)}
-					className="wFull"
+					className="wHalf"
 				/>
 				<div className="actionButtons">
 					<Button onClick={handleReset} className="button_transparent">Cancelar</Button>

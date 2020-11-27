@@ -1,0 +1,25 @@
+@import '../../styles/variables';
+
+.select {
+	.formField_field {
+		position: relative;
+		select {
+			cursor: pointer;
+			font-size: $font_size_base;
+			padding: $spacing_s;
+			text-transform: capitalize;
+			width: 100%;
+		}
+		&:after {
+			content: '›';
+			display: inline-block;
+			font-size: 2.5rem;
+			font-weight: $font_weight_bold;
+			line-height: 0;
+			position: absolute;
+			right: 15px;
+			top: 25px;
+			transform: rotate(90deg);
+		}
+	}
+}

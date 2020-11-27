@@ -1,7 +1,11 @@
-import { addObjectWithId, getObjectById } from '../services/data';
+import { addObjectWithId, getObjectById, addObjectToSubcollectionWithId } from '../services/data';
 
 export async function librarySignup(idLibrary, name, address, postalCode, city, province, categories) {
 	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province, categories });
+}
+
+export async function addBookToLibrary(idLibrary, idBook, book) {
+	return await addObjectToSubcollectionWithId('libraries', idLibrary, 'collection', idBook, book);
 }
 
 export async function getLibraryById(id) {

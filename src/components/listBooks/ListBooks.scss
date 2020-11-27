@@ -33,14 +33,14 @@
 		color: $color_base_medium;
 		font-size: $font_size_xxs;
 		font-style: italic;
-		line-height: $line_height_xs;
-		margin-top: 3px;
+		line-height: $line_height_s;
+		margin-top: 2px;
 	}
 	&_other {
 		color: $color_highlight_dark;
 		font-size: $font_size_xxs;
 		font-weight: 500;
-		line-height: $line_height_xs;
+		line-height: $line_height_s;
 		margin-top: 3px;
 		text-transform: uppercase;
 	}
