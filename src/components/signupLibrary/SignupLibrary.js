@@ -117,7 +117,8 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 					idUser: id,
 					name: user.name,
 					isAdmin: user.isAdmin,
-					idLibrary: user.idLibrary
+					idLibrary: user.idLibrary,
+					nameLibrary: nameLibrary
 				}));
 				handleReset();
 				onSuccess();

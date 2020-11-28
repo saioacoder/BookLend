@@ -12,6 +12,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
 
 	const [idLibrary, setIdLibrary] = useState('');
+	const [nameLibrary, setNameLibrary] = useState('');
 	const [name, setName] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [email, setEmail] = useState('');
@@ -89,6 +90,8 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 			if(libraryFound !== null && libraryFound.city !== city) {
 				error = true;
 				setSignupError(getLiteral('error-library-not-on-your-city'));
+			} else {
+				setNameLibrary(libraryFound.name);
 			}
 		}
 		if(!province) {
@@ -106,7 +109,8 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 					idUser: id,
 					name: user.name,
 					isAdmin: user.isAdmin,
-					idLibrary: user.idLibrary
+					idLibrary: user.idLibrary,
+					nameLibrary: nameLibrary
 				}));
 				handleReset();
 				onSuccess();
@@ -232,7 +236,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 			/>
 
 			{signupError && <p className="form_error">{signupError}</p>}
-			
+
 			<div className="actionButtons">
 				<Button className="button_transparent" onClick={handleReset}>Cancelar</Button>
 				<Button>Enviar</Button>

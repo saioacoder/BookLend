@@ -6,6 +6,7 @@ import { setUser } from '../../redux/actions/userActions';
 import Input from '../input';
 import Button from '../button';
 import getLiteral from '../literals';
+import { getLibraryById } from '../../logic/library';
 
 const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
@@ -37,14 +38,18 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 			if(!success) {
 				setLoginError(getLiteral(error));
 			} else {
-				dispatch(setUser({
-					idUser: id,
-					name: user.name,
-					isAdmin: user.isAdmin,
-					idLibrary: user.idLibrary
-				}));
-				handleReset();
-				onSuccess();
+				const libraryFound = await getLibraryById(user.idLibrary);
+				if(libraryFound !== null) {
+					dispatch(setUser({
+						idUser: id,
+						name: user.name,
+						isAdmin: user.isAdmin,
+						idLibrary: user.idLibrary,
+						nameLibrary: libraryFound.name
+					}));
+					handleReset();
+					onSuccess();
+				}
 			}
 		}
 	};
