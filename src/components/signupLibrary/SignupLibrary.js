@@ -7,6 +7,7 @@ import Button from '../button';
 import getLiteral from '../literals';
 import { adminSignup } from '../../logic/user';
 import { librarySignup, getLibraryById, validateUrl } from '../../logic/library';
+import { setLibrary } from '../../redux/actions/libraryActions';
 import { setUser } from '../../redux/actions/userActions';
 
 const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
@@ -116,9 +117,12 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				dispatch(setUser({
 					idUser: id,
 					name: user.name,
-					isAdmin: user.isAdmin,
+					isAdmin: user.isAdmin
+				}));
+				dispatch(setLibrary({
 					idLibrary: user.idLibrary,
-					nameLibrary: nameLibrary
+					nameLibrary: nameLibrary,
+					categoriesLibrary: splitCategories
 				}));
 				handleReset();
 				onSuccess();

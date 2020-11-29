@@ -1,6 +1,8 @@
 import { signup, login, logout, registerAuthObserver } from '../services/auth';
 import { addObjectWithId, getObjectById } from '../services/data';
 
+
+//
 export async function userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary) {
 	const { success, error, id } = await signup(email, password);
 	const warningNum = 0;
@@ -13,6 +15,8 @@ export async function userSignup(name, lastname, email, password, address, posta
 	return { success: false, error };
 }
 
+
+//
 export async function adminSignup(name, lastname, email, password, idLibrary) {
 	const { success, error, id } = await signup(email, password);
 	const isAdmin = true;
@@ -24,6 +28,8 @@ export async function adminSignup(name, lastname, email, password, idLibrary) {
 	return { success: false, error };
 }
 
+
+//
 export async function userLogin(email, password) {
 	const { success, error, id } = await login(email, password);
 	if(success) {
@@ -33,15 +39,21 @@ export async function userLogin(email, password) {
 	return { success: false, error };
 }
 
+
+//
 export function registerAuthStateChangeHandler(callback) {
 	registerAuthObserver(callback);
 }
 
+
+//
 export async function getUserById(id) {
 	const user = await getObjectById('users', id);
 	return { ...user, idUser: user.id };
 }
 
+
+//
 export function userLogout() {
 	logout();
 }

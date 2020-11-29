@@ -3,11 +3,15 @@ import { addObjectWithId } from '../services/data';
 
 const APIKEY = 'AIzaSyB9_QP9nNFBh57Sd2tbLB-k6ZD_FqTB1zc';
 
+
+// Devuelve todos los libros que corresponden a una palabra clave de la API de Google
 export async function getBooksByTitle(searchTerm, maxResults) {
 	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=${maxResults}&orderBy=relevance&key=${APIKEY}`);
 	return result !== null ? result.data.items : null;
 }
 
+
+// Devuelve un libro con todos sus datos que corresponde a un id de la API de Google
 export async function getBookById(id) {
 	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes/?q=${id}&key=${APIKEY}`);
 	if(result !== null && result !== undefined) {
@@ -17,10 +21,14 @@ export async function getBookById(id) {
 	return null;
 }
 
+
+// Añade un libro usando su id a la BBDD
 export async function addBookById(idBook, book) {
 	return await addObjectWithId('books', idBook, book);
 }
 
+
+// Formatea una fecha (dd-mm-aaaa)
 export function formatData(date) {
 	const dateFormated = new Date(date);
 	const year = dateFormated.getFullYear();
@@ -29,6 +37,8 @@ export function formatData(date) {
 	return `${day}-${month}-${year}`;
 }
 
+
+// Devuelve un string con todos los autores de un libro encadenados
 export function getAuthors(authors) {
 	if(authors) {
 		const authorArray = authors.map((item, i) => {
@@ -43,6 +53,8 @@ export function getAuthors(authors) {
 	}
 }
 
+
+// Devuelve un libro ya formateado (objeto)
 export function getBookFormated(book) {
 	const { title, imageLinks, authors, publishedDate, industryIdentifiers, language, pageCount, description, publisher } = book.volumeInfo;
 

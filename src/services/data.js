@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 
+
 export async function addObject(collection, obj) {
 	try {
 		const result = await firebase.firestore().collection(collection).add(obj);
@@ -10,6 +11,7 @@ export async function addObject(collection, obj) {
 		return null;
 	}
 }
+
 
 export async function addObjectWithId(collection, id, obj) {
 	try {
@@ -21,6 +23,7 @@ export async function addObjectWithId(collection, id, obj) {
 	}
 }
 
+
 export async function addObjectToSubcolecction(collection, idCollection, subcollection, obj) {
 	try {
 		const result = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).add(obj);
@@ -30,6 +33,7 @@ export async function addObjectToSubcolecction(collection, idCollection, subcoll
 		return null;
 	}
 }
+
 
 export async function addObjectToSubcollectionWithId(collection, idCollection, subcollection, id, obj) {
 	try {
@@ -41,6 +45,7 @@ export async function addObjectToSubcollectionWithId(collection, idCollection, s
 	}
 }
 
+
 export async function removeObjectWithId(collection, id) {
 	try {
 		await firebase.firestore().collection(collection).doc(id).remove();
@@ -50,6 +55,7 @@ export async function removeObjectWithId(collection, id) {
 		return null;
 	}
 }
+
 
 export async function getObjectById(collection, id) {
 	try {
@@ -61,6 +67,24 @@ export async function getObjectById(collection, id) {
 	}
 }
 
+
+export async function getObjectFromSubcollection(collection, idCollection, subcollection, orderByTerm, orderBy) {
+	try {
+		let allDocs;
+		if(orderByTerm) {
+			allDocs = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).orderBy(orderByTerm, orderBy).get();
+		} else {
+			allDocs = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).get();
+		}
+		return allDocs.docs.map(doc => parseDocument(doc));
+	} catch (error) {
+		console.log("getObjectFromSubcollectionById Error: ", error);
+		return null;
+	}
+}
+
+
+// Se usa ??
 export async function getObjectFromSubcollectionById(collection, idCollection, subcollection, id) {
 	try {
 		const doc = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).get();
@@ -70,6 +94,7 @@ export async function getObjectFromSubcollectionById(collection, idCollection, s
 		return null;
 	}
 }
+
 
 function parseDocument(doc) {
 	return {
@@ -90,6 +115,7 @@ export async function changeObjectById(collection, id, change) {
 	}
 }
 
+
 // Se usa??
 export async function getAllData(collection) {
 	try {
@@ -100,6 +126,7 @@ export async function getAllData(collection) {
 		return null;
 	}
 }
+
 
 // Se usa???
 export async function getDataByCondition(collection, field, condition, value) {

@@ -1,0 +1,114 @@
+@import '../../styles/variables';
+
+.collection {
+	&_header {
+		color: $color_base_medium;
+		display: flex;
+		font-size: $font-size_xs;
+		margin-bottom: $spacing_xs;
+		> * {
+			padding: 0 $spacing_s;
+		}
+	}
+	.header {
+		&_primaryData {
+			width: 30%;
+		}
+		&_categories {
+			text-align: center;
+			width: 20%;
+		}
+		&_status {
+			text-align: center;
+			width: 15%;
+		}
+		&_actions {
+			text-align: center;
+			width: 35%;
+		}
+	}
+	&_book {
+		border: 1px solid $color_base_light;
+		border-radius: $radius_base;
+		cursor: pointer;
+		display: flex;
+		margin-bottom: $spacing_xs;
+		transition: all $transition_duration;
+		&:hover {
+			background-color: $color_highlight_extraLight;
+			border-color: $color_highlight;
+			box-shadow: 0 0 10px 5px $color_base_light;
+			transform: scale(1.02);
+			.book_cover {
+				background-color: $color_background;
+			}
+		}
+		> * {
+			padding: 12px $spacing_s;
+		}
+	}
+	.book {
+		&_primaryData {
+			align-items: flex-start;
+			display: flex;
+			width: 30%;
+		}
+		&_content {
+			width: calc(100% - 50px - 15px);
+		}
+		&_cover {
+			background-color: $color_base_extraLight;
+			border: 1px solid $color_base_extraLight;
+			border-radius: $radius_base;
+			min-height: 60px;
+			margin-right: $spacing_s;
+			transition: all $transition_duration;
+			width: 50px;
+			img {
+				display: block;
+				width: 100%;
+			}
+		}
+		&_title {
+			font-weight: $font_weight_bold;
+			margin-bottom: 3px;
+		}
+		&_isbn, &_idCustom {
+			color: $color_base_medium;
+			font-size: $font_size_xs;
+			line-height: $line_height_s;
+			span {
+				font-size: $font_size_xxs;
+				font-weight: $font_weight_bold;
+				margin-right: 4px;
+			}
+		}
+		&_category {
+			align-self: center;
+			text-align: center;
+			width: 20%;
+			span {
+				background-color: $color_base_medium;
+				border-radius: $radius_s;
+				color: $color_background;
+				font-size: $font_size_xs;
+				font-weight: $font_weight_bold;
+				padding: 2px $spacing_xs;
+			}
+		}
+		&_status {
+			align-self: center;
+			font-size: $font_size_xs;
+			text-align: center;
+			width: 15%;
+		}
+		&_actions {
+			align-self: center;
+			text-align: center;
+			width: 35%;
+			.button {
+				margin: 0 4px;
+			}
+		}
+	}
+}

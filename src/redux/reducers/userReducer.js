@@ -1,8 +1,7 @@
 const defaultUser = {
 	idUser: '',
 	name: '',
-	isAdmin: false,
-	idLibrary: ''
+	isAdmin: false
 };
 
 export default function userReducer(state = defaultUser, action) {

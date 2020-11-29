@@ -1,14 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 
-import { userLogin } from '../../logic/user';
-import { setUser } from '../../redux/actions/userActions';
-import Input from '../input';
 import Button from '../button';
 import getLiteral from '../literals';
+import Input from '../input';
+
 import { getLibraryById } from '../../logic/library';
+import { userLogin } from '../../logic/user';
+import { setLibrary } from '../../redux/actions/libraryActions';
+import { setUser } from '../../redux/actions/userActions';
 
 const Login = ({ isModalClosed, onCancel, onSuccess }) => {
+
 	const dispatch = useDispatch();
 
 	const [email, setEmail] = useState('');
@@ -43,9 +46,12 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 					dispatch(setUser({
 						idUser: id,
 						name: user.name,
-						isAdmin: user.isAdmin,
+						isAdmin: user.isAdmin
+					}));
+					dispatch(setLibrary({
 						idLibrary: user.idLibrary,
-						nameLibrary: libraryFound.name
+						nameLibrary: libraryFound.name,
+						categoriesLibrary: libraryFound.categories
 					}));
 					handleReset();
 					onSuccess();
@@ -101,6 +107,7 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 			</div>
 		</form>
 	)
-}
+
+};
 
 export default Login;

@@ -12,8 +12,7 @@ import { getLibraryById, addBookToLibrary } from '../../logic/library';
 import { getBooksByTitle, getBookById, getBookFormated, addBookById, formatData } from '../../logic/book';
 
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
-	const user = useSelector(state => state.user);
-	const { idLibrary } = user;
+	const { idLibrary } = useSelector(state => state.library);
 	const [categories, setCategories] = useState([]);
 
 	const [searchTerm, setSearchTerm] = useState('');
@@ -104,14 +103,15 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			if(!resultBooks) {
 				setSubmitAddBookError(true);
 			} else {
-				const { title } = getBookFormated(bookSel);
+				const { title, cover } = getBookFormated(bookSel);
 				const addBookToLibraryObj = {
 					categoryId,
 					idBookCustom,
 					title,
 					units,
 					unitsNow: units,
-					purchaseDate
+					purchaseDate,
+					cover
 				};
 				const resultLibrary = await addBookToLibrary(idLibrary, idBook, addBookToLibraryObj);
 				if(!resultLibrary) {

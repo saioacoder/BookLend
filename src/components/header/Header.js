@@ -12,8 +12,8 @@ import { userLogout } from '../../logic/user';
 import './Header.scss';
 
 const Header = () => {
-	const user = useSelector(state => state.user);
-	const { idUser, name, isAdmin, idLibrary } = user;
+	const { idUser, name, isAdmin } = useSelector(state => state.user);
+	const { idLibrary, nameLibrary } = useSelector(state => state.library);
 	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
@@ -108,6 +108,7 @@ const Header = () => {
 						<img src={logoImg} alt="" />
 						<span>Book<span>Lend</span></span>
 					</Link>
+					{idLibrary && <span className="header_library">{idLibrary}</span>}
 					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}

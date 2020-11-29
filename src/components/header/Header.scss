@@ -25,6 +25,9 @@
          }
       }
    }
+   &_library {
+      margin-right: $spacing_s;
+   }
    &_user {
       cursor: pointer;
       &_icon {

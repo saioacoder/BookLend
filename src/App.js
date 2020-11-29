@@ -4,7 +4,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from 'firebase/app';
 
 import firebaseConfig from './config';
+import { setLibrary } from './redux/actions/libraryActions';
 import { setUser } from './redux/actions/userActions';
+import { getLibraryById } from './logic/library';
 import { registerAuthStateChangeHandler, getUserById } from './logic/user';
 
 import Footer from './components/footer';
@@ -26,10 +28,13 @@ function App() {
 		registerAuthStateChangeHandler(async (user) => {
 		  	if(user) {
 				const userData = await getUserById(user.uid);
-			 	dispatch(setUser(userData));
+				const libraryData = await getLibraryById(userData.idLibrary);
+				dispatch(setLibrary(libraryData));
+				dispatch(setUser(userData));
 			} else {
-			 	dispatch(setUser(null));
-		  }
+				dispatch(setUser(null));
+				dispatch(setLibrary(null));
+			}
 		})
 	}, [dispatch]);
 

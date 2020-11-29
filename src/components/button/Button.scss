@@ -43,4 +43,8 @@
 			color: $color_highlight_dark;
 		}
 	}
+	&__small {
+		font-size: $font_size_xxs;
+		padding: 7px 12px;
+	}
 }

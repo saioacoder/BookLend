@@ -6,6 +6,7 @@ import Button from '../button';
 import getLiteral from '../literals';
 import { userSignup } from '../../logic/user';
 import { getLibraryById } from '../../logic/library';
+import { setLibrary } from '../../redux/actions/libraryActions';
 import { setUser } from '../../redux/actions/userActions';
 
 const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
@@ -13,6 +14,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	const [idLibrary, setIdLibrary] = useState('');
 	const [nameLibrary, setNameLibrary] = useState('');
+	const [categoriesLibrary, setCategoriesLibrary] = useState([]);
 	const [name, setName] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [email, setEmail] = useState('');
@@ -92,6 +94,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 				setSignupError(getLiteral('error-library-not-on-your-city'));
 			} else {
 				setNameLibrary(libraryFound.name);
+				setCategoriesLibrary(libraryFound.categories);
 			}
 		}
 		if(!province) {
@@ -108,9 +111,12 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 				dispatch(setUser({
 					idUser: id,
 					name: user.name,
-					isAdmin: user.isAdmin,
+					isAdmin: user.isAdmin
+				}));
+				dispatch(setLibrary({
 					idLibrary: user.idLibrary,
-					nameLibrary: nameLibrary
+					nameLibrary: nameLibrary,
+					categoriesLibrary: categoriesLibrary
 				}));
 				handleReset();
 				onSuccess();
