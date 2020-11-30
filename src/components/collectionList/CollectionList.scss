@@ -12,19 +12,19 @@
 	}
 	.header {
 		&_primaryData {
-			width: 30%;
+			width: 35%;
 		}
 		&_categories {
 			text-align: center;
 			width: 20%;
 		}
-		&_status {
+		&_units {
 			text-align: center;
 			width: 15%;
 		}
 		&_actions {
 			text-align: center;
-			width: 35%;
+			width: 30%;
 		}
 	}
 	&_book {
@@ -32,7 +32,7 @@
 		border-radius: $radius_base;
 		cursor: pointer;
 		display: flex;
-		margin-bottom: $spacing_xs;
+		margin-bottom: $spacing_xs + 2;
 		transition: all $transition_duration;
 		&:hover {
 			background-color: $color_highlight_extraLight;
@@ -51,7 +51,7 @@
 		&_primaryData {
 			align-items: flex-start;
 			display: flex;
-			width: 30%;
+			width: 35%;
 		}
 		&_content {
 			width: calc(100% - 50px - 15px);
@@ -88,24 +88,27 @@
 			text-align: center;
 			width: 20%;
 			span {
-				background-color: $color_base_medium;
+				background-color: $color_highlight_light;
 				border-radius: $radius_s;
-				color: $color_background;
+				color: $color_highlight;
 				font-size: $font_size_xs;
 				font-weight: $font_weight_bold;
-				padding: 2px $spacing_xs;
+				padding: 2px $spacing_xs 4px;
 			}
 		}
-		&_status {
+		&_units {
 			align-self: center;
-			font-size: $font_size_xs;
 			text-align: center;
 			width: 15%;
+			span {
+				color: $color_base_medium;
+				font-size: $font_size_xxs;
+			}
 		}
 		&_actions {
 			align-self: center;
 			text-align: center;
-			width: 35%;
+			width: 30%;
 			.button {
 				margin: 0 4px;
 			}

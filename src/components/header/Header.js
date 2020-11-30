@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
+import Loading from '../loading';
 import logoImg from '../../img/logo.svg';
 import Login from '../login';
 import Modal from '../modal';
@@ -12,10 +13,12 @@ import { userLogout } from '../../logic/user';
 import './Header.scss';
 
 const Header = () => {
+
 	const { idUser, name, isAdmin } = useSelector(state => state.user);
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
 	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
+	const [showLoading, setShowLoading] = useState(false);
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
 	const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
@@ -91,6 +94,11 @@ const Header = () => {
 	}
 
 	useEffect(() => {
+		// if(!idUser) {
+		// 	setShowLoading(true);
+		// } else {
+		// 	setShowLoading(false);
+		// }
 		if(formSuccess === 'admin'){
 			history.push(`/${idLibrary}/admin/inicio/`);
 			setFormSuccess('');
@@ -98,7 +106,7 @@ const Header = () => {
 			history.push(`/${idLibrary}/inicio/`);
 			setFormSuccess('');
 		}
-	}, [history, formSuccess, idLibrary]);
+	}, [history, formSuccess, idLibrary, nameLibrary]);
 
 	return (
 		<>
@@ -108,7 +116,7 @@ const Header = () => {
 						<img src={logoImg} alt="" />
 						<span>Book<span>Lend</span></span>
 					</Link>
-					{idLibrary && <span className="header_library">{idLibrary}</span>}
+					{nameLibrary && <span className="header_library">{nameLibrary}</span>}
 					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}
@@ -148,8 +156,10 @@ const Header = () => {
 					onSuccess={() => setFormSuccess('login')}
 				/>
 			</Modal>
+			<Loading show={showLoading} />
 		</>
 	);
+	
 };
 
 export default Header;

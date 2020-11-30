@@ -46,13 +46,25 @@ export async function addObjectToSubcollectionWithId(collection, idCollection, s
 }
 
 
+// Se usa ??
 export async function removeObjectWithId(collection, id) {
 	try {
-		await firebase.firestore().collection(collection).doc(id).remove();
+		await firebase.firestore().collection(collection).doc(id).delete();
 		return true;
 	} catch (error) {
 		console.log("removeObjectWithId Error:", error);
 		return null;
+	}
+}
+
+
+export async function removeObjectFromSubcollectionWithId(collection, idCollection, subcollection, id) {
+	try {
+		await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).delete();
+		return true;
+	} catch (error) {
+		console.log("removeObjectFromSubcollectionWithId Error:", error);
+		return false;
 	}
 }
 

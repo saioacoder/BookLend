@@ -41,13 +41,18 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 			if(!success) {
 				setLoginError(getLiteral(error));
 			} else {
+				console.log(user);
 				const libraryFound = await getLibraryById(user.idLibrary);
 				if(libraryFound !== null) {
 					dispatch(setUser({
 						idUser: id,
 						name: user.name,
-						isAdmin: user.isAdmin
+						isAdmin: user.isAdmin,
+						idLibrary: user.idLibrary,
+						nameLibrary: libraryFound.name,
+						categoriesLibrary: libraryFound.categories
 					}));
+					console.log(libraryFound.name);
 					dispatch(setLibrary({
 						idLibrary: user.idLibrary,
 						nameLibrary: libraryFound.name,

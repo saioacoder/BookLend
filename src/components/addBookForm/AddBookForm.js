@@ -55,8 +55,8 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	}
 
 	const handleSubmitBookSel = async (e) => {
-		console.log(books);
 		e.preventDefault();
+
 		if(bookSelId) {
 			const bookResult = await getBookById(bookSelId);
 			if(bookResult !== null) {
@@ -199,6 +199,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 				<Select
 					id="categoriesLibrary"
 					label="Categorías"
+					value={setCategoryId}
 					placeholder="Elige una categoría"
 					hasError={categoryIdError}
 					errorMessage={getLiteral('error-required-field')}

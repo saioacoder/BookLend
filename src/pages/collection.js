@@ -3,12 +3,17 @@ import { useState } from 'react';
 import AddBookForm from '../components/addBookForm';
 import Button from '../components/button';
 import CollectionList from '../components/collectionList';
-//import InputSearch from '../components/inputSearch';
 import Modal from '../components/modal';
 
 const Collection = () => {
 
 	const [modalAddBookIsOpen, setModalAddBookIsOpen] = useState(false);
+	const [refreshCollection, setRefreshCollection] = useState(false);
+
+	const handleOnSuccessAddBook = () => {
+		setModalAddBookIsOpen(false);
+		setRefreshCollection(true);
+	};
 
 	return (
 		<>
@@ -19,15 +24,10 @@ const Collection = () => {
 				<Button onClick={() => setModalAddBookIsOpen(true)}>Añadir libro</Button>
 			</header>
 
-			{/* <InputSearch
-				id="search"
-				label="Busca libros en la colección"
-				value=""
-				hasError=""
-				onChange=""
-			/> */}
-
-			<CollectionList />
+			<CollectionList
+				onRefreshCollection={refreshCollection}
+				onEndRefresh={() => setRefreshCollection(false)}
+			/>
 
 			<Modal
 				title="Añadir libro a la colección"
@@ -37,7 +37,7 @@ const Collection = () => {
 				<AddBookForm
 					isModalClosed={modalAddBookIsOpen}
 					onCancel={() => setModalAddBookIsOpen(false)}
-					onSuccess={() => setModalAddBookIsOpen(false)}
+					onSuccess={handleOnSuccessAddBook}
 				/>
 			</Modal>
 		</>

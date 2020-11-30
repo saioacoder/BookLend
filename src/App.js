@@ -27,10 +27,10 @@ function App() {
 	useEffect(() => {
 		registerAuthStateChangeHandler(async (user) => {
 		  	if(user) {
-				const userData = await getUserById(user.uid);
-				const libraryData = await getLibraryById(userData.idLibrary);
-				dispatch(setLibrary(libraryData));
-				dispatch(setUser(userData));
+				const { idUser, name: nameUser, isAdmin, idLibrary } = await getUserById(user.uid);
+				const { name: nameLibrary, categories: categoriesLibrary } = await getLibraryById(idLibrary);
+				dispatch(setUser({ idUser, name: nameUser, isAdmin }));
+				dispatch(setLibrary({ idLibrary, nameLibrary, categoriesLibrary }));
 			} else {
 				dispatch(setUser(null));
 				dispatch(setLibrary(null));

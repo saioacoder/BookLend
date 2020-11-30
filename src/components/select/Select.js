@@ -3,6 +3,7 @@ import './Select.scss';
 const Select = ({
 	id,
 	label,
+	value,
 	placeholder,
 	hasError,
 	errorMessage,
@@ -21,7 +22,7 @@ const Select = ({
 					name={id}
 					onChange={onChange}
 				>
-					<option>{placeholder}</option>
+					<option value="-1" selected={value ? true : false}>{placeholder}</option>
 					{options && options.map((item, i) => (
 						<option key={`categories${i}`} value={i}>{item}</option>
 					))}

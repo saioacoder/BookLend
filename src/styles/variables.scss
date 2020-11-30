@@ -6,6 +6,7 @@ $color_base_light: lighten($color_base, 90%);
 $color_base_extraLight: lighten($color_base, 96%);
 $color_highlight: #41b585;
 $color_highlight_dark: darken($color_highlight, 15%);
+$color_highlight_light: lighten($color_highlight, 40%);
 $color_highlight_extraLight: lighten($color_highlight, 48%);
 $color_background: white;
 $color_error: crimson;
