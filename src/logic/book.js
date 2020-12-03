@@ -81,3 +81,8 @@ export function getBookFormated(book) {
 		pageNum: pageCountNew
 	}
 }
+
+export function getRandomColor() {
+	const randomColor = Math.random() * 360;
+	return `hsl(${randomColor}, 33%, 95%)`;
+}

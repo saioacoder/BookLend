@@ -46,16 +46,16 @@ function App() {
 					<Route exact path="/">
 						<Landing />
 					</Route>
-					<Route exact path="/:idLibrary/admin/inicio/">
+					<Route exact path="/:idLibrary/admin/">
 						<Dashboard />
 					</Route>
 					<Route exact path="/:idLibrary/admin/coleccion/">
 						<Collection />
 					</Route>
-					<Route exact path="/:idLibrary/inicio/">
+					<Route exact path="/:idLibrary/">
 						<Home />
 					</Route>
-					<Route exact path="/:idLibrary/libro/:bookId">
+					<Route exact path="/:idLibrary/libro/:idBook">
 						<Book />
 					</Route>
 					<Route exact path="/:idLibrary/mis-prestamos/">

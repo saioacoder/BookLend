@@ -2,27 +2,40 @@
 
 .listBooks {
 	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-column-gap: $spacing_s;
-	grid-row-gap: $spacing_xs;
-	margin-top: $spacing_base;
+	grid-template-columns: repeat(4, 1fr);
+	grid-column-gap: $spacing_base;
+	grid-row-gap: $spacing_m;
+	margin-top: $spacing_m;
 	&_item {
-		align-items: flex-start;
-		border-right: 5px solid transparent;
 		border-radius: $radius_s;
 		cursor: pointer;
-		display: flex;
-		padding: $spacing_xs;
+		text-align: center;
+		transition: all $transition_duration;
 		&:hover, &__sel {
-			background-color: $color_highlight_extraLight;
-			border-color: $color_highlight;
+			transform: scale(1.08);
+		}
+		&__sel {
+			.listBooks_cover {
+				box-shadow: 0 0 1px 1px $color_base;
+			}
 		}
 	}
-	&_image {
-		border: 1px solid $color_base_extraLight;
-		border-radius: $radius_s;
-		margin-right: $spacing_xs;
-		width: 40px;
+	&_cover {
+		align-items: center;
+		border-radius: $radius_l;
+		display: flex;
+		height: 180px;
+		justify-content: center;
+		margin: 0 auto $spacing_xs;
+		padding: 20% 20% 23%;
+		position: relative;
+		width: 100%;
+		img {
+			border-radius: $radius_m;
+			box-shadow: 0 4px 10px 1px $color_base_medium;
+			display: block;
+			width: 100%;
+		}
 	}
 	&_title {
 		font-size: $font_size_s;
@@ -30,18 +43,22 @@
 		line-height: $line_height_xs;
 	}
 	&_author {
-		color: $color_base_medium;
+		color: $color_base_extramedium;
 		font-size: $font_size_xxs;
 		font-style: italic;
 		line-height: $line_height_s;
 		margin-top: 2px;
 	}
 	&_other {
-		color: $color_highlight_dark;
-		font-size: $font_size_xxs;
-		font-weight: 500;
-		line-height: $line_height_s;
-		margin-top: 3px;
+		background: $color_background;
+		border-radius: $radius_base $radius_base 0 0;
+		bottom: 0px;
+		display: inline-block;
+		font-size: $font_size_xxxs;
+		font-weight: $font_weight_mediumBold;
+		line-height: $line_height_xxs;
+		padding: 4px 9px 2px;
+		position: absolute;
 		text-transform: uppercase;
 	}
 }

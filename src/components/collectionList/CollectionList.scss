@@ -5,14 +5,14 @@
 		color: $color_base_medium;
 		display: flex;
 		font-size: $font-size_xs;
-		margin-bottom: $spacing_xs;
+		margin-bottom: $spacing_s;
 		> * {
-			padding: 0 $spacing_s;
+			padding: 0 $spacing_base;
 		}
 	}
 	.header {
 		&_primaryData {
-			width: 35%;
+			width: 37%;
 		}
 		&_categories {
 			text-align: center;
@@ -20,7 +20,7 @@
 		}
 		&_units {
 			text-align: center;
-			width: 15%;
+			width: 13%;
 		}
 		&_actions {
 			text-align: center;
@@ -28,58 +28,53 @@
 		}
 	}
 	&_book {
-		border: 1px solid $color_base_light;
-		border-radius: $radius_base;
+		border-radius: $radius_m;
 		cursor: pointer;
 		display: flex;
-		margin-bottom: $spacing_xs + 2;
+		margin-bottom: $spacing_s;
 		transition: all $transition_duration;
 		&:hover {
-			background-color: $color_highlight_extraLight;
-			border-color: $color_highlight;
-			box-shadow: 0 0 10px 5px $color_base_light;
 			transform: scale(1.02);
 			.book_cover {
 				background-color: $color_background;
 			}
 		}
 		> * {
-			padding: 12px $spacing_s;
+			padding: $spacing_base;
 		}
 	}
 	.book {
 		&_primaryData {
-			align-items: flex-start;
+			align-items: center;
 			display: flex;
-			width: 35%;
+			width: 37%;
 		}
 		&_content {
-			width: calc(100% - 50px - 15px);
+			width: calc(100% - 70px - 15px);
 		}
 		&_cover {
-			background-color: $color_base_extraLight;
-			border: 1px solid $color_base_extraLight;
-			border-radius: $radius_base;
-			min-height: 60px;
-			margin-right: $spacing_s;
+			min-height: 70px;
+			margin-right: $spacing_base;
 			transition: all $transition_duration;
-			width: 50px;
+			width: 60px;
 			img {
+				border-radius: $radius_base;
+				box-shadow: 0 2px 6px 0 $color_base_medium;
 				display: block;
 				width: 100%;
 			}
 		}
 		&_title {
 			font-weight: $font_weight_bold;
-			margin-bottom: 3px;
+			line-height: $line_height_s;
+			margin-bottom: $spacing_xs;
 		}
 		&_isbn, &_idCustom {
-			color: $color_base_medium;
 			font-size: $font_size_xs;
 			line-height: $line_height_s;
 			span {
 				font-size: $font_size_xxs;
-				font-weight: $font_weight_bold;
+				font-weight: $font_weight_light;
 				margin-right: 4px;
 			}
 		}
@@ -88,18 +83,18 @@
 			text-align: center;
 			width: 20%;
 			span {
-				background-color: $color_highlight_light;
+				background-color: $color_background;
 				border-radius: $radius_s;
-				color: $color_highlight;
 				font-size: $font_size_xs;
-				font-weight: $font_weight_bold;
+				font-weight: $font_weight_mediumBold;
 				padding: 2px $spacing_xs 4px;
 			}
 		}
 		&_units {
 			align-self: center;
+			font-weight: $font_weight_mediumBold;
 			text-align: center;
-			width: 15%;
+			width: 13%;
 			span {
 				color: $color_base_medium;
 				font-size: $font_size_xxs;

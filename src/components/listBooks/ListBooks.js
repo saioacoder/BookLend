@@ -1,5 +1,5 @@
 import getLiteral from '../literals';
-import { getAuthors } from '../../logic/book';
+import { getAuthors, getRandomColor } from '../../logic/book';
 
 import './ListBooks.scss';
 
@@ -37,11 +37,13 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 									onClick={selectBook}
 									className="listBooks_item"
 								>
-									<img src={smallThumbnail} className="listBooks_image" alt="" />
+									<div className="listBooks_cover" style={{backgroundColor: getRandomColor()}}>
+										{smallThumbnail && <img src={smallThumbnail} alt="" />}
+										<p className="listBooks_other">{publishedYear} / {language}</p>
+									</div>
 									<div>
 										<h3 className="listBooks_title">{cleanTitle}</h3>
 										<p className="listBooks_author">{authorsList}</p>
-										<p className="listBooks_other">{publishedYear} / {language}</p>
 									</div>
 								</div>
 							);

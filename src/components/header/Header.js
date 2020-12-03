@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-import Loading from '../loading';
+//import Loading from '../loading';
 import logoImg from '../../img/logo.svg';
 import Login from '../login';
 import Modal from '../modal';
@@ -18,13 +18,19 @@ const Header = () => {
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
 	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
-	const [showLoading, setShowLoading] = useState(false);
+	//const [showLoading, setShowLoading] = useState(false);
+	const [logoLink, setLogoLink] = useState('/');
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
 	const [modalLoginIsOpen, setModalLoginIsOpen] = useState(false);
 	const [formSuccess, setFormSuccess] = useState('');
 
 	const history = useHistory();
+
+	const handleLogout = () => {
+		history.push(`/`);
+		userLogout();
+	};
 
 	const menus = {
 		default: [
@@ -57,7 +63,7 @@ const Header = () => {
 			},
 			{
 				title: 'Salir',
-				action: userLogout,
+				action: handleLogout,
 				actionType: 'function'
 			}
 		],
@@ -74,7 +80,7 @@ const Header = () => {
 			},
 			{
 				title: 'Salir',
-				action: userLogout,
+				action: handleLogout,
 				actionType: 'function'
 			}
 		]
@@ -100,23 +106,32 @@ const Header = () => {
 		// 	setShowLoading(false);
 		// }
 		if(formSuccess === 'admin'){
-			history.push(`/${idLibrary}/admin/inicio/`);
+			history.push(`/${idLibrary}/admin/`);
 			setFormSuccess('');
 		} else if(formSuccess === 'user'){
-			history.push(`/${idLibrary}/inicio/`);
+			history.push(`/${idLibrary}/`);
 			setFormSuccess('');
 		}
-	}, [history, formSuccess, idLibrary, nameLibrary]);
+		if(isAdmin !== undefined) {
+			if(isAdmin) {
+				setLogoLink(`/${idLibrary}/admin/`);
+			} else {
+				setLogoLink(`/${idLibrary}/`);
+			}
+		} else {
+			setLogoLink(`/`);
+		}
+	}, [history, formSuccess, idLibrary, isAdmin]);
 
 	return (
 		<>
 			<header className="header">
 				<div className="container">
-					<Link to="/" className="header_logo">
+					<Link to={logoLink} className="header_logo">
 						<img src={logoImg} alt="" />
 						<span>Book<span>Lend</span></span>
 					</Link>
-					{nameLibrary && <span className="header_library">{nameLibrary}</span>}
+					{nameLibrary && <span className="header_library">/ {nameLibrary}</span>}
 					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}
@@ -156,10 +171,10 @@ const Header = () => {
 					onSuccess={() => setFormSuccess('login')}
 				/>
 			</Modal>
-			<Loading show={showLoading} />
+			{/* <Loading show={showLoading} /> */}
 		</>
 	);
-	
+
 };
 
 export default Header;

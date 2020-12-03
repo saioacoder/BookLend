@@ -1,3 +1,5 @@
+import { useHistory } from 'react-router-dom';
+
 import { signup, login, logout, registerAuthObserver } from '../services/auth';
 import { addObjectWithId, getObjectById } from '../services/data';
 

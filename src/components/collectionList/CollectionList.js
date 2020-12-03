@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import Button from '../button';
 import Modal from '../modal';
 import RemoveBookForm from '../removeBookForm';
+import { getRandomColor } from '../../logic/book';
 import { getLibraryCollectionById } from '../../logic/library';
 
 import './CollectionList.scss';
@@ -52,7 +53,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 				</header>
 				{books.map(({ id, categoryId, idBookCustom, title, units, unitsNow, cover }) => {
 					return (
-						<div key={id} className="collection_book">
+						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
 								<div className="book_cover">
 									{cover && <img src={cover} alt="" />}
@@ -66,7 +67,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 							<div className="book_category"><span>{categoriesLibrary[categoryId]}</span></div>
 							<div className="book_units">{unitsNow}<span> / {units}</span></div>
 							<div className="book_actions">
-								<Button className="button_inverse button__small">Prestar</Button>
+								<Button className="button__small">Prestar</Button>
 								<Button onClick={() => handleOnRemoveBook(id, title)} className="button_inverse button__small">Borrar</Button>
 							</div>
 						</div>

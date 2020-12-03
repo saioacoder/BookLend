@@ -10,7 +10,6 @@
       padding-top: $spacing_base;
    }
    &_logo {
-      margin-right: auto;
       img {
          height: 28px;
          margin-right: 8px;
@@ -18,18 +17,23 @@
       }
       > span {
          font-size: 2.2rem;
-         font-weight: $font_weight_extrabold;
+         font-weight: $font_weight_extraBold;
          text-transform: uppercase;
          span {
-            font-weight: 500;
+            font-weight: $font_weight_base;
          }
       }
    }
    &_library {
-      margin-right: $spacing_s;
+      color: $color_base_medium;
+      font-size: $font_size_xs;
+      margin-left: $spacing_xxs;
+      margin-top: 12px;
+      text-transform: uppercase;
    }
    &_user {
       cursor: pointer;
+      margin-left: auto;
       &_icon {
          display: inline-block;
          font-size: 2.5rem;

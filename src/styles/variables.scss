@@ -1,11 +1,10 @@
 /* Colors */
-$color_base: black;
+$color_base: #1b1c22;
 $color_base_extramedium: lighten($color_base, 45%);
 $color_base_medium: lighten($color_base, 65%);
-$color_base_light: lighten($color_base, 90%);
-$color_base_extraLight: lighten($color_base, 96%);
-$color_highlight: #41b585;
-$color_highlight_dark: darken($color_highlight, 15%);
+$color_base_light: lighten($color_base, 81%);
+$color_highlight: $color_base;
+$color_highlight_dark: lighten($color_highlight, 20%);
 $color_highlight_light: lighten($color_highlight, 40%);
 $color_highlight_extraLight: lighten($color_highlight, 48%);
 $color_background: white;
@@ -16,6 +15,7 @@ $color_error_light: lighten($color_error, 48%);
 /* Fonts */
 $font_family: 'Montserrat', Arial, sans-serif;
 
+$font_size_xxl: 2.5rem;
 $font_size_xl: 2rem;
 $font_size_l: 1.8rem;
 $font_size_m: 1.6rem;
@@ -24,9 +24,11 @@ $font_size_base_px: 15px;
 $font_size_s: 1.4rem;
 $font_size_xs: 1.3rem;
 $font_size_xxs: 1.2rem;
+$font_size_xxxs: 1rem;
 
-$font_weight_extrabold: 700;
+$font_weight_extraBold: 700;
 $font_weight_bold: 600;
+$font_weight_mediumBold: 500;
 $font_weight_base: 400;
 $font_weight_light: 300;
 
@@ -37,6 +39,8 @@ $line_height_xxs: 1em;
 
 
 /* Radius */
+$radius_l: 15px;
+$radius_m: 8px;
 $radius_base: 5px;
 $radius_s: 4px;
 
