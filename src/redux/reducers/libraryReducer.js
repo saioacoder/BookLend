@@ -1,7 +1,7 @@
 const defaultLibrary = {
 	idLibrary: '',
 	nameLibrary: '',
-	categoriesLibrary: []
+	categories: []
 };
 
 export default function libraryReducer(state = defaultLibrary, action) {

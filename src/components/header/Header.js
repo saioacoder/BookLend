@@ -14,7 +14,7 @@ import './Header.scss';
 
 const Header = () => {
 
-	const { idUser, name, isAdmin } = useSelector(state => state.user);
+	const { idUser, nameUser, isAdmin } = useSelector(state => state.user);
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
 	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
@@ -111,6 +111,13 @@ const Header = () => {
 		} else if(formSuccess === 'user'){
 			history.push(`/${idLibrary}/`);
 			setFormSuccess('');
+		} else if(formSuccess === 'login') {
+			if(isAdmin) {
+				history.push(`/${idLibrary}/admin/`);
+			} else {
+				history.push(`/${idLibrary}/`);
+			}
+			setFormSuccess('');
 		}
 		if(isAdmin !== undefined) {
 			if(isAdmin) {
@@ -132,7 +139,7 @@ const Header = () => {
 						<span>Book<span>Lend</span></span>
 					</Link>
 					{nameLibrary && <span className="header_library">/ {nameLibrary}</span>}
-					{name && <button className="header_user">¡Hola <strong>{name}</strong>! <span className="header_user_icon">›</span></button>}
+					{nameUser && <button className="header_user">¡Hola <strong>{nameUser}</strong>! <span className="header_user_icon">›</span></button>}
 					<nav className="header_nav">
 						{getMenu(menuName)}
 					</nav>

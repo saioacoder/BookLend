@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 
 import Button from '../button';
 import Modal from '../modal';
+import ReservationBookForm from '../reservationBookForm';
 import { getBookById, getBookFormated, getRandomColor } from '../../logic/book';
 
 import './BookCardFull.scss';
@@ -11,7 +12,7 @@ const BookCardFull = () => {
 
 	const { idBook } = useParams();
 	const [book, setBook] = useState({});
-	const [modalBookingIsOpen, setModalBookingIsOpen] = useState(false);
+	const [modalReservationIsOpen, setModalReservationIsOpen] = useState(false);
 
 	const getBook = async (id) => {
 		const bookResult = await getBookById(id);
@@ -44,20 +45,20 @@ const BookCardFull = () => {
 					</ul>
 					<div className="bookCardFull_description">{book.synopsis}</div>
 					<div className="bookCardFull_action">
-						<Button onClick={() => setModalBookingIsOpen(true)}>Reservar</Button>
+						<Button onClick={() => setModalReservationIsOpen(true)}>Reservar</Button>
 					</div>
 				</div>
 			</article>
 			<Modal
 				title="Reservar libro"
-				isOpen={modalBookingIsOpen}
-				onClose={() => setModalBookingIsOpen(false)}
+				isOpen={modalReservationIsOpen}
+				onClose={() => setModalReservationIsOpen(false)}
 			>
-				{/* <SignupUser
-					isModalClosed={modalSignupIsOpen}
-					onCancel={() => setModalSignupIsOpen(false)}
-					onSuccess={() => setFormSuccess('user')}
-				/> */}
+				<ReservationBookForm
+					idBook={idBook}
+					onCancel={() => setModalReservationIsOpen(false)}
+					onSuccess={() => setModalReservationIsOpen(false)}
+				/>
 			</Modal>
 		</>
 	);

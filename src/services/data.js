@@ -96,6 +96,22 @@ export async function getObjectFromSubcollection(collection, idCollection, subco
 }
 
 
+export async function getDataByConditions(collection, conditions) {
+	try {
+		let allDocs = await firebase.firestore().collection(collection);
+		conditions.forEach(({ field, condition, value }) => {
+			console.log(field, condition, value);
+			allDocs.where(field, condition, value);
+		});
+		allDocs.get();
+		return allDocs.docs.map(doc => parseDocument(doc));
+	} catch (error) {
+		console.log("getDataByConditions Error: ", error);
+		return null;
+	}
+}
+
+
 // Se usa ??
 export async function getObjectFromSubcollectionById(collection, idCollection, subcollection, id) {
 	try {
@@ -135,18 +151,6 @@ export async function getAllData(collection) {
     	return allDocs.docs.map(doc => parseDocument(doc));
 	} catch (error) {
 		console.log("getAllData Error:", error);
-		return null;
-	}
-}
-
-
-// Se usa???
-export async function getDataByCondition(collection, field, condition, value) {
-	try {
-		const allDocs = await firebase.firestore().collection(collection).where(field, condition, value).get();
-		return allDocs.docs.map(doc => parseDocument(doc));
-	} catch (error) {
-		console.log("getDataByCondition Error: ", error);
 		return null;
 	}
 }

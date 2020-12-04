@@ -8,7 +8,7 @@ import { getLibraryCollectionById } from '../../logic/library';
 import './BookList.scss';
 
 const BookList = () => {
-	const { idLibrary, categoriesLibrary } = useSelector(state => state.library);
+	const { idLibrary, categories } = useSelector(state => state.library);
 	const [books, setBooks] = useState([]);
 
 	const history = useHistory();
@@ -32,12 +32,12 @@ const BookList = () => {
 
 	return (
 		<section className="bookList">
-			{books.map(({ id, categoryId, title, cover }) => {
+			{books.map(({ id, idCategory, title, cover }) => {
 				return (
 					<article key={id} className="bookList_book" onClick={() => openBook(id)}>
 						<div className="book_cover" style={{backgroundColor: getRandomColor()}}>
 							{cover && <img src={cover} alt="" />}
-							{categoriesLibrary && <div className="book_category">{categoriesLibrary[categoryId]}</div>}
+							{categories && <div className="book_category">{categories[idCategory]}</div>}
 						</div>
 						<h3 className="book_title">{title}</h3>
 					</article>

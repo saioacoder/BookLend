@@ -5,12 +5,12 @@ import { addObjectWithId, getObjectById } from '../services/data';
 
 
 //
-export async function userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary) {
+export async function userSignup(nameUser, lastname, email, password, address, postalCode, city, province, idLibrary) {
 	const { success, error, id } = await signup(email, password);
 	const warningNum = 0;
 	const isAdmin = false;
 	if(success) {
-		await addObjectWithId('users', id, { name, lastname, email, address, postalCode, city, province, warningNum, idLibrary, isAdmin });
+		await addObjectWithId('users', id, { nameUser, lastname, email, address, postalCode, city, province, warningNum, idLibrary, isAdmin });
 		const user = await getObjectById('users', id);
 		return { success: true, id, user };
 	}
@@ -19,11 +19,11 @@ export async function userSignup(name, lastname, email, password, address, posta
 
 
 //
-export async function adminSignup(name, lastname, email, password, idLibrary) {
+export async function adminSignup(nameUser, lastname, email, password, idLibrary) {
 	const { success, error, id } = await signup(email, password);
 	const isAdmin = true;
 	if(success) {
-		await addObjectWithId('users', id, { name, lastname, email, idLibrary, isAdmin });
+		await addObjectWithId('users', id, { nameUser, lastname, email, idLibrary, isAdmin });
 		const user = await getObjectById('users', id);
 		return { success: true, id, user };
 	}

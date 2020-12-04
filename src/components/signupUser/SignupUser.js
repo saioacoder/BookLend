@@ -14,8 +14,8 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	const [idLibrary, setIdLibrary] = useState('');
 	const [nameLibrary, setNameLibrary] = useState('');
-	const [categoriesLibrary, setCategoriesLibrary] = useState([]);
-	const [name, setName] = useState('');
+	const [categories, setCategories] = useState([]);
+	const [nameUser, setNameUser] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -25,7 +25,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [province, setProvince] = useState('');
 
 	const [idLibraryError, setIdLibraryError] = useState(false);
-	const [nameError, setNameError] = useState(false);
+	const [nameUserError, setNameUserError] = useState(false);
 	const [lastnameError, setLastnameError] = useState(false);
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
@@ -39,7 +39,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 		event.preventDefault();
 
 		setIdLibraryError(false);
-		setNameError(false);
+		setNameUserError(false);
 		setLastnameError(false);
 		setEmailError(false);
 		setPasswordError(false);
@@ -60,9 +60,9 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 				setSignupError(getLiteral('error-library-not-found'));
 			}
 		}
-		if(!name) {
+		if(!nameUser) {
 			error = true;
-			setNameError(true);
+			setNameUserError(true);
 		}
 		if(!lastname) {
 			error = true;
@@ -93,8 +93,8 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 				error = true;
 				setSignupError(getLiteral('error-library-not-on-your-city'));
 			} else {
-				setNameLibrary(libraryFound.name);
-				setCategoriesLibrary(libraryFound.categories);
+				setNameLibrary(libraryFound.nameLibrary);
+				setCategories(libraryFound.categories);
 			}
 		}
 		if(!province) {
@@ -104,19 +104,19 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 		if(!error) {
 			setSignupError('');
 
-			const { success, error, id, user } = await userSignup(name, lastname, email, password, address, postalCode, city, province, idLibrary);
+			const { success, error, id, user } = await userSignup(nameUser, lastname, email, password, address, postalCode, city, province, idLibrary);
 			if(!success) {
 				setSignupError(getLiteral(error));
 			} else {
 				dispatch(setUser({
 					idUser: id,
-					name: user.name,
+					nameUser,
 					isAdmin: user.isAdmin
 				}));
 				dispatch(setLibrary({
 					idLibrary: user.idLibrary,
-					nameLibrary: nameLibrary,
-					categoriesLibrary: categoriesLibrary
+					nameLibrary,
+					categories
 				}));
 				handleReset();
 				onSuccess();
@@ -124,10 +124,10 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 		}
 	}
 
-	const handleReset = (event) => {
-		event && event.preventDefault();
+	const handleReset = (e) => {
+		e && e.preventDefault();
 
-		setName('');
+		setNameUser('');
 		setLastname('');
 		setEmail('');
 		setPassword('');
@@ -137,7 +137,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 		setProvince('');
 		setIdLibrary('');
 
-		setNameError(false);
+		setNameUserError(false);
 		setLastnameError(false);
 		setEmailError(false);
 		setPasswordError(false);
@@ -170,10 +170,10 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 			<Input
 				id="nameUser"
 				label="Nombre"
-				value={name}
-				hasError={nameError}
+				value={nameUser}
+				hasError={nameUserError}
 				errorMessage={getLiteral('error-required-field')}
-				onChange={({target: { value }}) => setName(value)}
+				onChange={({target: { value }}) => setNameUser(value)}
 				className="wHalf"
 			/>
 			<Input

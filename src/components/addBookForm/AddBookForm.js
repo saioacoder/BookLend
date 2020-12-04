@@ -9,7 +9,7 @@ import ListBooks from '../listBooks';
 import BookCard from '../bookCard';
 import getLiteral from '../literals';
 import { getLibraryById, addBookToLibrary } from '../../logic/library';
-import { getBooksByTitle, getBookById, getBookFormated, addBookById, formatData } from '../../logic/book';
+import { getBooksByTitle, getBookById, getBookFormated, addBookById } from '../../logic/book';
 
 const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const { idLibrary } = useSelector(state => state.library);
@@ -22,12 +22,12 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	const [idBookCustom, setIdBookCustom] = useState('');
 	const [units, setUnits] = useState(1);
-	const [categoryId, setCategoryId] = useState(0);
+	const [idCategory, setIdCategory] = useState(0);
 	const [purchaseDate, setPurchaseDate] = useState('');
 
 	const [idBookCustomError, setIdBookCustomError] = useState(false);
 	const [unitsError, setUnitsError] = useState(false);
-	const [categoryIdError, setCategoryIdError] = useState(false);
+	const [idCategoryError, setIdCategoryError] = useState(false);
 	const [purchaseDateError, setPurchaseDateError] = useState(false);
 
 	const [searchTermError, setSearchTermError] = useState(false);
@@ -61,7 +61,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			const bookResult = await getBookById(bookSelId);
 			if(bookResult !== null) {
 				setBookSel(bookResult);
-				setPurchaseDate(formatData(Date.now()));
+				setPurchaseDate(Date.now());
 
 				document.getElementById('searchForm').classList.add('hide');
 				document.getElementById('bookSelForm').classList.add('hide');
@@ -87,9 +87,9 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setUnitsError(true);
 		}
-		if(!categoryId) {
+		if(!idCategory) {
 			error = true;
-			setCategoryIdError(true);
+			setIdCategoryError(true);
 		}
 		if(!purchaseDate) {
 			error = true;
@@ -105,7 +105,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			} else {
 				const { title, cover } = getBookFormated(bookSel);
 				const addBookToLibraryObj = {
-					categoryId,
+					idCategory,
 					idBookCustom,
 					title,
 					units,
@@ -136,12 +136,12 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 		setBookSel(null);
 		setIdBookCustom('');
 		setUnits(1);
-		setCategoryId(0);
+		setIdCategory(0);
 		setPurchaseDate('');
 
 		setIdBookCustomError(false);
 		setUnitsError(false);
-		setCategoryIdError(false);
+		setIdCategoryError(false);
 		setPurchaseDateError(false);
 		setSearchTermError(false);
 		setSearchSubmitError(false);
@@ -197,13 +197,13 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					className="wHalf"
 				/>
 				<Select
-					id="categoriesLibrary"
+					id="categories"
 					label="Categorías"
-					value={setCategoryId}
+					value={setIdCategory}
 					placeholder="Elige una categoría"
-					hasError={categoryIdError}
+					hasError={idCategoryError}
 					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setCategoryId(value)}
+					onChange={({target: { value }}) => setIdCategory(value)}
 					options={categories}
 					className="wHalf"
 				/>

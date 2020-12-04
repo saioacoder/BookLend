@@ -12,19 +12,19 @@
 	}
 	.header {
 		&_primaryData {
-			width: 37%;
+			width: 33%;
 		}
 		&_categories {
 			text-align: center;
-			width: 20%;
+			width: 18%;
 		}
 		&_units {
 			text-align: center;
-			width: 13%;
+			width: 12%;
 		}
 		&_actions {
 			text-align: center;
-			width: 30%;
+			width: 37%;
 		}
 	}
 	&_book {
@@ -35,9 +35,6 @@
 		transition: all $transition_duration;
 		&:hover {
 			transform: scale(1.02);
-			.book_cover {
-				background-color: $color_background;
-			}
 		}
 		> * {
 			padding: $spacing_base;
@@ -47,7 +44,7 @@
 		&_primaryData {
 			align-items: center;
 			display: flex;
-			width: 37%;
+			width: 33%;
 		}
 		&_content {
 			width: calc(100% - 70px - 15px);
@@ -81,7 +78,7 @@
 		&_category {
 			align-self: center;
 			text-align: center;
-			width: 20%;
+			width: 18%;
 			span {
 				background-color: $color_background;
 				border-radius: $radius_s;
@@ -94,7 +91,7 @@
 			align-self: center;
 			font-weight: $font_weight_mediumBold;
 			text-align: center;
-			width: 13%;
+			width: 12%;
 			span {
 				color: $color_base_medium;
 				font-size: $font_size_xxs;
@@ -103,7 +100,7 @@
 		&_actions {
 			align-self: center;
 			text-align: center;
-			width: 30%;
+			width: 37%;
 			.button {
 				margin: 0 4px;
 			}

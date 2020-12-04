@@ -1,6 +1,6 @@
 const defaultUser = {
 	idUser: '',
-	name: '',
+	nameUser: '',
 	isAdmin: false
 };
 

@@ -13,7 +13,7 @@ import { setUser } from '../../redux/actions/userActions';
 const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const dispatch = useDispatch();
 
-	const [name, setName] = useState('');
+	const [nameUser, setNameUser] = useState('');
 	const [lastname, setLastname] = useState('');
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
@@ -25,7 +25,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [province, setProvince] = useState('');
 	const [categories, setCategories] = useState('');
 
-	const [nameError, setNameError] = useState(false);
+	const [nameUserError, setNameUserError] = useState(false);
 	const [lastnameError, setLastnameError] = useState(false);
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
@@ -41,7 +41,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		setNameError(false);
+		setNameUserError(false);
 		setLastnameError(false);
 		setEmailError(false);
 		setPasswordError(false);
@@ -55,9 +55,9 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		setSignupError('');
 
 		let error = false;
-		if(!name) {
+		if(!nameUser) {
 			error = true;
-			setNameError(true);
+			setNameUserError(true);
 		}
 		if(!lastname) {
 			error = true;
@@ -108,7 +108,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		if(!error) {
 			setSignupError('');
 
-			const { success, error, id, user } = await adminSignup(name, lastname, email, password, idLibrary);
+			const { success, error, id, user } = await adminSignup(nameUser, lastname, email, password, idLibrary);
 			if(!success) {
 				setSignupError(getLiteral(error));
 			} else {
@@ -116,13 +116,13 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				await librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, splitCategories);
 				dispatch(setUser({
 					idUser: id,
-					name: user.name,
+					nameUser: nameUser,
 					isAdmin: user.isAdmin
 				}));
 				dispatch(setLibrary({
-					idLibrary: user.idLibrary,
+					idLibrary: idLibrary,
 					nameLibrary: nameLibrary,
-					categoriesLibrary: splitCategories
+					categories: splitCategories
 				}));
 				handleReset();
 				onSuccess();
@@ -133,7 +133,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 	const handleReset = (e) => {
 		e && e.preventDefault();
 
-		setName('');
+		setNameUser('');
 		setLastname('');
 		setEmail('');
 		setPassword('');
@@ -145,7 +145,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 		setProvince('');
 		setCategories('');
 
-		setNameError(false);
+		setNameUserError(false);
 		setLastnameError(false);
 		setEmailError(false);
 		setPasswordError(false);
@@ -172,10 +172,10 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 			<Input
 				id="nameAdmin"
 				label="Nombre"
-				value={name}
-				hasError={nameError}
+				value={nameUser}
+				hasError={nameUserError}
 				errorMessage={getLiteral('error-required-field')}
-				onChange={({target: { value }}) => setName(value)}
+				onChange={({target: { value }}) => setNameUser(value)}
 				className="wHalf"
 			/>
 			<Input

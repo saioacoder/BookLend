@@ -6,8 +6,8 @@ import {
 
 
 // Añade una librería nueva con todos sus datos a la BBDD
-export async function librarySignup(idLibrary, name, address, postalCode, city, province, categories) {
-	return await addObjectWithId('libraries', idLibrary, { name, address, postalCode, city, province, categories });
+export async function librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, categories) {
+	return await addObjectWithId('libraries', idLibrary, { nameLibrary, address, postalCode, city, province, categories });
 }
 
 

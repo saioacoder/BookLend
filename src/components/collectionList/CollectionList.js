@@ -10,7 +10,7 @@ import { getLibraryCollectionById } from '../../logic/library';
 import './CollectionList.scss';
 
 const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefresh }) => {
-	const { idLibrary, categoriesLibrary } = useSelector(state => state.library);
+	const { idLibrary, categories } = useSelector(state => state.library);
 	const [books, setBooks] = useState([]);
 	const [idBookSel, setIdBookSel] = useState('');
 	const [bookTitleSel, setBookTitleSel] = useState('');
@@ -51,7 +51,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 					<div className="header_units">Unidades</div>
 					<div className="header_actions">Acciones</div>
 				</header>
-				{books.map(({ id, categoryId, idBookCustom, title, units, unitsNow, cover }) => {
+				{books.map(({ id, idCategory, idBookCustom, title, units, unitsNow, cover }) => {
 					return (
 						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
@@ -64,10 +64,11 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 									<p className="book_idCustom"><span>ID ›</span>{idBookCustom}</p>
 								</div>
 							</div>
-							<div className="book_category"><span>{categoriesLibrary[categoryId]}</span></div>
+							<div className="book_category"><span>{categories[idCategory]}</span></div>
 							<div className="book_units">{unitsNow}<span> / {units}</span></div>
 							<div className="book_actions">
 								<Button className="button__small">Prestar</Button>
+								<Button className="button__small">Devolver</Button>
 								<Button onClick={() => handleOnRemoveBook(id, title)} className="button_inverse button__small">Borrar</Button>
 							</div>
 						</div>
