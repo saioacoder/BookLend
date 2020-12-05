@@ -12,21 +12,21 @@
 	padding: 11px 17px;
 	text-transform: uppercase;
 	transition: all $transition_duration;
-	&:hover {
+	&:not(:disabled):hover {
 		background-color: $color_highlight_dark;
 		border-color: $color_highlight_dark;
 	}
 	&_inverse {
 		background-color: $color_background;
 		color: $color_highlight;
-		&:hover {
+		&:not(:disabled):hover {
 			color: $color_background;
 		}
 	}
 	&_neutral {
 		background-color: $color_base_medium;
 		border-color: $color_base_medium;
-		&:hover {
+		&:not(:disabled):hover {
 			background-color: $color_base_extramedium;
 			border-color: $color_base_extramedium;
 		}
@@ -35,16 +35,20 @@
 		color: $color_highlight;
 		padding-left: $spacing_s;
 		padding-right: $spacing_s;
-		&, &:hover {
+		&, &:not(:disabled):hover {
 			background-color: $color_background;
 			border-color: $color_background;
 		}
-		&:hover {
+		&:not(:disabled):hover {
 			color: $color_highlight_dark;
 		}
 	}
 	&__small {
 		font-size: $font_size_xxs;
 		padding: 7px 12px;
+	}
+	&:disabled {
+		cursor: default;
+		opacity: 0.4;
 	}
 }
