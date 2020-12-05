@@ -51,7 +51,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 					<div className="header_status">Estado</div>
 					<div className="header_actions">Acciones</div>
 				</header>
-				{books.map(({ id, idCategory, idBookCustom, title, cover }) => {
+				{books.map(({ id, idCategory, idBookCustom, title, cover, status }) => {
 					return (
 						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
@@ -65,7 +65,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 								</div>
 							</div>
 							<div className="book_category"><span>{categories[idCategory]}</span></div>
-							<div className="book_status">Estado</div>
+							<div className="book_status">{status}</div>
 							<div className="book_actions">
 								<Button className="button__small">Prestar</Button>
 								<Button className="button__small">Devolver</Button>

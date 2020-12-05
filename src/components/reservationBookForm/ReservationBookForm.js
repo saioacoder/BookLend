@@ -1,8 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { reserveBook } from '../../logic/bookStatus';
-
 import Button from '../button';
+import { reserveBook } from '../../logic/library';
 
 const ReservationBookForm = ({ idBook, onCancel, onSuccess }) => {
 
@@ -11,15 +10,12 @@ const ReservationBookForm = ({ idBook, onCancel, onSuccess }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const result = reserveBook({
-			idBook,
+		const newBookData = {
 			idUser,
-			idLibrary,
 			reserveDate: Date.now(),
-			lendDate: null,
-			returnDate: null,
 			status: 'reserved'
-		});
+		};
+		const result = await reserveBook(idLibrary, idBook, newBookData);
 		if(result) {
 			onSuccess();
 		}

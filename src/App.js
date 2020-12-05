@@ -58,7 +58,7 @@ function App() {
 					<Route exact path="/:idLibrary/libro/:idBook">
 						<Book />
 					</Route>
-					<Route exact path="/:idLibrary/mis-prestamos/">
+					<Route exact path="/:idLibrary/mis-libros/">
 						<MyBooks />
 					</Route>
 				</Switch>

@@ -103,7 +103,8 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					idBookCustom,
 					title,
 					purchaseDate,
-					cover
+					cover,
+					status: ''
 				};
 				const resultLibrary = await addBookToLibrary(idLibrary, idBook, addBookToLibraryObj);
 				if(!resultLibrary) {

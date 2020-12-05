@@ -1,8 +1,8 @@
 import './Loading.scss';
 
-const Loading = ({ show }) => {
+const Loading = () => {
 	return (
-		<div className={show ? 'loading' : 'loading hide'}>
+		<div className='loading'>
 			<div className="loading_circle">
 				<div className="loading_circle1"></div>
 				<div className="loading_circle2"></div>

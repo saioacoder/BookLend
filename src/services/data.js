@@ -96,6 +96,28 @@ export async function getObjectFromSubcollection(collection, idCollection, subco
 }
 
 
+export async function getObjectFromSubcollectionById(collection, idCollection, subcollection, id) {
+	try {
+		const doc = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).get();
+		return doc.exists ? parseDocument(doc) : null;
+	} catch (error) {
+		console.log("getObjectFromSubcollectionById Error: ", error);
+		return null;
+	}
+}
+
+
+export async function updateObjectFromSubcollectionById(collection, idCollection, subcollection, id, updateValue) {
+	try {
+		await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).update(updateValue);
+		return true;
+	} catch (error) {
+		console.log("updateObjectFromSubcollectionById Error: ", error);
+		return false;
+	}
+}
+
+
 export async function getDataByConditions(collection, conditions) {
 	try {
 		let allDocs = firebase.firestore().collection(collection);
@@ -123,17 +145,6 @@ export async function getDataByConditions(collection, conditions) {
 	}
 }
 
-
-// Se usa ??
-export async function getObjectFromSubcollectionById(collection, idCollection, subcollection, id) {
-	try {
-		const doc = await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).get();
-		return doc.exists ? parseDocument(doc) : null;
-	} catch (error) {
-		console.log("getObjectFromSubcollectionById Error: ", error);
-		return null;
-	}
-}
 
 
 function parseDocument(doc) {

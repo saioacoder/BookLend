@@ -7,10 +7,15 @@
 	grid-row-gap: $spacing_xl;
 	margin-top: $spacing_base;
 	&_book {
-		cursor: pointer;
-		transition: all $transition_duration;
-		&:hover {
-			transform: scale(1.08);
+		&:not(.bookList_book__disabled) {
+			cursor: pointer;
+			transition: all $transition_duration;
+			&:hover {
+				transform: scale(1.08);
+			}
+		}
+		&__disabled {
+			pointer-events: none;
 		}
 	}
 	.book {

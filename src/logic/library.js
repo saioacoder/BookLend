@@ -1,7 +1,8 @@
 import {
 	addObjectWithId,
 	getObjectById,
-	addObjectToSubcollectionWithId, getObjectFromSubcollection, removeObjectFromSubcollectionWithId
+	addObjectToSubcollectionWithId, getObjectFromSubcollection, getObjectFromSubcollectionById, removeObjectFromSubcollectionWithId,
+	updateObjectFromSubcollectionById
 } from '../services/data';
 
 
@@ -37,8 +38,32 @@ export async function getLibraryCollectionById(id, orderByTerm='', orderBy='desc
 }
 
 
+// Devuelve un libro por ID de su librería
+export async function getBookFromCollectionById(idLibrary, idBook) {
+	const book = await getObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook);
+	return book ? book : null;
+}
+
+
 // Devuelve una url válida
 export function validateUrl(url) {
 	const cleanUrl = url.replace(/[ ñ#!¡:.,_ç{}?¿+=$&%@!\\/()]/g, '');
 	return cleanUrl.toLowerCase();
+}
+
+
+// Devuelve el string correcto para el estado
+export function getStatus(status) {
+	switch(status) {
+		case 'reserved': return 'reservado';
+		case 'lent': return 'prestado';
+		case 'archived': return 'archivado';
+		default: return '';
+	}
+}
+
+
+// Reserva un libro en la BBDD
+export async function reserveBook(idLibrary, idBook, bookData) {
+	return await updateObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook, bookData);
 }

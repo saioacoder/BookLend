@@ -6,7 +6,7 @@ const Home = () => {
 		<>
 			<header className="page_header">
 				<div>
-					<h1 className="page_header_title">Inicio</h1>
+					<h1 className="page_header_title">Colleción de libros</h1>
 				</div>
 			</header>
 

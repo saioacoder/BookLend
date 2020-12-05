@@ -4,9 +4,10 @@ import { useSelector } from 'react-redux';
 
 import Button from '../button';
 import Modal from '../modal';
+import Loading from '../loading';
 import ReservationBookForm from '../reservationBookForm';
 import { getBookById, getBookFormated, getRandomColor } from '../../logic/book';
-import { isBookAvailable } from '../../logic/bookStatus';
+import { getBookFromCollectionById } from '../../logic/library';
 
 import './BookCardFull.scss';
 
@@ -14,8 +15,8 @@ const BookCardFull = () => {
 
 	const { idBook } = useParams();
 	const [book, setBook] = useState({});
-	const [bookAvailable, setBookAvailable] = useState(false);
 	const [modalReservationIsOpen, setModalReservationIsOpen] = useState(false);
+	const [bookStatus, setBookStatus] = useState('');
 
 	const { idLibrary } = useSelector(state => state.library);
 
@@ -25,13 +26,12 @@ const BookCardFull = () => {
 		const bookResult = await getBookById(id);
 		if(bookResult !== null) {
 			setBook(getBookFormated(bookResult));
-		}
-	};
-
-	const bookAvailability = async (id) => {
-		const result = await isBookAvailable(id);
-		if(result) {
-			setBookAvailable(result);
+			if(idLibrary) {
+				const bookFromCollection = await getBookFromCollectionById(idLibrary, idBook);
+				if(bookFromCollection !== null) {
+					setBookStatus(bookFromCollection.status);
+				}
+			}
 		}
 	};
 
@@ -41,11 +41,13 @@ const BookCardFull = () => {
 	};
 
 	useEffect(() => {
-		if(idBook) {
+		if(idLibrary && idBook) {
 			getBook(idBook);
-			bookAvailability(idBook);
 		}
-	}, [idBook]);
+	}, [idLibrary, idBook]);
+
+	if(!idLibrary)
+		return <Loading />
 
 	return (
 		<>
@@ -65,7 +67,7 @@ const BookCardFull = () => {
 					</ul>
 					<div className="bookCardFull_description">{book.synopsis}</div>
 					<div className="bookCardFull_action">
-						{bookAvailable ?
+						{bookStatus === '' ?
 							<Button onClick={() => setModalReservationIsOpen(true)}>Reservar</Button> :
 							<Button disabled={true}>No disponible</Button>
 						}

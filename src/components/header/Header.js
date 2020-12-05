@@ -52,15 +52,20 @@ const Header = () => {
 		],
 		user: [
 			{
-				title: 'Mis préstamos',
-				action: `/${idLibrary}/mis-prestamos/`,
+				title: 'Inicio',
+				action: `/${idLibrary}/`,
 				actionType: 'url'
 			},
 			{
-				title: 'Mi perfil',
-				action: '',
-				actionType: 'function'
+				title: 'Mis libros',
+				action: `/${idLibrary}/mis-libros/`,
+				actionType: 'url'
 			},
+			// {
+			// 	title: 'Mi perfil',
+			// 	action: '',
+			// 	actionType: 'function'
+			// },
 			{
 				title: 'Salir',
 				action: handleLogout,
@@ -69,15 +74,20 @@ const Header = () => {
 		],
 		admin: [
 			{
+				title: 'Dashboard',
+				action: `/${idLibrary}/admin/`,
+				actionType: 'url'
+			},
+			{
 				title: 'Colección',
 				action: `/${idLibrary}/admin/coleccion/`,
 				actionType: 'url'
 			},
-			{
-				title: 'Configuración',
-				action: '',
-				actionType: 'function'
-			},
+			// {
+			// 	title: 'Configuración',
+			// 	action: '',
+			// 	actionType: 'function'
+			// },
 			{
 				title: 'Salir',
 				action: handleLogout,
@@ -139,7 +149,8 @@ const Header = () => {
 						<span>Book<span>Lend</span></span>
 					</Link>
 					{nameLibrary && <span className="header_library">/ {nameLibrary}</span>}
-					{nameUser && <button className="header_user">¡Hola <strong>{nameUser}</strong>! <span className="header_user_icon">›</span></button>}
+					{nameUser && <button className="header_user">¡Hola <strong>{nameUser}</strong>!</button>}
+					{/* {nameUser}</strong>! <span className="header_user_icon">›</span></button>} */}
 					<nav className="header_nav">
 						{getMenu(menuName)}
 					</nav>

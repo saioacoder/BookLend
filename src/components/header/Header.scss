@@ -1,61 +1,63 @@
 @import '../../styles/variables';
 
 .header {
-   .container {
-      align-items: center;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: $spacing_xl;
-      padding-bottom: $spacing_base;
-      padding-top: $spacing_base;
-   }
-   &_logo {
-      img {
-         height: 28px;
-         margin-right: 8px;
-         vertical-align: baseline;
-      }
-      > span {
-         font-size: 2.2rem;
-         font-weight: $font_weight_extraBold;
-         text-transform: uppercase;
-         span {
-            font-weight: $font_weight_base;
-         }
-      }
-   }
-   &_library {
-      color: $color_base_medium;
-      font-size: $font_size_xs;
-      margin-left: $spacing_xxs;
-      margin-top: 12px;
-      text-transform: uppercase;
-   }
-   &_user {
-      cursor: pointer;
-      margin-left: auto;
-      &_icon {
-         display: inline-block;
-         font-size: 2.5rem;
-         font-weight: $font_weight_bold;
-         line-height: 0;
-         margin-left: $spacing_xxs;
-         transform: rotate(90deg);
-         transition: all $transition_duration;
-         vertical-align: middle;
-      }
-      &:hover {
-         color: $color_highlight_dark;
-      }
-   }
-   &_nav {
-      &_item {
-         cursor: pointer;
-         margin-left: $spacing_base;
-         padding: $spacing_xs 0;
-         &:hover {
-            color: $color_highlight_dark;
-         }
-      }
-   }
+	.container {
+		align-items: center;
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: $spacing_xl;
+		padding-bottom: $spacing_base;
+		padding-top: $spacing_base;
+	}
+	&_logo {
+		img {
+			height: 28px;
+			margin-right: 8px;
+			vertical-align: baseline;
+		}
+		> span {
+			font-size: 2.2rem;
+			font-weight: $font_weight_extraBold;
+			text-transform: uppercase;
+			span {
+				font-weight: $font_weight_base;
+			}
+		}
+	}
+	&_library {
+		color: $color_base_medium;
+		font-size: $font_size_xs;
+		margin-left: $spacing_xxs;
+		margin-top: 12px;
+		text-transform: uppercase;
+	}
+	&_user {
+		//cursor: pointer;
+		margin-left: auto;
+		&_icon {
+			display: inline-block;
+			font-size: 2.5rem;
+			font-weight: $font_weight_bold;
+			line-height: 0;
+			margin-left: $spacing_xxs;
+			transform: rotate(90deg);
+			transition: all $transition_duration;
+			vertical-align: middle;
+		}
+		// &:hover {
+		//    color: $color_highlight_dark;
+		// }
+	}
+	&_nav {
+		&_item {
+			border-bottom: 1px solid transparent;
+			cursor: pointer;
+			margin-left: $spacing_base;
+			padding: $spacing_xs 0 $spacing_xs - 1px;
+			transition: all $transition_duration;
+			&:hover {
+				border-color: $color_highlight;
+			}
+		}
+	}
 }
