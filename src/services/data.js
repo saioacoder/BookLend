@@ -98,16 +98,28 @@ export async function getObjectFromSubcollection(collection, idCollection, subco
 
 export async function getDataByConditions(collection, conditions) {
 	try {
-		let allDocs = await firebase.firestore().collection(collection);
+		let allDocs = firebase.firestore().collection(collection);
 		conditions.forEach(({ field, condition, value }) => {
-			console.log(field, condition, value);
-			allDocs.where(field, condition, value);
+		 	allDocs = allDocs.where(field, condition, value);
 		});
-		allDocs.get();
-		return allDocs.docs.map(doc => parseDocument(doc));
+		allDocs = await allDocs.get();
+		if(allDocs.docs !== undefined && allDocs.docs.length > 0){
+			return {
+				result: allDocs.docs.map(doc => parseDocument(doc)),
+				error: false
+			}
+		} else {
+			return {
+				result: null,
+				error: false
+			};
+		}
 	} catch (error) {
 		console.log("getDataByConditions Error: ", error);
-		return null;
+		return {
+			result: null,
+			error: true
+		};;
 	}
 }
 
