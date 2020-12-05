@@ -7,12 +7,13 @@ const Input = ({
 	errorMessage,
 	onChange,
 	className,
-	type='text'
+	type='text',
+	disabled=false
 }) => {
 	className = className ? ` ${className}` : '';
 	return (
 		<div className={hasError ? `formField formField_error${className}` : `formField${className}`}>
-			<div className="formField_field">
+			<div className={disabled ? 'formField_field formField__disabled' : 'formField_field'}>
 				<label>{label}</label>
 				<input
 					type={type}
@@ -21,6 +22,7 @@ const Input = ({
 					placeholder={placeholder}
 					value={value}
 					onChange={onChange}
+					disabled={disabled}
 				/>
 			</div>
 			{(hasError && errorMessage) && <p className="formField_errorMessage">{errorMessage}</p>}
