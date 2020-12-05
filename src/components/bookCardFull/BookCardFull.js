@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Button from '../button';
 import Modal from '../modal';
 import ReservationBookForm from '../reservationBookForm';
 import { getBookById, getBookFormated, getRandomColor } from '../../logic/book';
+import { isBookAvailable } from '../../logic/bookStatus';
 
 import './BookCardFull.scss';
 
@@ -12,7 +14,12 @@ const BookCardFull = () => {
 
 	const { idBook } = useParams();
 	const [book, setBook] = useState({});
+	const [bookAvailable, setBookAvailable] = useState(false);
 	const [modalReservationIsOpen, setModalReservationIsOpen] = useState(false);
+
+	const { idLibrary } = useSelector(state => state.library);
+
+	const history = useHistory();
 
 	const getBook = async (id) => {
 		const bookResult = await getBookById(id);
@@ -21,9 +28,22 @@ const BookCardFull = () => {
 		}
 	};
 
+	const bookAvailability = async (id) => {
+		const result = await isBookAvailable(id);
+		if(result) {
+			setBookAvailable(result);
+		}
+	};
+
+	const handleSuccess = () => {
+		setModalReservationIsOpen(false);
+		history.push(`/${idLibrary}/`);
+	};
+
 	useEffect(() => {
 		if(idBook) {
 			getBook(idBook);
+			bookAvailability(idBook);
 		}
 	}, [idBook]);
 
@@ -45,7 +65,10 @@ const BookCardFull = () => {
 					</ul>
 					<div className="bookCardFull_description">{book.synopsis}</div>
 					<div className="bookCardFull_action">
-						<Button onClick={() => setModalReservationIsOpen(true)}>Reservar</Button>
+						{bookAvailable ?
+							<Button onClick={() => setModalReservationIsOpen(true)}>Reservar</Button> :
+							<Button disabled={true}>No disponible</Button>
+						}
 					</div>
 				</div>
 			</article>
@@ -57,7 +80,7 @@ const BookCardFull = () => {
 				<ReservationBookForm
 					idBook={idBook}
 					onCancel={() => setModalReservationIsOpen(false)}
-					onSuccess={() => setModalReservationIsOpen(false)}
+					onSuccess={() => handleSuccess()}
 				/>
 			</Modal>
 		</>

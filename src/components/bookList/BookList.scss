@@ -31,6 +31,18 @@
 				width: 100%;
 			}
 		}
+		&_status {
+			background-color: $color_base;
+			border-radius: $radius_base;
+			color: $color_background;
+			font-size: $font_size_xxxs;
+			font-weight: $font_weight_mediumBold;
+			line-height: $line_height_xxs;
+			padding: 5px 9px 4px;
+			position: absolute;
+			text-transform: uppercase;
+			top: -4px;
+		}
 		&_title {
 			font-size: $font_size_s;
 			font-weight: $font_weight_bold;

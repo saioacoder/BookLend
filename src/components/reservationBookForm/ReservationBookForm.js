@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
 
-import { getBookStatus, reserveBook } from '../../logic/bookStatus';
+import { reserveBook } from '../../logic/bookStatus';
 
 import Button from '../button';
 
@@ -11,28 +11,23 @@ const ReservationBookForm = ({ idBook, onCancel, onSuccess }) => {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		const books = getBookStatus(idBook);
-		if(!books){
-			console.log(books);
-		// 	const result = reserveBook({
-		// 		idBook,
-		// 		idUser,
-		// 		idLibrary,
-		// 		reservationDate: Date.now(),
-		// 		status: 'reserved'
-		// 	});
-		// 	if(result) {
-		// 		onSuccess();
-		// 	}
-		// } else {
-		// 	// No existen libros
+		const result = reserveBook({
+			idBook,
+			idUser,
+			idLibrary,
+			reserveDate: Date.now(),
+			lendDate: null,
+			returnDate: null,
+			status: 'reserved'
+		});
+		if(result) {
+			onSuccess();
 		}
 	}
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<p>¿Estas seguro que quieres reservar el libro?</p>
-			<p>Una vez reservado podrás pasarte a buscarlo por la biblioteca directamente.</p>
+			<p>¿Estas seguro que quieres <strong>reservar el libro</strong>? Una vez reservado podrás pasarte a buscarlo por la biblioteca directamente.</p>
 			<div className="actionButtons">
 				<Button className="button_transparent" onClick={onCancel}>Cancelar</Button>
 				<Button>Aceptar</Button>
