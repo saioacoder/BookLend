@@ -48,10 +48,10 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 				<header className="collection_header">
 					<div className="header_primaryData">Libro</div>
 					<div className="header_categories">Categoría</div>
-					<div className="header_units">Unidades</div>
+					<div className="header_status">Estado</div>
 					<div className="header_actions">Acciones</div>
 				</header>
-				{books.map(({ id, idCategory, idBookCustom, title, units, unitsNow, cover }) => {
+				{books.map(({ id, idCategory, idBookCustom, title, cover }) => {
 					return (
 						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
@@ -65,7 +65,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 								</div>
 							</div>
 							<div className="book_category"><span>{categories[idCategory]}</span></div>
-							<div className="book_units">{unitsNow}<span> / {units}</span></div>
+							<div className="book_status">Estado</div>
 							<div className="book_actions">
 								<Button className="button__small">Prestar</Button>
 								<Button className="button__small">Devolver</Button>

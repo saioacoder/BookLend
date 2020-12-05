@@ -21,12 +21,10 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 	const [bookSel, setBookSel] = useState(null);
 
 	const [idBookCustom, setIdBookCustom] = useState('');
-	const [units, setUnits] = useState(1);
 	const [idCategory, setIdCategory] = useState(0);
 	const [purchaseDate, setPurchaseDate] = useState('');
 
 	const [idBookCustomError, setIdBookCustomError] = useState(false);
-	const [unitsError, setUnitsError] = useState(false);
 	const [idCategoryError, setIdCategoryError] = useState(false);
 	const [purchaseDateError, setPurchaseDateError] = useState(false);
 
@@ -83,10 +81,6 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 			error = true;
 			setIdBookCustomError(true);
 		}
-		if(!units) {
-			error = true;
-			setUnitsError(true);
-		}
 		if(!idCategory) {
 			error = true;
 			setIdCategoryError(true);
@@ -108,8 +102,6 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					idCategory,
 					idBookCustom,
 					title,
-					units,
-					unitsNow: units,
 					purchaseDate,
 					cover
 				};
@@ -135,12 +127,10 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 		setBookSelId('');
 		setBookSel(null);
 		setIdBookCustom('');
-		setUnits(1);
 		setIdCategory(0);
 		setPurchaseDate('');
 
 		setIdBookCustomError(false);
-		setUnitsError(false);
 		setIdCategoryError(false);
 		setPurchaseDateError(false);
 		setSearchTermError(false);
@@ -194,7 +184,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					hasError={idBookCustomError}
 					errorMessage={getLiteral('error-required-field')}
 					onChange={({target: { value }}) => setIdBookCustom(value)}
-					className="wHalf"
+					className="wFull"
 				/>
 				<Select
 					id="categories"
@@ -206,16 +196,6 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					onChange={({target: { value }}) => setIdCategory(value)}
 					options={categories}
 					className="wHalf"
-				/>
-				<Input
-					id="units"
-					label="Unidades disponibles"
-					value={units}
-					hasError={unitsError}
-					errorMessage={getLiteral('error-required-field')}
-					onChange={({target: { value }}) => setUnits(value)}
-					className="wHalf"
-					type="number"
 				/>
 				<Input
 					id="purchaseDate"
