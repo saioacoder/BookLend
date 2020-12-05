@@ -8,9 +8,7 @@
 	cursor: pointer;
 	font-size: $font_size_xs;
 	font-weight: $font_weight_bold;
-	letter-spacing: 1px;
 	padding: 11px 17px;
-	text-transform: uppercase;
 	transition: all $transition_duration;
 	&:not(:disabled):hover {
 		background-color: $color_highlight_dark;
