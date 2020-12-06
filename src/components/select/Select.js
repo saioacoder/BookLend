@@ -22,7 +22,7 @@ const Select = ({
 					name={id}
 					onChange={onChange}
 				>
-					<option value="-1" selected={value ? true : false}>{placeholder}</option>
+					<option value="-1">{placeholder}</option>
 					{options && options.map((item, i) => (
 						<option key={`categories${i}`} value={i}>{item}</option>
 					))}
