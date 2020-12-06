@@ -28,7 +28,7 @@
 		transform: translate(-50%,0);
 		top: 100%;
 		width: max-content;
-		z-index: 99999;
+		z-index: 20;
 		&:before {
 			border-bottom: 5px solid $color_base;
 			border-left: 5px solid transparent;

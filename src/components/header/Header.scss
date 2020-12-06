@@ -1,6 +1,8 @@
 @import '../../styles/variables';
 
 .header {
+	position: relative;
+   z-index: 10;
 	.container {
 		align-items: center;
 		display: flex;
@@ -25,7 +27,7 @@
 		}
 	}
 	&_library {
-		color: $color_base_medium;
+		color: $color_base_extramedium;
 		font-size: $font_size_xs;
 		margin-left: $spacing_xxs;
 		margin-top: 12px;

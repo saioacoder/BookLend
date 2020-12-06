@@ -1,9 +1,13 @@
 @import '../../styles/variables';
 
 .footer {
+   //bottom: 0;
+   flex-shrink: 0;
+   position: relative;
+   width: 100%;
+   z-index: 10;
    .container {
       align-items: center;
-      color: $color_base_extramedium;
       display: flex;
       font-size: $font_size_xs;
       font-weight: $font_weight_mediumBold;
@@ -15,7 +19,6 @@
       margin-right: auto;
    }
    a {
-      color: $color_base_extramedium;
       margin-left: $spacing_base;
       &:hover {
          color: $color_highlight_dark;

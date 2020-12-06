@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import firebase from 'firebase/app';
@@ -21,7 +21,9 @@ import MyBooks from './pages/myBooks';
 firebase.initializeApp(firebaseConfig);
 
 function App() {
+
 	const dispatch = useDispatch();
+	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 
 	useEffect(() => {
 		registerAuthStateChangeHandler(async (user) => {
@@ -39,11 +41,11 @@ function App() {
 
 	return (
 		<Router>
-			<Header />
+			<Header openSignupLibrary={modalSignupLibraryIsOpen} />
 			<main className="container">
 				<Switch>
 					<Route exact path="/">
-						<Landing />
+						<Landing onClickButton={() => setModalSignupLibraryIsOpen(true)} />
 					</Route>
 					<Route exact path="/:idLibrary/admin/">
 						<Collection />
@@ -62,6 +64,7 @@ function App() {
 			<Footer />
 		</Router>
 	);
+
 };
 
 export default App;

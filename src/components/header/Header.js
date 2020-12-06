@@ -11,7 +11,7 @@ import { userLogout } from '../../logic/user';
 
 import './Header.scss';
 
-const Header = () => {
+const Header = ({ openSignupLibrary }) => {
 
 	const { idUser, nameUser, isAdmin } = useSelector(state => state.user);
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
@@ -29,6 +29,12 @@ const Header = () => {
 		history.push(`/`);
 		userLogout();
 	};
+
+	useEffect(() => {
+		if(openSignupLibrary) {
+			setModalSignupLibraryIsOpen(true);
+		}
+	}, [openSignupLibrary]);
 
 	const menus = {
 		default: [
