@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 import Button from '../button';
 import Modal from '../modal';
+import Loading from '../loading';
 import RemoveBookForm from '../removeBookForm';
 import LendBookForm from '../lendBookForm';
 import ReturnBookForm from '../returnBookForm';
@@ -11,9 +12,10 @@ import { getLibraryCollectionById, getStatus } from '../../logic/library';
 
 import './CollectionList.scss';
 
-const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
+const CollectionList = ({ filter, onRefreshCollection, onEndRefresh }) => {
 	const { idLibrary, categories } = useSelector(state => state.library);
 	const [books, setBooks] = useState([]);
+	const [filterBooks, setFilterBooks] = useState([]);
 	const [idBookSel, setIdBookSel] = useState('');
 	const [bookTitleSel, setBookTitleSel] = useState('');
 	const [modalRemoveIsOpen, setModalRemoveIsOpen] = useState(false);
@@ -24,6 +26,11 @@ const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
 		const collection = await getLibraryCollectionById(id, orderByTerm);
 		if(collection !== null) {
 			setBooks(collection);
+			setFilterBooks(collection);
+		}
+		if(filter !== '') {
+			const newBooks = books.filter(item => item.status === filter);
+			setFilterBooks(newBooks);
 		}
 	};
 
@@ -68,7 +75,11 @@ const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
 			refreshLibraryCollection(idLibrary, 'purchaseDate');
 			onEndRefresh();
 		}
-	}, [idLibrary, onRefreshCollection]);
+	}, [idLibrary, filter, onRefreshCollection]);
+
+	if(filterBooks.length <= 0) {
+	 	return <Loading />
+	}
 
 	return (
 		<>
@@ -79,7 +90,7 @@ const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
 					<div className="header_status">Estado</div>
 					<div className="header_actions">Acciones</div>
 				</header>
-				{books.map(({ id, idCategory, idBookCustom, title, cover, status, email }) => {
+				{filterBooks.map(({ id, idCategory, idBookCustom, title, cover, status, email }) => {
 					return (
 						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
@@ -95,7 +106,7 @@ const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
 							<div className="book_category"><span>{categories[idCategory]}</span></div>
 							<div className="book_status">
 								{status &&
-									<span class="tooltip">
+									<span className="tooltip">
 										{getStatus(status)}
 										<span>{email}</span>
 									</span>

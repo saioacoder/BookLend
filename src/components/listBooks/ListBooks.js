@@ -53,7 +53,7 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 					})}
 				</div>
 			:
-				<div class="form_error">{getLiteral('error-no-results')}</div>
+				<div className="form_error">{getLiteral('error-no-results')}</div>
 			}
 		</>
 	);

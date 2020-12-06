@@ -4,9 +4,11 @@ import AddBookForm from '../components/addBookForm';
 import Button from '../components/button';
 import CollectionList from '../components/collectionList';
 import Modal from '../components/modal';
+import Tabs from '../components/tabs';
 
 const Collection = () => {
 
+	const [collectionFilter, setCollectionFilter] = useState('');
 	const [modalAddBookIsOpen, setModalAddBookIsOpen] = useState(false);
 	const [refreshCollection, setRefreshCollection] = useState(false);
 
@@ -24,7 +26,10 @@ const Collection = () => {
 				<Button onClick={() => setModalAddBookIsOpen(true)}>Añadir libro</Button>
 			</header>
 
+			<Tabs changeFilter={setCollectionFilter} />
+
 			<CollectionList
+				filter={collectionFilter}
 				onRefreshCollection={refreshCollection}
 				onEndRefresh={() => setRefreshCollection(false)}
 			/>

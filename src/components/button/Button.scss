@@ -3,7 +3,7 @@
 .button, .button_inverse, .button_neutral, .button_transparent, .button_small {
 	background-color: $color_highlight;
 	border: 1px solid $color_highlight;
-	border-radius: $radius_s;
+	border-radius: $radius_base;
 	color: $color_background;
 	cursor: pointer;
 	font-size: $font_size_xs;
@@ -43,7 +43,7 @@
 	}
 	&__small {
 		font-size: $font_size_xxs;
-		padding: 7px 12px;
+		padding: 8px 13px;
 	}
 	&:disabled {
 		background-color: transparent;
