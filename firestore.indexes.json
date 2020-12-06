@@ -1,0 +1,19 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "booksStatus",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "idBook",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}
