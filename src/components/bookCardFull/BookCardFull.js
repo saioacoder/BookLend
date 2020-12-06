@@ -37,7 +37,7 @@ const BookCardFull = () => {
 
 	const handleSuccess = () => {
 		setModalReservationIsOpen(false);
-		history.push(`/${idLibrary}/`);
+		history.push(`/${idLibrary}/mis-libros`);
 	};
 
 	useEffect(() => {
