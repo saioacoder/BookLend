@@ -20,16 +20,15 @@
 		}
 		&_status {
 			text-align: center;
-			width: 12%;
+			width: 19%;
 		}
 		&_actions {
 			text-align: center;
-			width: 37%;
+			width: 30%;
 		}
 	}
 	&_book {
 		border-radius: $radius_m;
-		cursor: pointer;
 		display: flex;
 		margin-bottom: $spacing_s;
 		transition: all $transition_duration;
@@ -76,9 +75,14 @@
 			}
 		}
 		&_category {
+			width: 18%;
+		}
+		&_status {
+			width: 19%;
+		}
+		&_category, &_status {
 			align-self: center;
 			text-align: center;
-			width: 18%;
 			span {
 				background-color: $color_background;
 				border-radius: $radius_s;
@@ -87,20 +91,10 @@
 				padding: 2px $spacing_xs 4px;
 			}
 		}
-		&_status {
-			align-self: center;
-			font-weight: $font_weight_mediumBold;
-			text-align: center;
-			width: 12%;
-			span {
-				color: $color_base_medium;
-				font-size: $font_size_xxs;
-			}
-		}
 		&_actions {
 			align-self: center;
 			text-align: center;
-			width: 37%;
+			width: 30%;
 			.button {
 				margin: 0 4px;
 			}

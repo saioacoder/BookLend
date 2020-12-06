@@ -16,4 +16,10 @@
 		margin-left: auto;
 		margin-top: 0;
 	}
+	&_description {
+		font-size: $font_size_m;
+		line-height: $line_height_m;
+		margin-bottom: $spacing_xxxl;
+		width: 70%;
+	}
 }

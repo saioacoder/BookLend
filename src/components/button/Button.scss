@@ -46,7 +46,10 @@
 		padding: 7px 12px;
 	}
 	&:disabled {
+		background-color: transparent;
+		border: 1px solid $color_highlight;
+		color: $color_highlight;
 		cursor: default;
-		opacity: 0.4;
+		opacity: 0.35;
 	}
 }
