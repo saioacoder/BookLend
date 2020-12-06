@@ -80,6 +80,34 @@ export async function getObjectById(collection, id) {
 }
 
 
+export async function getObjectsByConditions(collection, conditions) {
+	try {
+		let allDocs = firebase.firestore().collection(collection);
+		conditions.forEach(({ field, condition, value }) => {
+		 	allDocs = allDocs.where(field, condition, value);
+		});
+		allDocs = await allDocs.get();
+		if(allDocs.docs.length > 0) {
+			return {
+				result: allDocs.docs.map(doc => parseDocument(doc)),
+				error: false
+			};
+		} else {
+			return {
+				result: null,
+				error: false
+			};
+		}
+	} catch (error) {
+		console.log("getObjectsByConditions Error: ", error);
+		return {
+			result: null,
+			error: true
+		};
+	}
+}
+
+
 export async function getObjectFromSubcollection(collection, idCollection, subcollection, orderByTerm, orderBy) {
 	try {
 		let allDocs;
@@ -118,41 +146,13 @@ export async function updateObjectFromSubcollectionById(collection, idCollection
 }
 
 
-export async function getDataByConditions(collection, conditions) {
-	try {
-		let allDocs = firebase.firestore().collection(collection);
-		conditions.forEach(({ field, condition, value }) => {
-		 	allDocs = allDocs.where(field, condition, value);
-		});
-		allDocs = await allDocs.get();
-		if(allDocs.docs !== undefined && allDocs.docs.length > 0){
-			return {
-				result: allDocs.docs.map(doc => parseDocument(doc)),
-				error: false
-			}
-		} else {
-			return {
-				result: null,
-				error: false
-			};
-		}
-	} catch (error) {
-		console.log("getDataByConditions Error: ", error);
-		return {
-			result: null,
-			error: true
-		};;
-	}
-}
-
-
-
 function parseDocument(doc) {
 	return {
 		id: doc.id,
 		...doc.data()
 	}
 }
+
 
 
 // Se usa??

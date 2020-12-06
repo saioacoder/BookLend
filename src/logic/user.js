@@ -1,7 +1,5 @@
-import { useHistory } from 'react-router-dom';
-
 import { signup, login, logout, registerAuthObserver } from '../services/auth';
-import { addObjectWithId, getObjectById } from '../services/data';
+import { addObjectWithId, getObjectById, getObjectsByConditions } from '../services/data';
 
 
 //
@@ -52,6 +50,23 @@ export function registerAuthStateChangeHandler(callback) {
 export async function getUserById(id) {
 	const user = await getObjectById('users', id);
 	return { ...user, idUser: user.id };
+}
+
+
+//
+export async function getUserByEmail(email) {
+	const { result, error } = await getObjectsByConditions('users', [
+		{
+			field: 'email',
+			condition: '==',
+			value: email
+		}
+	]);
+	if(result !== null && !error) {
+		return { ...result[0], idUser: result[0].id };
+	} else {
+		return null;
+	}
 }
 
 

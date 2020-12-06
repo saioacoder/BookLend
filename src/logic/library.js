@@ -45,6 +45,12 @@ export async function getBookFromCollectionById(idLibrary, idBook) {
 }
 
 
+// Actualizar los datos de un libro en la BBDD
+export async function updateBook(idLibrary, idBook, bookData) {
+	return await updateObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook, bookData);
+}
+
+
 // Devuelve una url válida
 export function validateUrl(url) {
 	const cleanUrl = url.replace(/[ ñ#!¡:.,_ç{}?¿+=$&%@!\\/()]/g, '');
@@ -56,14 +62,8 @@ export function validateUrl(url) {
 export function getStatus(status) {
 	switch(status) {
 		case 'reserved': return 'reservado';
-		case 'lent': return 'prestado';
+		case 'lent': return 'en préstamo';
 		case 'archived': return 'archivado';
 		default: return '';
 	}
-}
-
-
-// Reserva un libro en la BBDD
-export async function reserveBook(idLibrary, idBook, bookData) {
-	return await updateObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook, bookData);
 }

@@ -4,17 +4,21 @@ import { useSelector } from 'react-redux';
 import Button from '../button';
 import Modal from '../modal';
 import RemoveBookForm from '../removeBookForm';
+import LendBookForm from '../lendBookForm';
+import ReturnBookForm from '../returnBookForm';
 import { getRandomColor } from '../../logic/book';
-import { getLibraryCollectionById } from '../../logic/library';
+import { getLibraryCollectionById, getStatus } from '../../logic/library';
 
 import './CollectionList.scss';
 
-const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefresh }) => {
+const CollectionList = ({ onRefreshCollection, onEndRefresh }) => {
 	const { idLibrary, categories } = useSelector(state => state.library);
 	const [books, setBooks] = useState([]);
 	const [idBookSel, setIdBookSel] = useState('');
 	const [bookTitleSel, setBookTitleSel] = useState('');
 	const [modalRemoveIsOpen, setModalRemoveIsOpen] = useState(false);
+	const [modalLendIsOpen, setModalLendIsOpen] = useState(false);
+	const [modalReturnIsOpen, setModalReturnIsOpen] = useState(false);
 
 	const refreshLibraryCollection = async (id, orderByTerm) => {
 		const collection = await getLibraryCollectionById(id, orderByTerm);
@@ -29,8 +33,32 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 		setBookTitleSel(title);
 	};
 
+	const handleOnLendBook = (id, title) => {
+		setModalLendIsOpen(true);
+		setIdBookSel(id);
+		setBookTitleSel(title);
+	};
+
+	const handleOnReturnBook = (id, title) => {
+		setModalReturnIsOpen(true);
+		setIdBookSel(id);
+		setBookTitleSel(title);
+	};
+
 	const handleOnSuccessRemoveBook = () => {
 		setModalRemoveIsOpen(false);
+		refreshLibraryCollection(idLibrary, 'purchaseDate');
+		onEndRefresh();
+	};
+
+	const handleOnSuccessLendBook = () => {
+		setModalLendIsOpen(false);
+		refreshLibraryCollection(idLibrary, 'purchaseDate');
+		onEndRefresh();
+	};
+
+	const handleOnSuccessReturnBook = () => {
+		setModalReturnIsOpen(false);
 		refreshLibraryCollection(idLibrary, 'purchaseDate');
 		onEndRefresh();
 	};
@@ -51,7 +79,7 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 					<div className="header_status">Estado</div>
 					<div className="header_actions">Acciones</div>
 				</header>
-				{books.map(({ id, idCategory, idBookCustom, title, cover, status }) => {
+				{books.map(({ id, idCategory, idBookCustom, title, cover, status, email }) => {
 					return (
 						<div key={id} className="collection_book" style={{backgroundColor: getRandomColor()}}>
 							<div className="book_primaryData">
@@ -65,11 +93,21 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 								</div>
 							</div>
 							<div className="book_category"><span>{categories[idCategory]}</span></div>
-							<div className="book_status">{status}</div>
+							<div className="book_status">
+								{status &&
+									<span class="tooltip">
+										{getStatus(status)}
+										<span>{email}</span>
+									</span>
+								}
+							</div>
 							<div className="book_actions">
-								<Button className="button__small">Prestar</Button>
-								<Button className="button__small">Devolver</Button>
-								<Button onClick={() => handleOnRemoveBook(id, title)} className="button_inverse button__small">Borrar</Button>
+								{(status === '' || status === 'reserved') && <Button className="button__small" onClick={() => handleOnLendBook(id, title)}>Prestar</Button>}
+								{status === 'lent' && <Button className="button_inverse button__small" onClick={() => handleOnReturnBook(id, title)}>Devolver</Button>}
+								<Button
+									onClick={() => handleOnRemoveBook(id, title)}
+									className="button_inverse button__small"
+								>Borrar</Button>
 							</div>
 						</div>
 					);
@@ -86,6 +124,32 @@ const CollectionList = ({ onRefreshCollection, onGetRemoveBookTitle, onEndRefres
 					bookTitle={bookTitleSel}
 					onCancel={() => setModalRemoveIsOpen(false)}
 					onSuccess={handleOnSuccessRemoveBook}
+				/>
+			</Modal>
+
+			<Modal
+				title="Prestar libro"
+				isOpen={modalLendIsOpen}
+				onClose={() => setModalLendIsOpen(false)}
+			>
+				<LendBookForm
+					idBook={idBookSel}
+					bookTitle={bookTitleSel}
+					onCancel={() => setModalLendIsOpen(false)}
+					onSuccess={handleOnSuccessLendBook}
+				/>
+			</Modal>
+
+			<Modal
+				title="Devolver libro"
+				isOpen={modalReturnIsOpen}
+				onClose={() => setModalReturnIsOpen(false)}
+			>
+				<ReturnBookForm
+					idBook={idBookSel}
+					bookTitle={bookTitleSel}
+					onCancel={() => setModalReturnIsOpen(false)}
+					onSuccess={handleOnSuccessReturnBook}
 				/>
 			</Modal>
 		</>
