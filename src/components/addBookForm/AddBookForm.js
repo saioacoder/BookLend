@@ -188,7 +188,7 @@ const AddBookForm = ({ isModalClosed, onCancel, onSuccess }) => {
 					className="wFull"
 				/>
 				<Select
-					id="categories"
+					id="categoriesSel"
 					label="Categorías"
 					value={setIdCategory}
 					placeholder="Elige una categoría"
