@@ -3,12 +3,22 @@
 .footer {
    .container {
       align-items: center;
-      border-top: 1px solid $color_base_light;
+      color: $color_base_extramedium;
       display: flex;
       font-size: $font_size_xs;
-      justify-content: space-between;
+      font-weight: $font_weight_mediumBold;
       margin-top: $spacing_xxl;
       padding-bottom: $spacing_base;
-      padding-top: $spacing_base;
+      padding-top: $spacing_m;
+   }
+   &_copyright {
+      margin-right: auto;
+   }
+   a {
+      color: $color_base_extramedium;
+      margin-left: $spacing_base;
+      &:hover {
+         color: $color_highlight_dark;
+      }
    }
 }
