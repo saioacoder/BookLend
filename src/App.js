@@ -14,7 +14,6 @@ import Header from './components/header';
 
 import Book from './pages/book';
 import Collection from './pages/collection';
-import Dashboard from './pages/dashboard';
 import Home from './pages/home';
 import Landing from './pages/landing';
 import MyBooks from './pages/myBooks';
@@ -47,9 +46,6 @@ function App() {
 						<Landing />
 					</Route>
 					<Route exact path="/:idLibrary/admin/">
-						<Dashboard />
-					</Route>
-					<Route exact path="/:idLibrary/admin/coleccion/">
 						<Collection />
 					</Route>
 					<Route exact path="/:idLibrary/">
