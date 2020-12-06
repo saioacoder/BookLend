@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-//import Loading from '../loading';
 import logoImg from '../../img/logo.svg';
 import Login from '../login';
 import Modal from '../modal';
@@ -18,7 +17,6 @@ const Header = () => {
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
 	const menuName = idUser ? (isAdmin ? 'admin' : 'user') : 'default';
 
-	//const [showLoading, setShowLoading] = useState(false);
 	const [logoLink, setLogoLink] = useState('/');
 	const [modalSignupLibraryIsOpen, setModalSignupLibraryIsOpen] = useState(false);
 	const [modalSignupIsOpen, setModalSignupIsOpen] = useState(false);
@@ -73,14 +71,14 @@ const Header = () => {
 			}
 		],
 		admin: [
-			{
-				title: 'Dashboard',
-				action: `/${idLibrary}/admin/`,
-				actionType: 'url'
-			},
+			// {
+			// 	title: 'Dashboard',
+			// 	action: `/${idLibrary}/admin/`,
+			// 	actionType: 'url'
+			// },
 			{
 				title: 'Colección',
-				action: `/${idLibrary}/admin/coleccion/`,
+				action: `/${idLibrary}/admin/`,
 				actionType: 'url'
 			},
 			// {
@@ -110,11 +108,6 @@ const Header = () => {
 	}
 
 	useEffect(() => {
-		// if(!idUser) {
-		// 	setShowLoading(true);
-		// } else {
-		// 	setShowLoading(false);
-		// }
 		if(formSuccess === 'admin'){
 			history.push(`/${idLibrary}/admin/`);
 			setFormSuccess('');
@@ -189,7 +182,6 @@ const Header = () => {
 					onSuccess={() => setFormSuccess('login')}
 				/>
 			</Modal>
-			{/* <Loading show={showLoading} /> */}
 		</>
 	);
 
