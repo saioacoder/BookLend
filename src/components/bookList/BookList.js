@@ -9,6 +9,7 @@ import './BookList.scss';
 
 const BookList = ({ filter = '' }) => {
 
+	const { idUser } = useSelector(state => state.user);
 	const { idLibrary, categories } = useSelector(state => state.library);
 	const [books, setBooks] = useState([]);
 
@@ -18,7 +19,7 @@ const BookList = ({ filter = '' }) => {
 		const collection = await getLibraryCollectionById(id, orderByTerm);
 		if(collection !== null) {
 			if(filter === 'myBooks'){
-				const newCollection = collection.filter(item => item.status !== '');
+				const newCollection = collection.filter(item => item.status !== '' && item.idUser === idUser);
 				setBooks(newCollection);
 			} else {
 				setBooks(collection);
@@ -31,10 +32,10 @@ const BookList = ({ filter = '' }) => {
 	};
 
 	useEffect(() => {
-		if(idLibrary) {
+		if(idLibrary && idUser) {
 			getLibraryCollection(idLibrary, 'purchaseDate');
 		}
-	}, [idLibrary]);
+	}, [idLibrary, idUser]);
 
 	return (
 		<section className="bookList">
