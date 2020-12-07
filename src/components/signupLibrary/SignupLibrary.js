@@ -196,6 +196,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				errorMessage={getLiteral('error-required-field')}
 				onChange={({target: { value }}) => setEmail(value)}
 				className="wFull"
+				type="email"
 			/>
 			<Input
 				id="passwordAdmin"
