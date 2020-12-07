@@ -37,7 +37,6 @@ function App() {
 				dispatch(setLibrary(null));
 			}
 		})
-		document.title = "BookLend";
 	}, [dispatch]);
 
 	return (
