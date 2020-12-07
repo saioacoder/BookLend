@@ -75,7 +75,7 @@
 		@include mobile {
 			background-color: $color_background;
 			box-shadow: 0 10px 20px -10px $color_base_extramedium;
-			display: none;
+			display: flex;
 			flex-direction: column;
 			left: 0;
 			padding-bottom: $spacing_s;
@@ -87,9 +87,6 @@
 		&_m {
 			@include min_tablet {
 				display: none;
-			}
-			&:hover + .header_nav {
-				display: flex;
 			}
 			img {
 				height: 15px;

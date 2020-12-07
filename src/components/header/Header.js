@@ -12,7 +12,7 @@ import { userLogout } from '../../logic/user';
 
 import './Header.scss';
 
-const Header = ({ openSignupLibrary }) => {
+const Header = ({ openSignupLibrary, setOpenSignupLibrary }) => {
 
 	const { idUser, nameUser, isAdmin } = useSelector(state => state.user);
 	const { idLibrary, nameLibrary } = useSelector(state => state.library);
@@ -31,9 +31,19 @@ const Header = ({ openSignupLibrary }) => {
 		userLogout();
 	};
 
+	const handleOpenMenu = (show) => {
+		const nav = document.getElementById('headerNav');
+		if(show) {
+			nav.classList.toggle('hide_m');
+		} else {
+			nav.classList.add('hide_m');
+		}
+	}
+
 	useEffect(() => {
 		if(openSignupLibrary) {
 			setModalSignupLibraryIsOpen(true);
+			setOpenSignupLibrary();
 		}
 	}, [openSignupLibrary]);
 
@@ -151,8 +161,8 @@ const Header = ({ openSignupLibrary }) => {
 					{nameLibrary && <span className="header_library">/ {nameLibrary}</span>}
 					{nameUser && <button className="header_user">¡Hola <strong>{nameUser}</strong>!</button>}
 					{/* {nameUser}</strong>! <span className="header_user_icon">›</span></button>} */}
-					<button className="header_nav_m"><img src={iMenu} alt="Menú" /></button>
-					<nav className="header_nav">
+					<button onClick={() => handleOpenMenu(true)} className="header_nav_m"><img src={iMenu} alt="Menú" /></button>
+					<nav id="headerNav" className="header_nav hide_m" onClick={() => handleOpenMenu(false)}>
 						{getMenu(menuName)}
 					</nav>
 				</div>

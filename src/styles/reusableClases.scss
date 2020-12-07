@@ -1,6 +1,12 @@
 .hide {
 	display: none !important;
 }
+.hide_m {
+	@include mobile {
+		display: none !important;
+	}
+}
+
 .wHalf {
 	width: 49%;
 	@include mobile {

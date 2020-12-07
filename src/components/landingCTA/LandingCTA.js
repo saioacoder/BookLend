@@ -5,6 +5,7 @@ import Button from '../button';
 import './LandingCTA.scss';
 
 const LandingCTA = ({ onClickButton }) => {
+
 	return (
 		<section className="landingCTA">
 			<div className="landingCTA_content">
@@ -16,6 +17,7 @@ const LandingCTA = ({ onClickButton }) => {
 			<img src={bgLanding} alt="" className="landingCTA_img" />
 		</section>
 	);
+
 };
 
 export default LandingCTA;

@@ -41,7 +41,10 @@ function App() {
 
 	return (
 		<Router>
-			<Header openSignupLibrary={modalSignupLibraryIsOpen} />
+			<Header
+				openSignupLibrary={modalSignupLibraryIsOpen}
+				setOpenSignupLibrary={() => setModalSignupLibraryIsOpen(false)}
+			/>
 			<main className="container">
 				<Switch>
 					<Route exact path="/">
