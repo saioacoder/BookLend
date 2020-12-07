@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .listBooks {
 	display: grid;
@@ -6,12 +7,18 @@
 	grid-column-gap: $spacing_base;
 	grid-row-gap: $spacing_m;
 	margin-top: $spacing_m;
+	@include mobile {
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: $spacing_s;
+		grid-row-gap: $spacing_base;
+		margin-top: $spacing_base;
+	}
 	&_item {
 		border-radius: $radius_s;
 		cursor: pointer;
 		text-align: center;
 		transition: all $transition_duration;
-		&:hover, &__sel {
+		&:hover {
 			transform: scale(1.08);
 		}
 		&__sel {

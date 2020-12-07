@@ -3,6 +3,9 @@
 }
 .wHalf {
 	width: 49%;
+	@include mobile {
+		width: 100%;
+	}
 }
 .wFull {
 	width: 100%;

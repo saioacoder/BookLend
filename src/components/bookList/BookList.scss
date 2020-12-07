@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .bookList {
 	display: grid;
@@ -6,6 +7,13 @@
 	grid-column-gap: $spacing_xl;
 	grid-row-gap: $spacing_xl;
 	margin-top: $spacing_base;
+	@include mobile {
+		grid-template-columns: repeat(2, 1fr);
+		grid-column-gap: $spacing_s;
+		grid-row-gap: $spacing_base;
+		margin-bottom: $spacing_xs;
+		margin-top: $spacing_s;
+	}
 	&_book {
 		&:not(.bookList_book__disabled) {
 			cursor: pointer;

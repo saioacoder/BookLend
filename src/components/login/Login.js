@@ -82,6 +82,7 @@ const Login = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	return (
 		<form onSubmit={handleSubmit} className="form">
+			<p className="form_description">Rellena los datos para poder acceder a tu cuenta, ya seas usuario o administrador de una biblioteca.</p>
 			<Input
 				id="emailUserLogin"
 				label="Email"

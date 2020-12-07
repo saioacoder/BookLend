@@ -1,33 +1,57 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .bookCardFull {
 	align-items: flex-start;
 	border-radius: $radius_l;
 	display: flex;
+	flex-wrap: wrap;
 	padding: 6%;
 	width: 100%;
 	&_cover {
 		margin-right: $spacing_xxl;
 		width: 25%;
+		@include mobile {
+			margin-right: 0;
+			width: 100%;
+		}
 		img {
 			border-radius: $radius_m;
 			box-shadow: 0 4px 10px 1px $color_base_medium;
 			display: block;
 			width: 100%;
+			@include mobile {
+				margin: 0 auto;
+				width: 90px;
+			}
 		}
 	}
 	&_content {
 		width: calc(100% - 32% - 30px);
+		@include mobile {
+			margin-top: $spacing_s;
+			text-align: center;
+			width: 100%;
+		}
 	}
 	&_title {
 		font-size: $font_size_xl;
 		font-weight: $font_weight_bold;
 		line-height: $line_height_xs;
 		margin-bottom: $spacing_base;
+		@include mobile {
+			font-size: $font_size_l;
+		}
 	}
 	&_data {
+		@include mobile {
+			font-size: $font_size_xs;
+		}
 		p {
 			margin-top: $spacing_xxs;
+			@include mobile {
+				margin-top: 0;
+			}
 		}
 	}
 	&_description {

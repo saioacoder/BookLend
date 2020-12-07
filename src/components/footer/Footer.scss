@@ -1,7 +1,7 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .footer {
-   //bottom: 0;
    flex-shrink: 0;
    position: relative;
    width: 100%;
@@ -14,12 +14,21 @@
       margin-top: $spacing_xxl;
       padding-bottom: $spacing_base;
       padding-top: $spacing_m;
+      @include mobile {
+         font-size: $font_size_xxs;
+         margin-top: 0;
+         padding-bottom: $spacing_s;
+         padding-top: $spacing_s;
+      }
    }
    &_copyright {
       margin-right: auto;
    }
    a {
       margin-left: $spacing_base;
+      @include mobile {
+         margin-left: $spacing_xs;
+      }
       &:hover {
          color: $color_highlight_dark;
       }

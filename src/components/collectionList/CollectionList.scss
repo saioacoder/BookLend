@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .collection {
 	&_header {
@@ -6,6 +7,9 @@
 		display: flex;
 		font-size: $font-size_xs;
 		margin-bottom: $spacing_s;
+		@include mobile {
+			display: none;
+		}
 		> * {
 			padding: 0 $spacing_base;
 		}
@@ -30,13 +34,20 @@
 	&_book {
 		border-radius: $radius_m;
 		display: flex;
+		flex-wrap: wrap;
 		margin-bottom: $spacing_s;
 		transition: all $transition_duration;
+		@include mobile {
+			position: relative;
+		}
 		&:hover {
 			transform: scale(1.02);
 		}
 		> * {
 			padding: $spacing_base;
+			@include mobile {
+				padding-top: $spacing_m;
+			}
 		}
 	}
 	.book {
@@ -44,15 +55,28 @@
 			align-items: center;
 			display: flex;
 			width: 33%;
+			@include mobile {
+				flex-direction: column;
+				padding-bottom: $spacing_xs;
+				width: 100%;
+			}
 		}
 		&_content {
 			width: calc(100% - 70px - 15px);
+			@include mobile {
+				text-align: center;
+				width: 100%;
+			}
 		}
 		&_cover {
 			min-height: 70px;
 			margin-right: $spacing_base;
 			transition: all $transition_duration;
 			width: 60px;
+			@include mobile {
+				margin-bottom: $spacing_xs;
+				margin-right: 0;
+			}
 			img {
 				border-radius: $radius_base;
 				box-shadow: 0 2px 6px 0 $color_base_medium;
@@ -74,15 +98,14 @@
 				margin-right: 4px;
 			}
 		}
-		&_category {
-			width: 18%;
-		}
-		&_status {
-			width: 19%;
-		}
 		&_category, &_status {
 			align-self: center;
 			text-align: center;
+			white-space: nowrap;
+			@include mobile {
+				padding: 0;
+				width: 100%;
+			}
 			span {
 				background-color: $color_background;
 				border-radius: $radius_s;
@@ -91,10 +114,40 @@
 				padding: 2px $spacing_xs 4px;
 			}
 		}
+		&_category {
+			width: 18%;
+			@include mobile {
+				width: 100%;
+			}
+		}
+		&_status {
+			width: 19%;
+			@include mobile {
+				position: absolute;
+				top: -8px;
+				width: 100%;
+			}
+			span {
+				@include mobile {
+					background-color: $color_base;
+					border-radius: $radius_base;
+					color: $color_background;
+					font-size: $font_size_xxxs;
+					font-weight: $font_weight_mediumBold;
+					line-height: $line_height_xxs;
+					padding: 4px 9px 4px;
+					text-transform: uppercase;
+				}
+			}
+		}
 		&_actions {
 			align-self: center;
 			text-align: center;
 			width: 30%;
+			@include mobile {
+				padding-top: $spacing_s;
+				width: 100%;
+			}
 			.button {
 				margin: 0 4px;
 			}

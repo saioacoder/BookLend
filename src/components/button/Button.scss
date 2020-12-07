@@ -9,6 +9,7 @@
 	font-size: $font_size_xs;
 	font-weight: $font_weight_bold;
 	padding: 11px 17px;
+	text-align: center;
 	transition: all $transition_duration;
 	&:not(:disabled):hover {
 		background-color: $color_highlight_dark;

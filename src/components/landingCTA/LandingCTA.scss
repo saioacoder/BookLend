@@ -1,4 +1,5 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .landingCTA {
 	align-items: stretch;
@@ -8,6 +9,7 @@
 	display: flex;
 	height: 100vh;
 	left: 0;
+	padding: $spacing_base;
 	position: absolute;
 	top: 0;
 	width: 100%;
@@ -32,6 +34,9 @@
 	&_logo {
 		height: 55px;
 		margin-bottom: $spacing_base;
+		@include mobile {
+			height: 40px;
+		}
 	}
 	&_img {
 		filter: grayscale(100%);
@@ -50,15 +55,31 @@
 		margin-bottom: $spacing_xxl;
 		text-align: center;
 		width: 50%;
+		@include max_tablet {
+			font-size: $font_size_l;
+			width: 80%;
+		}
+		@include mobile {
+			font-size: $font_size_m;
+			margin-bottom: $spacing_base;
+			width: 90%;
+		}
 	}
 	.button:not(.button_inverse) {
-		font-size: $font_size_l;
-		font-weight: $font_weight_mediumBold;
-		padding: $spacing_s $spacing_l;
+		@include min_tablet {
+			font-size: $font_size_l;
+			font-weight: $font_weight_mediumBold;
+			padding: $spacing_s $spacing_l;
+		}
 	}
 	.button_inverse {
 		background-color: transparent;
 		margin-top: $spacing_m;
+		@include mobile {
+			font-size: $font_size_xxs;
+			margin-top: $spacing_s;
+			padding: 8px 13px;
+		}
 	}
 }
 

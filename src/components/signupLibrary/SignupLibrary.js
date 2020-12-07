@@ -168,6 +168,7 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	return (
 		<form onSubmit={handleSubmit} className="form signup">
+			<p className="form_description">Rellena los datos para dar de alta una biblioteca y poder empezar a ofrecer los servicios de préstamo a tus usuarios.</p>
 			<h2>Datos del administrador</h2>
 			<Input
 				id="nameAdmin"

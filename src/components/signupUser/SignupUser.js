@@ -158,6 +158,7 @@ const SignupUser = ({ isModalClosed, onCancel, onSuccess }) => {
 
 	return (
 		<form onSubmit={handleSubmit} className="form">
+			<p className="form_description">Rellena los datos para registrarte y poder acceder a la biblioteca de tu ciudad.</p>
 			<Input
 				id="idLibraryUser"
 				label="Id biblioteca"

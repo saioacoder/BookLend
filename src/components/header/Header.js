@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 import logoImg from '../../img/logo.svg';
+import iMenu from '../../img/i_menu.svg';
 import Login from '../login';
 import Modal from '../modal';
 import SignupLibrary from '../signupLibrary';
@@ -150,6 +151,7 @@ const Header = ({ openSignupLibrary }) => {
 					{nameLibrary && <span className="header_library">/ {nameLibrary}</span>}
 					{nameUser && <button className="header_user">¡Hola <strong>{nameUser}</strong>!</button>}
 					{/* {nameUser}</strong>! <span className="header_user_icon">›</span></button>} */}
+					<button className="header_nav_m"><img src={iMenu} alt="Menú" /></button>
 					<nav className="header_nav">
 						{getMenu(menuName)}
 					</nav>
