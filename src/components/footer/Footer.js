@@ -13,7 +13,7 @@ const Footer = () => {
 		<>
 			<footer className="footer">
 				<div className="container">
-					<div className="footer_copyright">© {actualYear()} BookLend</div>
+					<div className="footer_copyright">© {actualYear()} BookLend v1.0</div>
 					<Link to="/">Sobre BookLend</Link>
 					<Link to="/">Contacto</Link>
 				</div>
