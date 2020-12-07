@@ -1,4 +1,4 @@
-import { getBookFormated } from '../../../logic/book';
+import { getBookFormated } from '../../logic/book';
 
 import './BookCard.scss';
 
