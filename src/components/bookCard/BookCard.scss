@@ -4,11 +4,11 @@
 .bookCard {
 	align-items: flex-start;
 	display: flex;
-	flex-wrap: wrap;
 	margin-bottom: $spacing_base;
 	margin-top: $spacing_base;
 	width: 100%;
 	@include mobile {
+		flex-wrap: wrap;
 		margin-bottom: $spacing_xs;
 		margin-top: $spacing_s;
 		text-align: center;
@@ -33,7 +33,6 @@
 		font-weight: $font_weight_bold;
 		line-height: $line_height_xs;
 		margin-bottom: $spacing_xs;
-
 	}
 	&_data {
 		font-size: $font_size_s;
