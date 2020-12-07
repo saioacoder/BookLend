@@ -1,0 +1,35 @@
+@import './variables';
+
+@mixin formErrorMessage {
+	background-color: $color_error_light;
+	border-radius: $radius_base;
+	color: $color_error;
+	margin-top: $spacing_base;
+	padding: $spacing_s;
+	text-align: center;
+	width: 100%;
+}
+
+@mixin desktop {
+	@media (min-width: #{$width_desktop}) {
+		@content;
+	}
+}
+
+@mixin min_tablet {
+	@media (min-width: #{$width_tablet}) {
+		@content;
+	}
+}
+
+@mixin max_tablet {
+	@media (max-width: #{$width_desktop - 1px}) {
+		@content;
+	}
+}
+
+@mixin mobile {
+	@media (max-width: #{$width_tablet - 1px}) {
+		@content;
+	}
+}

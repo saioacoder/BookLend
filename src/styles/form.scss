@@ -1,0 +1,35 @@
+.form {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	h2 {
+      font-size: $font_size_base;
+      font-weight: $font_weight_bold;
+      margin-bottom: $spacing_xxs;
+      margin-top: $spacing_xs;
+      text-transform: uppercase;
+      width: 100%;
+      &:not(:first-of-type) {
+         margin-top: $spacing_l;
+      }
+   }
+   &_description {
+      margin-bottom: $spacing_xxs;
+   }
+	&_error {
+      @include formErrorMessage;
+   }
+}
+.actionButtons {
+	display: flex;
+   justify-content: flex-end;
+   margin-top: $spacing_l;
+   width: 100%;
+   @include mobile {
+		margin-top: $spacing_base;
+	}
+	.button_inverse {
+      margin-left: initial !important;
+      margin-right: auto;
+   }
+}

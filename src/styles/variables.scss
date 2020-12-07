@@ -1,0 +1,66 @@
+/* Colors */
+$color_base: #1f1f22;
+$color_base_extramedium: lighten($color_base, 45%);
+$color_base_medium: lighten($color_base, 65%);
+$color_base_light: lighten($color_base, 78%);
+$color_base_extralight: lighten($color_base, 85%);
+$color_highlight: $color_base;
+$color_highlight_dark: lighten($color_highlight, 20%);
+$color_background: #fff;
+$color_error: #dc143c;
+$color_error_light: lighten($color_error, 48%);
+
+
+/* Fonts */
+$font_family: 'Montserrat', Arial, sans-serif;
+
+$font_size_xl: 2.5rem;
+$font_size_l: 1.8rem;
+$font_size_m: 1.6rem;
+$font_size_base: 1.5rem;
+$font_size_base_px: 15px;
+$font_size_s: 1.4rem;
+$font_size_xs: 1.3rem;
+$font_size_xxs: 1.2rem;
+$font_size_xxxs: 1rem;
+
+$font_weight_extraBold: 700;
+$font_weight_bold: 600;
+$font_weight_mediumBold: 500;
+$font_weight_base: 400;
+$font_weight_light: 300;
+
+$line_height_m: 1.6em;
+$line_height_base: 1.4em;
+$line_height_s: 1.3em;
+$line_height_xs: 1.2em;
+$line_height_xxs: 1em;
+
+
+/* Radius */
+$radius_l: 15px;
+$radius_m: 8px;
+$radius_base: 5px;
+$radius_s: 4px;
+
+
+/* Spacing */
+$spacing_xxxl: 50px;
+$spacing_xxl: 40px;
+$spacing_xl: 35px;
+$spacing_l: 30px;
+$spacing_m: 25px;
+$spacing_base: 20px;
+$spacing_s: 15px;
+$spacing_xs: 10px;
+$spacing_xxs: 5px;
+
+
+/* Transition */
+$transition_duration: 0.25s;
+
+
+/* Breakpoints */
+$width_desktop: 1024px;
+$width_tablet: 768px;
+$width_mobile: 480px;

@@ -1,0 +1,58 @@
+.hide {
+	display: none !important;
+}
+.hide_m {
+	@include mobile {
+		display: none !important;
+	}
+}
+
+.wHalf {
+	width: 49%;
+	@include mobile {
+		width: 100%;
+	}
+}
+.wFull {
+	width: 100%;
+}
+.tooltip {
+	position: relative;
+	> span {
+		display: none;
+	}
+	&:hover > span {
+		background-color: $color_base;
+		border-radius: $radius_s;
+		color: $color_background;
+		display: block;
+		font-size: $font_size_xxs;
+		font-style: italic;
+		left: 50%;
+		line-height: $line_height_xxs;
+		margin-top: $spacing_xs;
+		padding: $spacing_xxs $spacing_xs;
+		position: absolute;
+		text-align: center;
+		transform: translate(-50%,0);
+		top: 100%;
+		width: max-content;
+		z-index: 20;
+		&:before {
+			border-bottom: 5px solid $color_base;
+			border-left: 5px solid transparent;
+			border-right: 5px solid transparent;
+			content: '';
+			left: 50%;
+			position: absolute;
+			top: -5px;
+			transform: translate(-50%,0);
+	  }
+	}
+}
+.noData {
+	font-size: $font_size_m;
+	margin-top: $spacing_xxl;
+	padding-top: $spacing_m;
+	text-align: center;
+}

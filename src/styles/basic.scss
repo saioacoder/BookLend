@@ -1,0 +1,41 @@
+html, body {
+	width: 100%;
+}
+html {
+	background: $color_background;
+	font-size: 62.5%;
+	height: 100%;
+}
+body {
+	align-items: stretch;
+	color: $color_base;
+	display: flex;
+	flex-direction: column;
+	font-family: $font_family;
+	font-size: $font_size_base_px;
+	font-size: $font_size_base;
+	font-weight: $font_weight_base;
+	justify-content: space-between;
+	line-height: $line_height_base;
+	min-height: 100%;
+}
+#root {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+main {
+	flex: 1 0 auto;
+}
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 $spacing_base;
+	width: $width_desktop;
+	@include max_tablet {
+		width: 100%;
+	}
+}
+strong {
+	font-weight: $font_weight_bold;
+}

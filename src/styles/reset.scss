@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	-webkit-font-smoothing: antialiased;
+   -moz-osx-font-smoothing: grayscale
+}
+a, body, button, div, form, h1, h2, h3, h4, h5, h6, html, input, label, legend, li, ol, p, select, span, table, textarea, ul {
+	background-color: transparent;
+	border: 0;
+	color: inherit;
+	font-size: 100%;
+	font-style: inherit;
+	font-weight: inherit;
+	outline: 0;
+	vertical-align: baseline;
+}
+html {
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%
+}
+a {
+	text-decoration: none;
+}
+button, input, select, textarea {
+	appearance: none;
+	font-family: $font_family;
+}
+input, select, textarea {
+	&:-webkit-autofill {
+		box-shadow: 0 0 0px 1000px $color_background inset;
+	}
+}

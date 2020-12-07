@@ -1,0 +1,56 @@
+@import '../../styles/variables';
+
+.button, .button_inverse, .button_neutral, .button_transparent, .button_small {
+	background-color: $color_highlight;
+	border: 1px solid $color_highlight;
+	border-radius: $radius_base;
+	color: $color_background;
+	cursor: pointer;
+	font-size: $font_size_xs;
+	font-weight: $font_weight_bold;
+	padding: 11px 17px;
+	text-align: center;
+	transition: all $transition_duration;
+	&:not(:disabled):hover {
+		background-color: $color_highlight_dark;
+		border-color: $color_highlight_dark;
+	}
+	&_inverse {
+		background-color: $color_background;
+		color: $color_highlight;
+		&:not(:disabled):hover {
+			color: $color_background;
+		}
+	}
+	&_neutral {
+		background-color: $color_base_medium;
+		border-color: $color_base_medium;
+		&:not(:disabled):hover {
+			background-color: $color_base_extramedium;
+			border-color: $color_base_extramedium;
+		}
+	}
+	&_transparent {
+		color: $color_highlight;
+		padding-left: $spacing_s;
+		padding-right: $spacing_s;
+		&, &:not(:disabled):hover {
+			background-color: $color_background;
+			border-color: $color_background;
+		}
+		&:not(:disabled):hover {
+			color: $color_highlight_dark;
+		}
+	}
+	&__small {
+		font-size: $font_size_xxs;
+		padding: 8px 13px;
+	}
+	&:disabled {
+		background-color: transparent;
+		border: 1px solid $color_highlight;
+		color: $color_highlight;
+		cursor: default;
+		opacity: 0.35;
+	}
+}

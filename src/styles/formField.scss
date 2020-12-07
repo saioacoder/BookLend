@@ -1,0 +1,47 @@
+.formField {
+	margin-top: $spacing_m;
+	&_field {
+		border: 1px solid $color_base_light;
+		border-radius: $radius_base;
+		position: relative;
+		width: 100%;
+		label {
+			background-color: $color_background;
+			border-radius: $radius_base;
+			font-size: $font_size_xs;
+			font-weight: $font_weight_bold;
+			left: 10px;
+			padding: 0 $spacing_xxs;
+			position: absolute;
+			top: -11px;
+		}
+		input {
+			font-size: $font_size_base;
+			padding: $spacing_s;
+			width: 100%;
+		}
+		::placeholder {
+			color: $color_base_medium;
+		}
+	}
+	&__disabled {
+		background-color: $color_base_light;
+		label {
+			background-color: transparent;
+		}
+	}
+	&_error {
+		.formField_field {
+			border-color: $color_error;
+			label {
+				color: $color_error;
+			}
+		}
+	}
+	&_errorMessage {
+		color: $color_error;
+		font-size: $font_size_xs;
+		margin-left: $spacing_s;
+		margin-top: $spacing_xxs;
+	}
+}

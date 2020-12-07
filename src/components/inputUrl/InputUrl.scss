@@ -1,0 +1,16 @@
+@import '../../styles/variables';
+
+.inputUrl {
+	.formField_field {
+		display: flex;
+		input {
+			flex-grow: 1;
+			padding: $spacing_s $spacing_s $spacing_s $spacing_xxs;
+		}
+	}
+	&_start {
+		color: $color_base_medium;
+		font-size: $font_size_xxs;
+		padding: 18px 0 12px $spacing_s;
+	}
+}

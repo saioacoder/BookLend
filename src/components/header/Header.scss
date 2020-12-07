@@ -1,0 +1,112 @@
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+.header {
+	position: relative;
+	width: 100%;
+   z-index: 10;
+	.container {
+		align-items: center;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: $spacing_xl;
+		padding-bottom: $spacing_base;
+		padding-top: $spacing_base;
+		@include mobile {
+			margin-bottom: $spacing_xs;
+			padding-bottom: $spacing_s;
+			padding-top: $spacing_s;
+		}
+	}
+	&_logo {
+		white-space: nowrap;
+		img {
+			height: 28px;
+			margin-right: 8px;
+			vertical-align: baseline;
+			@include mobile {
+				height: 20px;
+			}
+		}
+		> span {
+			font-size: 2.2rem;
+			font-weight: $font_weight_extraBold;
+			text-transform: uppercase;
+			@include mobile {
+				font-size: 1.8rem;
+			}
+			span {
+				font-weight: $font_weight_base;
+			}
+		}
+	}
+	&_library {
+		color: $color_base_extramedium;
+		font-size: $font_size_xs;
+		margin-left: $spacing_xxs;
+		margin-top: 12px;
+		text-transform: uppercase;
+		@include mobile {
+			display: none;
+		}
+	}
+	&_user {
+		//cursor: pointer;
+		margin-left: auto;
+		@include mobile {
+			display: none;
+		}
+		&_icon {
+			display: inline-block;
+			font-size: 2.5rem;
+			font-weight: $font_weight_bold;
+			line-height: 0;
+			margin-left: $spacing_xxs;
+			transform: rotate(90deg);
+			transition: all $transition_duration;
+			vertical-align: middle;
+		}
+		// &:hover {
+		//    color: $color_highlight_dark;
+		// }
+	}
+	&_nav {
+		@include mobile {
+			background-color: $color_background;
+			box-shadow: 0 10px 20px -10px $color_base_extramedium;
+			display: flex;
+			flex-direction: column;
+			left: 0;
+			padding-bottom: $spacing_s;
+			position: absolute;
+			text-align: center;
+			top: 55px;
+			width: 100%;
+		}
+		&_m {
+			@include min_tablet {
+				display: none;
+			}
+			img {
+				height: 15px;
+			}
+		}
+		&_item {
+			cursor: pointer;
+			padding: $spacing_xs 0 $spacing_xs - 1px;
+			transition: all $transition_duration;
+			@include min_tablet {
+				border-bottom: 1px solid transparent;
+				margin-left: $spacing_base;
+			}
+			@include mobile {
+				padding-bottom: $spacing_xs;
+				padding-top: $spacing_xs;
+			}
+			&:hover {
+				border-color: $color_highlight;
+			}
+		}
+	}
+}
