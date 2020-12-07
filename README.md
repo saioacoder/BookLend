@@ -4,7 +4,7 @@ Proyecto para ayudar en la gestión de bibliotecas pequeñas que no se pueden pe
 
 ## Demo
 
-[BookLend web app](https://booklend-app.web.app){:target="_blank"}
+[BookLend web app](https://booklend-app.web.app)
 
 
 ## Tecnología utilizada
