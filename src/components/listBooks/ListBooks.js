@@ -23,7 +23,7 @@ const ListBooks = ({ list, updateBookSel, noResults }) => {
 				<div className="listBooks">
 					{list.map(({ volumeInfo }) => {
 						const { title, imageLinks, authors, publishedDate, industryIdentifiers, language } = volumeInfo;
-						const smallThumbnail = imageLinks ? imageLinks.smallThumbnail : '';
+						const smallThumbnail = imageLinks ? imageLinks.thumbnail : '';
 						const cleanTitle = title.replace(/\u00a0/g, ' ');
 						const authorsList = getAuthors(authors);
 						const publishedYear = publishedDate ? publishedDate.slice(0, 4) : '';

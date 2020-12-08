@@ -113,19 +113,29 @@ const SignupLibrary = ({ isModalClosed, onCancel, onSuccess }) => {
 				setSignupError(getLiteral(error));
 			} else {
 				const splitCategories = categories.split(',');
-				await librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, splitCategories);
-				dispatch(setUser({
-					idUser: id,
-					nameUser: nameUser,
-					isAdmin: user.isAdmin
-				}));
-				dispatch(setLibrary({
-					idLibrary: idLibrary,
-					nameLibrary: nameLibrary,
+				const libraryData = {
+					nameLibrary,
+					address,
+					postalCode,
+					city,
+					province,
 					categories: splitCategories
-				}));
-				handleReset();
-				onSuccess();
+				};
+				const result = await librarySignup(idLibrary, libraryData);
+				if(result) {
+					dispatch(setUser({
+						idUser: id,
+						nameUser,
+						isAdmin: user.isAdmin
+					}));
+					dispatch(setLibrary({
+						idLibrary,
+						nameLibrary,
+						categories: splitCategories
+					}));
+					handleReset();
+					onSuccess();
+				}
 			}
 		}
 	};
