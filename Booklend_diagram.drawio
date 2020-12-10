@@ -1,16 +1,16 @@
-<mxfile host="app.diagrams.net" modified="2020-12-10T17:34:14.044Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 OPR/72.0.3815.400" etag="pNyoJyAaLhQVZqFG34tI" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-10T17:41:25.926Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 OPR/72.0.3815.400" etag="Er9SxLpPcXAAqjc2j39R" version="13.10.9" type="github">
   <diagram id="acLD0W_w8oIIyhGPg7Ok" name="Página-1">
     <mxGraphModel dx="791" dy="595" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-1" value="users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#dae8fc;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" vertex="1" parent="1">
-          <mxGeometry x="130" y="130" width="170" height="312" as="geometry" />
+          <mxGeometry x="70" y="60" width="170" height="312" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-2" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-2" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=5" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
           <mxGeometry y="26" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-3" value="idLibrary" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-3" value="idLibrary" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=4" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
           <mxGeometry y="52" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-4" value="isAdmin (boolean)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
@@ -41,9 +41,9 @@
           <mxGeometry y="286" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-13" value="libraries" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#d5e8d4;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacing=2;spacingTop=0;" vertex="1" parent="1">
-          <mxGeometry x="415" y="130" width="170" height="208" as="geometry" />
+          <mxGeometry x="355" y="60" width="170" height="208" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-14" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-13">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-14" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=4" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-13">
           <mxGeometry y="26" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-15" value="nameLibrary (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-13">
@@ -65,9 +65,9 @@
           <mxGeometry y="182" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-25" value="books" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#f8cecc;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" vertex="1" parent="1">
-          <mxGeometry x="700" y="130" width="170" height="260" as="geometry" />
+          <mxGeometry x="640" y="60" width="170" height="260" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-26" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-25">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-26" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=4" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-25">
           <mxGeometry y="26" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-27" value="title (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rounded=0;glass=0;shadow=0;sketch=0;spacing=2;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-25">
@@ -95,28 +95,83 @@
           <mxGeometry y="234" width="170" height="26" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-35" value="collection" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#d5e8d4;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacing=2;spacingTop=0;" vertex="1" parent="1">
-          <mxGeometry x="415" y="361" width="170" height="208" as="geometry" />
+          <mxGeometry x="355" y="291" width="170" height="312" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-36" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-36" value="idBook&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="26" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-37" value="nameLibrary (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-37" value="idCategory (number)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="52" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-38" value="address (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-38" value="idBookCustom (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="78" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-39" value="postalCode (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-39" value="title (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="104" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-40" value="city (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-40" value="cover (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="130" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-41" value="province (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-46" value="idUser" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=4" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="156" width="170" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="sIiYjzBL_RoDaTGsPlHt-42" value="categories (array)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-41" value="purchaseDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
           <mxGeometry y="182" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-42" value="reserveDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+          <mxGeometry y="208" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-43" value="lendDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+          <mxGeometry y="234" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-44" value="returnDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+          <mxGeometry y="260" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-45" value="status (string)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-35">
+          <mxGeometry y="286" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-47" value="booksLogs" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#fff2cc;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" vertex="1" parent="1">
+          <mxGeometry x="914" y="60" width="170" height="182" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-48" value="idBook" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="26" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-49" value="idLibrary" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;rounded=0;glass=0;shadow=0;sketch=0;spacing=2;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="52" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-50" value="idUser" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="78" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-51" value="reserveDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="104" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-52" value="lendDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="130" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-53" value="returnDate (date)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-47">
+          <mxGeometry y="156" width="170" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-57" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;sketch=1;rounded=1;" edge="1" parent="1" source="sIiYjzBL_RoDaTGsPlHt-3" target="sIiYjzBL_RoDaTGsPlHt-14">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-58" style="edgeStyle=orthogonalEdgeStyle;rounded=1;sketch=1;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="sIiYjzBL_RoDaTGsPlHt-37" target="sIiYjzBL_RoDaTGsPlHt-24">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="318" y="356" />
+              <mxPoint x="318" y="255" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-59" style="edgeStyle=orthogonalEdgeStyle;rounded=1;sketch=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" edge="1" parent="1" source="sIiYjzBL_RoDaTGsPlHt-46" target="sIiYjzBL_RoDaTGsPlHt-2">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="38" y="460" />
+              <mxPoint x="38" y="99" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="sIiYjzBL_RoDaTGsPlHt-60" style="edgeStyle=orthogonalEdgeStyle;rounded=1;sketch=1;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" edge="1" parent="1" source="sIiYjzBL_RoDaTGsPlHt-36" target="sIiYjzBL_RoDaTGsPlHt-26">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
