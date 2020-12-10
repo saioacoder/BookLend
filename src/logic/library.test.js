@@ -53,22 +53,22 @@ describe ('BookLend', () => {
 			}
 		});
 
-		// test('Remove a book from a library', async () => {
-		// 	try {
-		// 		const result = await removeBookFromLibrary(idLibrary, idBook);
-		// 		expect(result).toBe(true);
-		// 	} catch (error) {
-		// 		console.log('Error "Remove a book from a library"');
-		// 	}
-		// });
+		test('Remove a book from a library', async () => {
+			try {
+				const result = await removeBookFromLibrary(idLibrary, idBook);
+				expect(result).toBe(true);
+			} catch (error) {
+				console.log('Error "Remove a book from a library"');
+			}
+		});
 
 		// test('Get all data from a library by ID', async () => {
-			// try {
-			// 	const result = await getLibraryById(idLibrary);
-			// 	expect(result).toBe(true);
-			// } catch(error) {
-			// 	//expect(result).toBe(false);
-			// }
+		// 	try {
+		// 		const result = await getLibraryById(idLibrary);
+		// 		expect(result).toBe(true);
+		// 	} catch(error) {
+		// 		//expect(result).toBe(false);
+		// 	}
 		// });
 
 		// test('Get library collection by ID', async () => {
