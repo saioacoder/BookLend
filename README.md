@@ -88,3 +88,7 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 ## Wireframes
 
 ![wireframe](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/87f69711-5a3c-4d39-bfad-e763a6035be6/Estructura_pantallas.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201210%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201210T170742Z&X-Amz-Expires=86400&X-Amz-Signature=3a4668300e80b528dc810f96177a9c017972d38164d1d0d85efb2c9a642f260b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D"Estructura_pantallas.svg")
+
+## Diagrama de la BBDD
+
+![diagram](https://github.com/saioacoder/booklend/blob/develop/src/img/Booklend_diagram.svg)
