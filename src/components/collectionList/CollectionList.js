@@ -81,6 +81,10 @@ const CollectionList = ({ filter, onRefreshCollection, onEndRefresh }) => {
 	  	return (
 		  <div className="noData">¡No hay libros <strong>{filter === 'reserved' ? `${getStatus(filter)}s` : getStatus(filter)}</strong>!</div>
 		);
+	} else if(filter === '' && filterBooks.length <= 0) {
+		return (
+			<div className="noData"><strong>¡No hay libros diponibles!</strong><br />Añade alguno a la colección</div>
+		);
 	}
 
 	if(!idLibrary) {

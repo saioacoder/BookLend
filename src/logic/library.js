@@ -7,47 +7,79 @@ import {
 
 
 // Añade una librería nueva con todos sus datos a la BBDD
-export async function librarySignup(idLibrary, nameLibrary, address, postalCode, city, province, categories) {
-	return await addObjectWithId('libraries', idLibrary, { nameLibrary, address, postalCode, city, province, categories });
+export async function librarySignup(idLibrary, libraryData) {
+	try {
+		const result = await addObjectWithId('libraries', idLibrary, libraryData);
+		return result;
+	} catch (error) {
+		console.log("librarySignup Error:", error);
+		return false;
+	}
 }
 
 
 // Añade un libro a la librería de la BBDD
 export async function addBookToLibrary(idLibrary, idBook, book) {
-	return await addObjectToSubcollectionWithId('libraries', idLibrary, 'collection', idBook, book);
+	try {
+		return await addObjectToSubcollectionWithId('libraries', idLibrary, 'collection', idBook, book);
+	} catch (error) {
+		console.log("addBookToLibrary Error:", error);
+		return false;
+	}
 }
 
 
 // Borra un libro de la librería de la BBDD
 export async function removeBookFromLibrary(idLibrary, idBook) {
-	return await removeObjectFromSubcollectionWithId('libraries', idLibrary, 'collection', idBook);
+	try {
+		return await removeObjectFromSubcollectionWithId('libraries', idLibrary, 'collection', idBook);
+	} catch (error) {
+		console.log("removeBookFromLibrary Error:", error);
+		return false;
+	}
 }
 
 
 // Devuelve todos los datos de una librería usando el ID desde la BBDD
 export async function getLibraryById(id) {
-	const library = await getObjectById('libraries', id);
-	return library ? { ...library, idLibrary: library.id } : null;
+	try {
+		const library = await getObjectById('libraries', id);
+		return library !== null ? { ...library, idLibrary: library.id } : null;
+	} catch (error) {
+		console.log("getLibraryById Error:", error);
+	}
 }
 
 
 // Devuelve todos los libros de una librería usando el ID desde la BBDD
 export async function getLibraryCollectionById(id, orderByTerm='', orderBy='desc') {
-	const collection = await getObjectFromSubcollection('libraries', id, 'collection', orderByTerm, orderBy);
-	return collection ? collection : null;
+	try {
+		const collection = await getObjectFromSubcollection('libraries', id, 'collection', orderByTerm, orderBy);
+		return collection ? collection : null;
+	} catch (error) {
+		console.log("getLibraryCollectionById Error:", error);
+	}
 }
 
 
 // Devuelve un libro por ID de su librería
 export async function getBookFromCollectionById(idLibrary, idBook) {
-	const book = await getObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook);
-	return book ? book : null;
+	try {
+		const book = await getObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook);
+		return book ? book : null;
+	} catch (error) {
+		console.log("getBookFromCollectionById Error:", error);
+	}
 }
 
 
 // Actualizar los datos de un libro en la BBDD
 export async function updateBook(idLibrary, idBook, bookData) {
-	return await updateObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook, bookData);
+	try {
+		return await updateObjectFromSubcollectionById('libraries', idLibrary, 'collection', idBook, bookData);
+	} catch (error) {
+		console.log("updateBook Error:", error);
+	}
 }
 
 

@@ -6,14 +6,14 @@ const APIKEY = 'AIzaSyB9_QP9nNFBh57Sd2tbLB-k6ZD_FqTB1zc';
 
 // Devuelve todos los libros que corresponden a una palabra clave de la API de Google
 export async function getBooksByTitle(searchTerm, maxResults) {
-	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=${maxResults}&orderBy=relevance&key=${APIKEY}`);
+	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&maxResults=${maxResults}&orderBy=relevance&projection=FULL&key=${APIKEY}`);
 	return result !== null ? result.data.items : null;
 }
 
 
 // Devuelve un libro con todos sus datos que corresponde a un id de la API de Google
 export async function getBookById(id) {
-	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes/?q=${id}&key=${APIKEY}`);
+	const result = await getObjectsFromApi(`https://www.googleapis.com/books/v1/volumes/?q=${id}&projection=FULL&key=${APIKEY}`);
 	if(result !== null && result !== undefined) {
 		const resultItems = result.data.items;
 		return resultItems[0];
@@ -41,13 +41,15 @@ export function formatData(date) {
 // Devuelve un string con todos los autores de un libro encadenados
 export function getAuthors(authors) {
 	if(authors) {
-		const authorArray = authors.map((item, i) => {
+		let authorList = '';
+		authors.forEach((item, i) => {
 			if(i !== authors.length - 1 && authors.length > 1) {
-				return `${item}, `;
+				authorList += `${item}, `;
+			} else {
+				authorList += item;
 			}
-			return item;
 		});
-		return authorArray[0];
+		return authorList;
 	} else {
 		return '';
 	}
@@ -66,7 +68,8 @@ export function getBookFormated(book) {
 	const publishedYearNew = publishedDate ? publishedDate.slice(0, 4) : '';
 	const languageNew = language ? language : '';
 	const descriptionNew = description ? description : '';
-	const thumbnailNew = imageLinks ? imageLinks.thumbnail : '';
+	const thumbnailNew = imageLinks ? (imageLinks.small ? imageLinks.small : imageLinks.thumbnail) : '';
+
 	const pageCountNew = pageCount ? pageCount : '';
 
 	return {

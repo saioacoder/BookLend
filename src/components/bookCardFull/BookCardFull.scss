@@ -10,7 +10,7 @@
 	width: 100%;
 	&_cover {
 		margin-right: $spacing_xxl;
-		width: 25%;
+		width: 180px;
 		@include mobile {
 			margin-right: 0;
 			width: 100%;
@@ -27,7 +27,7 @@
 		}
 	}
 	&_content {
-		width: calc(100% - 32% - 30px);
+		width: calc(100% - 180px - 40px);
 		@include mobile {
 			margin-top: $spacing_s;
 			text-align: center;

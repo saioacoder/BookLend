@@ -46,18 +46,6 @@ export async function addObjectToSubcollectionWithId(collection, idCollection, s
 }
 
 
-// Se usa ??
-export async function removeObjectWithId(collection, id) {
-	try {
-		await firebase.firestore().collection(collection).doc(id).delete();
-		return true;
-	} catch (error) {
-		console.log("removeObjectWithId Error:", error);
-		return null;
-	}
-}
-
-
 export async function removeObjectFromSubcollectionWithId(collection, idCollection, subcollection, id) {
 	try {
 		await firebase.firestore().collection(collection).doc(idCollection).collection(subcollection).doc(id).delete();
@@ -74,7 +62,7 @@ export async function getObjectById(collection, id) {
 		const doc = await firebase.firestore().collection(collection).doc(id).get();
 		return doc.exists ? parseDocument(doc) : null;
 	} catch (error) {
-		//console.log("getObjectById Error: ", error);
+		console.log("getObjectById Error: ", error);
 		return null;
 	}
 }
@@ -155,25 +143,37 @@ function parseDocument(doc) {
 
 
 
-// Se usa??
-export async function changeObjectById(collection, id, change) {
-	try {
-		await firebase.firestore().collection(collection).doc(id).update(change);
-		return true;
-	} catch (error) {
-		console.log("changeObjectById Error: ", error);
-		return false;
-	}
-}
+// Se usa ??
+// export async function removeObjectWithId(collection, id) {
+// 	try {
+// 		await firebase.firestore().collection(collection).doc(id).delete();
+// 		return true;
+// 	} catch (error) {
+// 		console.log("removeObjectWithId Error:", error);
+// 		return null;
+// 	}
+// }
 
 
 // Se usa??
-export async function getAllData(collection) {
-	try {
-		const allDocs = await firebase.firestore().collection(collection).get();
-    	return allDocs.docs.map(doc => parseDocument(doc));
-	} catch (error) {
-		console.log("getAllData Error:", error);
-		return null;
-	}
-}
+// export async function changeObjectById(collection, id, change) {
+// 	try {
+// 		await firebase.firestore().collection(collection).doc(id).update(change);
+// 		return true;
+// 	} catch (error) {
+// 		console.log("changeObjectById Error: ", error);
+// 		return false;
+// 	}
+// }
+
+
+// Se usa??
+// export async function getAllData(collection) {
+// 	try {
+// 		const allDocs = await firebase.firestore().collection(collection).get();
+//     	return allDocs.docs.map(doc => parseDocument(doc));
+// 	} catch (error) {
+// 		console.log("getAllData Error:", error);
+// 		return null;
+// 	}
+// }

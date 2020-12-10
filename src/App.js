@@ -29,9 +29,12 @@ function App() {
 		registerAuthStateChangeHandler(async (user) => {
 		  	if(user) {
 				const { idUser, nameUser, isAdmin, idLibrary } = await getUserById(user.uid);
-				const { nameLibrary, categories } = await getLibraryById(idLibrary);
-				dispatch(setUser({ idUser, nameUser, isAdmin }));
-				dispatch(setLibrary({ idLibrary, nameLibrary, categories }));
+				const library = await getLibraryById(idLibrary);
+				if(library !== null) {
+					const { nameLibrary, categories } = library;
+					dispatch(setUser({ idUser, nameUser, isAdmin }));
+					dispatch(setLibrary({ idLibrary, nameLibrary, categories }));
+				}
 			} else {
 				dispatch(setUser(null));
 				dispatch(setLibrary(null));
