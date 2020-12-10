@@ -65,7 +65,7 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 	- Editar admin
 	- Borrar admin
 
-### Visión del usuario
+### Usuario
 
 - Landing de acceso
 	- Registro
@@ -87,4 +87,4 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 
 ## Wireframes
 
-![wireframe](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/9a673ca2-a37a-4343-bebd-771b2db32dc8/Estructura_pantallas.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201209%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201209T185244Z&X-Amz-Expires=86400&X-Amz-Signature=bbbda0f4f4400a711eebea3b0027f5f6921c8a730c37214b8648fa54e2002f37&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D"Estructura_pantallas.svg")
+![wireframe](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/87f69711-5a3c-4d39-bfad-e763a6035be6/Estructura_pantallas.svg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT73L2G45O3KS52Y5%2F20201210%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20201210T170742Z&X-Amz-Expires=86400&X-Amz-Signature=3a4668300e80b528dc810f96177a9c017972d38164d1d0d85efb2c9a642f260b&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D"Estructura_pantallas.svg")
