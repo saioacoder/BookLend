@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2020-12-10T17:47:10.765Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 OPR/72.0.3815.400" etag="51bg_UNn9JZoTWjAZLfu" version="13.10.9" type="github">
+<mxfile host="app.diagrams.net" modified="2020-12-10T18:37:14.248Z" agent="5.0 (Macintosh; Intel Mac OS X 11_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.198 Safari/537.36 OPR/72.0.3815.400" etag="TZTQ8DbP929fyuWWL6Vw" version="13.10.9" type="github">
   <diagram id="acLD0W_w8oIIyhGPg7Ok" name="Página-1">
     <mxGraphModel dx="1130" dy="850" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-1" value="users" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;swimlaneFillColor=none;fillColor=#dae8fc;rounded=1;glass=0;swimlaneLine=1;shadow=0;sketch=1;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;" vertex="1" parent="1">
-          <mxGeometry x="70" y="60" width="170" height="312" as="geometry" />
+          <mxGeometry x="70" y="62" width="170" height="312" as="geometry" />
         </mxCell>
         <mxCell id="sIiYjzBL_RoDaTGsPlHt-2" value="id" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=10;spacingRight=10;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontFamily=Montserrat;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DMontserrat;spacingBottom=0;spacingTop=0;fontStyle=5" vertex="1" parent="sIiYjzBL_RoDaTGsPlHt-1">
           <mxGeometry y="26" width="170" height="26" as="geometry" />
