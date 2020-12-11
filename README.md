@@ -15,6 +15,7 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 - CSS3 + SASS
 - React + Reduz
 - Firebase
+- Google API
 - Git
 
 ## Programación usada
