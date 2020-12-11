@@ -11,11 +11,11 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 
 ## Tecnología utilizada
 
-- React
-- SASS
-- JS
-- HTML
+- HTML5
+- CSS3 + SASS
+- React + Reduz
 - Firebase
+- Google API
 - Git
 
 ## Programación usada
@@ -29,6 +29,10 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 - Conexión a BBDD (Firebase)
 - Testing (Jest)
 - Diseño responsive
+
+## Flujo del proyecto
+
+![paginas](https://github.com/saioacoder/booklend/blob/develop/src/img/Booklend-paginas.svg)
 
 ## Visión según el tipo de usuario
 
@@ -92,3 +96,7 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 ## Diagrama de la BBDD
 
 ![diagram](https://github.com/saioacoder/booklend/blob/develop/src/img/Booklend_diagram.svg)
+
+## Planificación del proyecto
+
+![timing](https://github.com/saioacoder/booklend/blob/develop/src/img/timings_proyecto.png)
