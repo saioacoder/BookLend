@@ -85,7 +85,7 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 - Sugerir nuevos libros (Fase2)
 - Estadísticas de lecturas (Fase2)
 
-## ESTRUCTURA DE PÁGINAS
+## Estructura de páginas
 
 ![paginas](https://github.com/saioacoder/booklend/blob/develop/src/img/Booklend-paginas.svg)
 
