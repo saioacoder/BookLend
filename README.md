@@ -11,10 +11,11 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 
 ## Tecnología utilizada
 
-- React
+- HTML5
+- CSS3
 - SASS
-- JS
-- HTML
+- React
+- Redux
 - Firebase
 - Git
 
