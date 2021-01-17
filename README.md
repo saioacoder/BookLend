@@ -1,15 +1,15 @@
 # BookLend
 
-Proyecto para ayudar en la gestión de bibliotecas pequeñas que no se pueden permitir el desarrollo de una web propia con sistema de préstamos online. Tendrá un completo sistema de reservas, préstamos y catálogo de libros.
+React project that helps small libraries on their book collection management. It has a complete reservation, loan and book catalog system.
 
-Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. Es el proyecto final para el que hemos tenido 1 mes a tiempo parcial para desarrollarlo.
+This project was developed on Skylabs Bootcamp for Front-end developers.
 
 ## Demo
 
-[Ver proyecto BookLend](https://booklend-app.web.app)
+[Go to BookLend project](https://booklend-app.web.app)
 
 
-## Tecnología utilizada
+## Technologies
 
 - HTML5
 - CSS3 + SASS
@@ -18,17 +18,17 @@ Este proyecto se engloba dentro del Bootcamp de Skylabs de Front-end developer. 
 - Google API
 - Git
 
-## Programación usada
+## Programming skills
 
-- Listas
+- Lists
 - CRUD (create, read, update, delete)
-- Registro y login
-- Formularios y validaciones
-- Filtrar datos
-- Recuperación de datos de API
-- Conexión a BBDD (Firebase)
-- Testing (Jest)
-- Diseño responsive
+- Register and login
+- Forms and validations
+- Data filters
+- API data recovery
+- Firebase data base connections
+- Testing with Jest
+- Responsive design
 
 ## Flujo del proyecto
 
